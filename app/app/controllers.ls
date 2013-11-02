@@ -1,5 +1,5 @@
 poptext = (paper, text, color, size) ->
-  paper.text 30, Math.floor(Math.random!*300), text .attr {'font-size': size, 'fill': color} .animate {x: 1000}, 3000
+  paper.text 30, Math.floor(Math.random!*300), text .attr {'font-size': size, 'fill': color} .animate {x: paper.width+100}, 3000
 
 angular.module 'app.controllers' <[ng app.cinema]>
 .run <[$rootScope]> ++ ($rootScope) ->
@@ -20,16 +20,19 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
 .controller Danmaku: <[$scope GoAngular platform]> ++ ($scope, GoAngular, platform) ->
   $scope.comments = []
-  goAngular = new GoAngular $scope, \comments, { include: [\comments], exclude: [\newComment]} .initialize!
-  
-  paper = Raphael 25, 230, 640, 300
+  $scope.playedComments = []
+  goAngular = new GoAngular $scope, \comments, { include: [\comments], exclude: [\newComment, \playedComments]} .initialize!
+  player = $ \#cinema-player
+  paper = Raphael 25, 230, player.width!, player.height! - 100
   $scope.$watch 'comments' (c) ->
     console.log c
     angular.forEach c, (value, index) ->
-      console.log value
-      poptext paper, value.text, '#fff', 30
+      if $scope.playedComments[index] == void
+        poptext paper, value.text, '#fff', 30
+        $scope.playedComments.push value
   $scope.addComment = ->
-    poptext paper, $scope.newComment, \Black, 30
+    poptext paper, $scope.newComment, '#fff', 30
+    $scope.playedComments.push $scope.newComment
     timestamp = new Date!
     created_at = new Date!
     $scope.comments.push {text: $scope.newComment, timestamp: timestamp, created_at: created_at}
