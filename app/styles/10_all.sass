@@ -38,20 +38,20 @@ a,a:link,a:hover,a:active
 #cinema-curtain
   width: 100%
   position: absolute
+  box-sizing: border-box
+  border: 0
+  z-index: 1
   height: 664px
+  top: 0
+  left: 0
+  .curtain-left, .curtain-right
+    background-repeat: no-repeat
+    margin-top: 5px
+    height: 664px
+    width: 302px
   .curtain-left
     background-image: url('/img/curtain-left.png') 
-    background-repeat: no-repeat
     float: left
-    width: 302px
-    height: 664px
-    margin-top: 5px
-    margin-left: -16px
   .curtain-right
     background-image: url('/img/curtain-right.png') 
-    background-repeat: no-repeat
-    height: 664px
-    width: 302px
     float: right
-    margin-top: 5px
-    margin-right: -18px
