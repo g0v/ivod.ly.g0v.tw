@@ -59,10 +59,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.css  width: "#{w}px", height: "#{h - 30}px"
   eggninja.on \click (e) ->
     {clientX: mx, clientY: my} = e
-    console.log e.clientY
     sy = $(document.body)scrollTop!
     [ww, wh] = [$(document.body)width!, $(window)height!]
-    #[ex, ey] = [Math.random!*ww, my + (wh / 4) - parseInt(Math.random! * wh / 2)]
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
 
     egg = $ \<div></div>
@@ -78,3 +76,14 @@ angular.module 'app.controllers' <[ng app.cinema]>
     player.parent!parent!parent!trigger \mousemove
     crosshair.offset top: my - 100 + sy, left: mx - 100
 
+  $scope.flower = (e, type) ->
+    {clientX: mx, clientY: my} = e
+    {top:y, left: x} = player.offset!
+    [w, h] = [player.width!, player.height!]
+    sy = $(document.body)scrollTop!
+    [ww, wh] = [$(document.body)width!, $(window)height!]
+    [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
+    egg = $ \<div></div>
+    egg.addClass type
+    $ document.body .append egg
+    egg.offset left: x - 100, top: y + h - 200 .animate left: x + parseInt(w / 2) - 100  .delay 500 .fadeOut!

@@ -116,15 +116,21 @@
           .item 7 會期
           .item 8 會期
 
-  #video-wrapper
-    video#cinema-player(width="650px",height="400px",preload="auto",mediaelement,src="{{vsrc}}")
-    input(placeholder="xxx", type="text", ng-model="vsrc")
-    #eggninja(ng-controller="EggNinja")
-      #crosshair
+  #egg-realm(ng-controller="EggNinja")
+    #video-wrapper
+      video#cinema-player(width="650px",height="400px",preload="auto",mediaelement,src="{{vsrc}}")
+      //-input(placeholder="xxx", type="text", ng-model="vsrc")
+      #eggninja
+        #crosshair
+    .ui.segment.aligned.center
+      .ui.buttons
+        .ui.button(ng-click="flower($event,'flower')") 獻花
+        .ui.button(ng-click="flower($event,'boat')") 護航
+        .ui.button 張網
 
-main.ui.two.column.grid(ng-controller="Danmaku")
-  aside.column
-    form.ui.form(ng-submit="addComment();newComment=''")
-      .ui.input.action.field
-        input(placeholder="輸入彈幕", type="text", ng-model="newComment")
-        button(ng-disabled="!newComment", type="submit") 新增
+  main.ui.two.column.grid(ng-controller="Danmaku")
+    aside.column
+      form.ui.form(ng-submit="addComment();newComment=''")
+        .ui.input.action.field
+          input(placeholder="輸入彈幕", type="text", ng-model="newComment")
+          button(ng-disabled="!newComment", type="submit") 新增

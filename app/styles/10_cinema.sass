@@ -30,19 +30,24 @@
 #crosshair
   position: absolute
   z-index: 102
-  top: 0
-  left: 0
+  top: -200px 
+  left: -200px
   width: 200px
   height: 200px
   background: url(/img/crosshair.png)
-.egg
+.egg, .flower, .boat
   position: absolute
   z-index: 101
   top: 0
   left: 0
-  width: 100px
-  height: 100px
-  background: url(/img/egg.png) no-repeat center center
+  background: no-repeat center center
+.flower, .boat
+  width: 200px
+  height: 200px
+.flower
+  background-image: url(/img/flower.png)
+.boat
+  background-image: url(/img/boat.png)
 
 @-webkit-keyframes rotate
   from
