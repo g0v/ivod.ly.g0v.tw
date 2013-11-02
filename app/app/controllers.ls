@@ -64,7 +64,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
     egg = $ \<div></div>
     egg.addClass "rotate egg"
-    egg.css \background-image, "url(#{if Math.random!>0.5 => '/img/egg.png' else '/img/shoe.png'})"
+    egg.css \background-image, "url(/img/#{<[egg shoe melon]>[parseInt(Math.random!*4)]}.png)"
     $ document.body .append egg
     egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
       .animate left: mx - 50, top: my + 50 + sy .fadeOut!
