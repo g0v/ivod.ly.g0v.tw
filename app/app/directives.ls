@@ -3,5 +3,8 @@ angular.module 'app.directives' <[app.services ]>
   restrict: 'A'
   link: (scope, element, attrs, controller) ->
     attrs.$observe 'src' ->
-      console.log it
-      scope.mediaelement = element.mediaelementplayer {}
+      if it =>
+        source = $("<source type='video/youtube' src='#{it}'/>")
+        element.attr \src, null
+        element.append source
+        scope.mediaelement = element.mediaelementplayer {}

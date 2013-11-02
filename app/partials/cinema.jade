@@ -123,6 +123,13 @@
       //-input(placeholder="xxx", type="text", ng-model="vsrc")
       #eggninja
         #crosshair
+    .ui.segment.aligned.center
+      .ui.buttons
+        .ui.button(ng-click="flower($event,'flower')") 獻花
+        .ui.button(ng-click="flower($event,'boat')") 護航
+        .ui.button(ng-click="raiseNet($event)") 張網
+      .ui.buttons(style="margin-left: 10px")
+        .ui.button(ng-click="objection($event,'gb')") 抬棺
     .archive(ui-if="loaded")
       #player
       div(style="height: 100px")
@@ -133,13 +140,6 @@
         .name
         //-a.btn
           i.icon.play
-    .ui.segment.aligned.center
-      .ui.buttons
-        .ui.button(ng-click="flower($event,'flower')") 獻花
-        .ui.button(ng-click="flower($event,'boat')") 護航
-        .ui.button(ng-click="raiseNet($event)") 張網
-      .ui.buttons(style="margin-left: 10px")
-        .ui.button(ng-click="objection($event,'gb')") 抬棺
 
   .panel
     .target.selector
