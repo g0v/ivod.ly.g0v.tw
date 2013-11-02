@@ -1,33 +1,104 @@
 .cinema
-  .header
-    h1 XXX legislator
-  .filter
+  .contexual.nav.bar
+    .back.ui.labeled.icon.button
+      i.left.icon
+      | back to list 
+    h1.title XXX legislator
+
+  .clearfix
+  .video.selector
+    .ui.simple.dropdown
+      .text live
+      i.dropdown.icon
+      .menu
+        .item live
+        .item playback
+    span.time select videos by date
+      .year.ui.simple.dropdown
+        .text 2013 Y
+        i.dropdown.icon
+        .menu
+          .item 2012
+          .item 2011
+      .month.ui.simple.dropdown
+        .text 11 M
+        i.dropdown.icon
+        .menu
+          .item 12 M
+          .item 11
+          .item 10
+          .item 09
+          .item 08
+          .item 07
+          .item 06
+          .item 05
+          .item 04
+          .item 03
+          .item 02
+          .item 01
+      .day.ui.simple.dropdown
+        .text 31 D
+        i.dropdown.icon
+        .menu
+          .item 01 D
+          .item 02
+    span.committee select videos by committee
+    .committee.ui.simple.dropdown
+      .text all
+      i.dropdown.icon
+      .menu 
+        .item 7
+        .item 8
+        .item 7
+        .item 8
+        .item 7
+        .item 8
+        .item 7
+        .item 8
+        .item 7
+        .item 8
+    .class.ui.simple.dropdown
+      .text 8 S
+      i.dropdown.icon
+      .menu
+        .item 7
+        .item 8
+    .phase.ui.simple.dropdown
+      .text 4 S
+      i.dropdown.icon
+      .menu
+        .item 1
+        .item 2
+
+        
+    .class
     .committee
       .ui.grid.stackable
         .row
           .six.wide.column
-            .category.ui.button 院會　
+            .category.ui.button.active 院會　
             .three.column.ui.grid
               .column
-                .category.ui.button.disabled 程序
+                .category.ui.button 程序
               .column
-                .category.ui.button.disabled 紀律
+                .category.ui.button 紀律
               .column
                 .category.ui.button.disabled 修憲
           .ten.wide.column
             .ui.four.column.grid
               .column
-                .category.ui.button.active 經濟
+                .category.ui.button 經濟
                 .category.ui.button.disabled 財政
               .column
                 .category.ui.button.disabled 內政
-                .category.ui.button.active 外交國防
+                .category.ui.button 外交國防
               .column
                 .category.ui.button 社福衛環
                 .category.ui.button.disabled 教育文化
               .column
                 .category.ui.button.disabled 司法法制
                 .category.ui.button.disabled 交通
+      .nth
   video#player1(width="600px",height="400px",preload="none")
     source(type="video/webm",src="http://ivod.ly.g0v.tw/videos/YS.webm")
   link(rel="stylesheet",type="text/css",href="mediaelement/mediaelemenplayer.css")
