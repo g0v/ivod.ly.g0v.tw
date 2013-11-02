@@ -35,7 +35,14 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
               js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1";
               fjs.parentNode.insertBefore(js, fjs);
           }(document, 'script', 'facebook-jssdk'));
-    .navbar.navbar-inverse.navbar-fixed-top
+    .ui.fixed.transparent.inverted.main.menu
+      .container
+        a.title.item
+          img(src="http://hack.g0v.tw/img/g0v-icon-invert.png")
+          | 立院影城
+        //-div(ng-include="'/partials/nav.html'")
+
+    //-.navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container.hide-print
             button.btn.btn-navbar(type="button", data-toggle="collapse", data-target=".nav-collapse")
