@@ -63,12 +63,11 @@ angular.module 'app.controllers' <[ng app.cinema]>
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
 
     egg = $ \<div></div>
-    egg.addClass \rotate
+    egg.addClass "rotate egg"
+    egg.css \background-image, "url(#{if Math.random!>0.5 => '/img/egg.png' else '/img/shoe.png'})"
     $ document.body .append egg
-    egg.addClass \egg .offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
+    egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
       .animate left: mx - 50, top: my + 50 + sy .fadeOut!
-    #egg.addClass \egg .offset left: ex - 16, top: ey - 22 + sy .animate left: mx - 16, top: my - 22 + sy
-    #  .animate left: mx - 16, top: my + 22 + sy .fadeOut!
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
