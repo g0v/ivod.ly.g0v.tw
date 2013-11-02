@@ -48,7 +48,6 @@ angular.module 'app.controllers' <[ng app.cinema]>
   player = $ \#cinema-player
   crosshair = $ \#crosshair
   egg = $ \#egg
-  console.log \bok
   [w,h] = [player.width!, player.height!]
   {top:y, left: x} = player.offset!
   eggninja = $ \#eggninja
@@ -56,16 +55,18 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.css  width: "#{w}px", height: "#{h - 30}px"
   eggninja.on \click (e) ->
     {clientX: mx, clientY: my} = e
+    type = <[egg shoe melon]>[parseInt(Math.random!*4)]
     sy = $(document.body)scrollTop!
     [ww, wh] = [$(document.body)width!, $(window)height!]
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
 
     egg = $ \<div></div>
     egg.addClass "rotate egg"
-    egg.css \background-image, "url(/img/#{<[egg shoe melon]>[parseInt(Math.random!*4)]}.png)"
+    egg.css \background-image, "url(/img/#{type}.png)"
     $ document.body .append egg
     egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
-      .animate left: mx - 50, top: my + 50 + sy .fadeOut!
+      ..animate left: mx - 50, top: my + 50 + sy
+      ..fadeOut!
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
