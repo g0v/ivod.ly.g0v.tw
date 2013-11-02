@@ -125,11 +125,11 @@
         #crosshair
     .ui.segment.aligned.center
       .ui.buttons
-        .ui.button(ng-click="flower($event,'flower')") 獻花
-        .ui.button(ng-click="flower($event,'boat')") 護航
-        .ui.button(ng-click="raiseNet($event)") 張網
+        .ui.small.button(ng-click="flower($event,'flower')") 獻花
+        .ui.small.button(ng-click="flower($event,'boat')") 護航
+        .ui.small.button(ng-click="raiseNet($event)") 張網
       .ui.buttons(style="margin-left: 10px")
-        .ui.button(ng-click="objection($event,'gb')") 抬棺
+        .ui.small.button(ng-click="objection($event,'gb')") 抬棺
     .archive(ui-if="loaded")
       #player
       div(style="height: 100px")
