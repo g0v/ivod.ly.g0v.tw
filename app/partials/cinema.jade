@@ -1,8 +1,9 @@
 .cinema
+  script(src="https://www.youtube.com/iframe_api")
   .contexual.nav.bar
     .back.ui.labeled.icon.button
       i.left.icon
-      | back to list 
+      | back to list
     h1.title XXX legislator
 
   .clearfix
@@ -122,6 +123,15 @@
       //-input(placeholder="xxx", type="text", ng-model="vsrc")
       #eggninja
         #crosshair
+    .archive(ui-if="loaded")
+      #player
+      .wav-group(ng-repeat="waveform in waveforms")
+        ng-waveform(ng-model="waveform")
+      #avatar-tooltip.ui.label.pointing.below
+        img
+        .name
+        a.btn
+          i.icon.play
     .ui.segment.aligned.center
       .ui.buttons
         .ui.button(ng-click="flower($event,'flower')") 獻花

@@ -2,7 +2,7 @@
 
 angular.module('scroll', []).value('$anchorScroll', angular.noop)
 
-angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.services scroll partials ui.state goinstant]>
+angular.module \ly.g0v.tw <[app.controllers app.directives app.directives.waveform app.filters app.services scroll partials ui.state goinstant]>
 
 .config <[$stateProvider $urlRouterProvider $locationProvider]> ++ ($stateProvider, $urlRouterProvider, $locationProvider) ->
   $stateProvider
