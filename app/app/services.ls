@@ -1,7 +1,11 @@
 angular.module 'app.services' []
 .service 'DanmakuStats': <[$q]> ++ ($q) ->
   root = new Firebase 'https://ivod.firebaseio.com/'
-  update: (vid, type) ->
+  updateQueue: (vid, obj) ->
+    video = root.child("videos/#vid")
+    newentry = video.child('stats').child('queue').push!
+    newentry.setWithPriority obj, obj.offset   
+  updateTotal: (vid, type) ->
     video = root.child("videos/#vid")
     stats = video.child('stats').child('total')
     stats.once 'value' ->

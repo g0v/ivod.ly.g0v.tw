@@ -18,8 +18,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.comments = []
   PipeService.on \player.init (v) ->
-    console.log " I got #{v}!" # sample code
-
+    $scope.player = v
   $scope.$on 'danmaku_added', (ev, danmaku)->
     now = new Date! .getTime! - 2000
     if danmaku.timestamp >= now
@@ -62,8 +61,10 @@ angular.module 'app.controllers' <[ng app.cinema]>
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: type, mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \attack}
-    DanmakuStats.update $scope.current-video-id, type
+    DanmakuStats.updateTotal $scope.current-video-id, type
     DanmakuPaper.throwEgg type, mx, my, ex, ey, sy
+    offset = new Date! .getTime!
+    DanmakuStats.updateQueue $scope.current-video-id, {offset: offset, type: type}
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
@@ -79,7 +80,9 @@ angular.module 'app.controllers' <[ng app.cinema]>
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: \raise-net, timestamp: timestamp, created_at: created_at, type: \protect}
-    DanmakuStats.update $scope.current-video-id, \net
+    DanmakuStats.updateTotal $scope.current-video-id, \net
+    offset = new Date! .getTime!
+    DanmakuStats.updateQueue $scope.current-video-id, {offset: offset, type: \net}
 
   $scope.objection = (e, type) ->
     if !$scope.isplaying!
@@ -89,7 +92,9 @@ angular.module 'app.controllers' <[ng app.cinema]>
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: \white-banner, timestamp: timestamp, created_at: created_at, type: \protect}
-    DanmakuStats.update $scope.current-video-id, \banner
+    DanmakuStats.updateTotal $scope.current-video-id, \banner
+    offset = new Date! .getTime!
+    DanmakuStats.updateQueue $scope.current-video-id, {offset: offset, type: \banner}
 
   $scope.flower = (e, type) ->
     if !$scope.isplaying!
@@ -100,7 +105,9 @@ angular.module 'app.controllers' <[ng app.cinema]>
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: type, timestamp: timestamp, created_at: created_at, type: \protect}
-    DanmakuStats.update $scope.current-video-id, type
+    DanmakuStats.updateTotal $scope.current-video-id, type
+    offset = new Date! .getTime!
+    DanmakuStats.updateQueue $scope.current-video-id, {offset: offset, type: type}
 
   $scope.render-stats = (data) ->
     root = $ \#action-stats
