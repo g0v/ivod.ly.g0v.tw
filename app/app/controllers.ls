@@ -56,7 +56,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     player = $ \#video-wrapper
     sy = $(document.body)scrollTop!
     {clientX: mx, clientY: my} = e
-    type = <[egg shoe melon]>[parseInt(Math.random!*3)]
+    type = <[egg shoe melon]>[parseInt(Math.random!* *)]
     [ww, wh] = [$(document.body)width!, $(window)height!]
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
     timestamp = new Date! .getTime!
