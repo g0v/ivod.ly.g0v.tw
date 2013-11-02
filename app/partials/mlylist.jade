@@ -5,11 +5,11 @@
       | 找你的委員! {{blah}}
       .sub.header 透過排序可以更快地找到
   .ui.buttons
-    .ui.button.green(ng-click="sortBy = 'name'") 姓名
+    .ui.button(ng-click="sortBy = 'name'", ng-class="{green: sortBy == 'name'}") 姓名
     .or
-    .ui.button(ng-click="sortBy = 'party'") 政黨
+    .ui.button(ng-click="sortBy = 'party'", ng-class="{green: sortBy == 'party'}") 政黨
     .or
-    .ui.button(ng-click="sortBy = 'constituency'") 選區
+    .ui.button(ng-click="sortBy = 'constituency'", ng-class="{green: sortBy == 'constituency'}") 選區
   #mly-content
     .mlyitem(ng-repeat="it in mly",class="{{it.caucus}}",data-id="{{$index}}")
       img.avatar(src="{{it.avatar}}")

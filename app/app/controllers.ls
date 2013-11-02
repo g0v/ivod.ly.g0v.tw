@@ -175,6 +175,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
 .controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.mly = []
+  $scope.sortBy = 'name'
   $http.get \/mly-8.json .success ->
     $scope.mly = it
     setTimeout (->
