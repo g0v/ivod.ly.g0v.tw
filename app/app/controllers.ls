@@ -63,6 +63,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
 
     egg = $ \<div></div>
+    egg.addClass \rotate
     $ document.body .append egg
     egg.addClass \egg .offset left: ex - 16, top: ey - 22 + sy .animate left: mx - 16, top: my - 22 + sy
       .animate left: mx - 16, top: my + 22 + sy .fadeOut!
