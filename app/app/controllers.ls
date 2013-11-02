@@ -70,6 +70,14 @@ angular.module 'app.controllers' <[ng app.cinema]>
     player.parent!parent!parent!trigger \mousemove
     crosshair.offset top: my - 100 + sy, left: mx - 100
 
+  $scope.raise-net = (e) ->
+    {top:y, left: x} = player.offset!
+    [w, h] = [player.width!, player.height!]
+    egg = $ \<div></div>
+    egg.addClass \raise-net
+    $ document.body .append egg
+    egg.offset left: x, top: y + h  .animate top: y  .delay 500 .fadeOut!
+
   $scope.objection = (e, type) ->
     player.removeClass \saturate
     {top:y, left: x} = player.offset!
@@ -80,6 +88,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     egg.offset left: x, top: y - 150 .animate top: y - 50  .delay 500 .fadeOut!
 
   $scope.flower = (e, type) ->
+    if type=='boat' and Math.random!>0.7 => type = 'duck'
     {clientX: mx, clientY: my} = e
     {top:y, left: x} = player.offset!
     [w, h] = [player.width!, player.height!]
