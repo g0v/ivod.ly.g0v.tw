@@ -135,3 +135,4 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.$watch 'player' -> if it => PipeService.dispatchEvent \player.init, it
   PipeService.on \player.settime ->
     console.log "play time set to #it"
+    $scope.player.setCurrentTime it

@@ -11,7 +11,6 @@ angular.module 'app.cinema', <[ng ui.state]>
     # start-ticker = pop current queue every 1 sec to see if there's anything to fire
 
   $scope.play-from = ->
-    console.log "setting play time to #it"
     PipeService.dispatchEvent \player.settime, it
 
   $scope.$watch '$state.params.sitting' ->
