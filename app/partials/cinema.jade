@@ -28,10 +28,11 @@
               .column
                 .category.ui.button.disabled 司法法制
                 .category.ui.button.disabled 交通
-  video#cinema-player(width="100%",height="400px",preload="auto",mediaelement,src="{{vsrc}}")
-  input(placeholder="xxx", type="text", ng-model="vsrc")
-  #eggninja(ng-controller="EggNinja")
-    #crosshair
+  #video-wrapper
+    video#cinema-player(width="650px",height="400px",preload="auto",mediaelement,src="{{vsrc}}")
+    input(placeholder="xxx", type="text", ng-model="vsrc")
+    #eggninja(ng-controller="EggNinja")
+      #crosshair
 
 main.ui.two.column.grid(ng-controller="Danmaku")
   aside.column
