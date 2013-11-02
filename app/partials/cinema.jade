@@ -122,9 +122,19 @@
     #eggninja(ng-controller="EggNinja")
       #crosshair
 
-main.ui.two.column.grid(ng-controller="Danmaku")
-  aside.column
-    form.ui.form(ng-submit="addComment();newComment=''")
-      .ui.input.action.field
-        input(placeholder="輸入彈幕", type="text", ng-model="newComment")
-        button(ng-disabled="!newComment", type="submit") 新增
+  .panel
+    .target.selector
+      .ui.image.label
+        img(src="http://avatars.io/50a65bb26e293122b0000073/cb14b2ae9b01e89ce5ca1bc4b9d732e9?size=small")
+        | 邱議瑩 /xx委員會
+        i.delete.icon
+      .ui.image.label
+        i.plus.icon
+    .weapons.selector
+    .text.input
+    main.ui.two.column.grid(ng-controller="Danmaku")
+      aside.column
+        form.ui.form(ng-submit="addComment();newComment=''")
+          .ui.input.action.field
+            input(placeholder="輸入彈幕", type="text", ng-model="newComment")
+            button(ng-disabled="!newComment", type="submit") 新增
