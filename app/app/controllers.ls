@@ -70,6 +70,15 @@ angular.module 'app.controllers' <[ng app.cinema]>
     player.parent!parent!parent!trigger \mousemove
     crosshair.offset top: my - 100 + sy, left: mx - 100
 
+  $scope.objection = (e, type) ->
+    player.removeClass \saturate
+    {top:y, left: x} = player.offset!
+    setTimeout (-> player.addClass \saturate), 0
+    egg = $ \<div></div>
+    egg.addClass \white-banner .text "司法不公  政治迫害"
+    $ document.body .append egg
+    egg.offset left: x, top: y - 150 .animate top: y - 50  .delay 500 .fadeOut!
+
   $scope.flower = (e, type) ->
     {clientX: mx, clientY: my} = e
     {top:y, left: x} = player.offset!
