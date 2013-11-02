@@ -7,8 +7,12 @@ angular.module 'app.services' []
     #newentry.setWithPriority {content: \text, timestamp: ts}, ts
     #newentry.setWithPriority obj, ts
   subscribe: (vid, cb) ->
+    # also: 'child_changed', 'child_removed' or 'child_moved'
+    # use them to maintain list of upcoming danmaku
     root.child("videos/#vid").on \child_added cb
     null
+  unsubscribe: (vid) ->
+    root.child("videos/#vid").off \child_added
 .service 'LYModel': <[$q $http $timeout]> ++ ($q, $http, $timeout) ->
     base = 'http://api-beta.ly.g0v.tw/v0/collections/'
     _model = {}
