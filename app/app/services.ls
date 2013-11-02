@@ -3,7 +3,7 @@ angular.module 'app.services' []
   root = new Firebase 'https://ivod.firebaseio.com/'
   update: (vid, type) ->
     video = root.child("videos/#vid")
-    stats = video.child('stats')
+    stats = video.child('stats').child('total')
     stats.once 'value' ->
       obj = {egg: 0, shoe: 0, melon: 0, net: 0, banner: 0, flower: 0, boat: 0, duck: 0}
       obj[type] = 1
