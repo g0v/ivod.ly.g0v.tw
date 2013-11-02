@@ -11,9 +11,8 @@ engines:
   node: '0.8.x'
   npm: '1.1.x'
 scripts:
-  prepublish: './node_modules/.bin/lsc -cj package.ls'
-  start: './node_modules/.bin/brunch b --config brunch-templates.ls && ./node_modules/.bin/brunch watch --server'
-  test: 'testacular test/testacular.config.js'
+  prepublish: 'lsc -cj package.ls'
+  start: 'brunch watch --server'
 dependencies: {}
 devDependencies:
   LiveScript: '1.1.x'
