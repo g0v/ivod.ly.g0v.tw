@@ -125,6 +125,30 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller vlist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.positive = true;
   $scope.switch = -> $scope.positive = !$scope.positive
+  $http.get \/ivod-sample.json .success ->
+    $scope.videos = it.entries
+    setTimeout (-> $scope.do3d!),100
+  $scope.play = (v) ->
+    console.log v.sitting_id
+    window.location.href="/cinema/#{v.sitting_id}"
+  $scope.do3d = ->
+    list = $ \.video.wrapper
+    for item in list
+      item = $ item
+      [w,h] = [$ document.body .width!, $ document.body .height!]
+      {left:x, top:y} = item.offset!
+    $ document .on \scroll (e) ->
+      t = $ document.body .scrollTop!
+      [w,h] = [$ document.body .width!, $ document.body .height!]
+      $ \.video.list .css \-webkit-perspective-origin "50% 1000px"
+        .css \-webkit-perspective \1000px
+      for item in list
+        item = $ item
+        {left:x, top:y} = item.offset!
+        item.css \-webkit-transform "translateZ(#{(Math.abs(x - w/2)+Math.abs(y - t - h/2))/5}px) rotateY(#{-(x - w/2)/10}deg)"
+        #item.css \-webkit-transform "rotateX(#{((y - t) - h/2)/10}deg) translateZ(#{(Math.abs(x - w/2)+Math.abs(y - t - h/2))/5}px)"
+        #item.css \-webkit-transform "rotateY(#{(x - w/2) / 10}deg) rotateX(#{((y - t) - h/2)/10}deg)"
+
 .controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.mly = []
   $http.get \/mly-8.json .success ->

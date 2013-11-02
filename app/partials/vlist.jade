@@ -1,5 +1,4 @@
 .vlist
-
   .ui.tiered.menu
     .menu
         a.item 最新主打
@@ -20,52 +19,9 @@
         a.active.item 護航榜
         a.active.item 補鳥榜
   .video.list
-    .video.wrapper
-      h3 video title
-      .video.thumbnail
-      .ui.bottom.right.attached.label
-        i.icon (icon)
-            img(src="")
-        | 29478 views
-    .video.wrapper
-      h3 video title
-      .video.thumbnail
-      .ui.bottom.right.attached.label
-        i.icon (icon)
-            img(src="")
-        | 29478 views
-    .video.wrapper
-      h3 video title
-      .video.thumbnail
-      .ui.bottom.right.attached.label
-        i.icon (icon)
-            img(src="")
-        | 29478 views
-    .video.wrapper
-      h3 video title
-      .video.thumbnail
-      .ui.bottom.right.attached.label
-        i.icon (icon)
-            img(src="")
-        | 29478 views
-    .video.wrapper
-      h3 video title
-      .video.thumbnail
-      .ui.bottom.right.attached.label
-        i.icon (icon)
-            img(src="")
-        | 29478 views
-    .video.wrapper
-      h3 video title
-      .video.thumbnail
-      .ui.bottom.right.attached.label
-        i.icon (icon)
-            img(src="")
-        | 29478 views
-    .video.wrapper
-      h3 video title
-      .video.thumbnail
-      .ui.bottom.right.attached.label
-        i.icon (icon)
-            img(src="")
+    .video.wrapper(ng-repeat="v in videos",ng-click="play(v)")
+      h3 {{v.sitting_id}}
+      .video.thumbnail: img(src="{{v.thumb}}")
+      .ui.bottom.right.attached.label.small
+        i.icon.unhide
         | 29478 views
