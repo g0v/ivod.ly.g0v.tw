@@ -869,7 +869,7 @@ mejs.MediaElementDefaults = {
 	// path to Flash and Silverlight plugins
 	pluginPath: mejs.Utility.getScriptPath(['mediaelement.js','mediaelement.min.js','mediaelement-and-player.js','mediaelement-and-player.min.js']),
 	// name of flash file
-	flashName: 'flashmediaelement.swf',
+	flashName: '/mediaelement/flashmediaelement.swf',
 	// streamer for RTMP streaming
 	flashStreamer: '',
 	// turns on the smoothing filter in Flash
