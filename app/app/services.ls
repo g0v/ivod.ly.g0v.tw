@@ -7,9 +7,11 @@ angular.module 'app.services' []
     paper.text 30, Math.floor(Math.random!*300), text
       .attr {'font-size': size, 'fill': color}
       .animate {x: 2*paper.width}, ms
-  throwEgg: (mx, my, ex, ey, sy) ->
+  throwEgg: (type, mx, my, ex, ey) ->
+    sy = $(document.body)scrollTop!
     egg = $ \<div></div>
     egg.addClass "rotate egg"
+    console.log type
     egg.css \background-image, "url(/img/#{type}.png)"
     $ document.body .append egg
     egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy

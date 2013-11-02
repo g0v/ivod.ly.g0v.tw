@@ -20,13 +20,17 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.comments = []
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
-    now = new Date! .getTime! - 1000
-    if danmaku.type == \content && danmaku.timestamp >= now
-      $scope.comments.push danmaku
-      DanmakuPaper.poptext danmaku.text, '#888', 30, 5000
-
+    now = new Date! .getTime! - 2000
+    if danmaku.timestamp >= now
+      switch danmaku.type 
+      case \content  
+        $scope.comments.push danmaku
+        DanmakuPaper.poptext danmaku.text, '#888', 30, 5000
+      case \attack
+        {action, mx, my, ex, ey, sy} = danmaku
+        DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
   $scope.addComment = ->
-    timestamp = $scope.getTimestamp!
+    timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     if $scope.isplaying! 
       DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content} 
@@ -41,7 +45,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller EggNinja: <[$scope DanmakuStore DanmakuPaper]> ++ ($scope, DanmakuStore, DanmakuPaper) ->
   player = $ \#cinema-player
   crosshair = $ \#crosshair
-  egg = $ \#egg
+  #egg = $ \#egg
   [w,h] = [player.width!, player.height!]
   {top:y, left: x} = player.offset!
   eggninja = $ \#eggninja
@@ -52,15 +56,15 @@ angular.module 'app.controllers' <[ng app.cinema]>
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
       return  
     player = $ \#video-wrapper
-    {clientX: mx, clientY: my} = e
-    type = <[egg shoe melon]>[parseInt(Math.random!*4)]
     sy = $(document.body)scrollTop!
+    {clientX: mx, clientY: my} = e
+    type = <[egg shoe melon]>[parseInt(Math.random!*3)]
     [ww, wh] = [$(document.body)width!, $(window)height!]
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
-    timestamp = $scope.getTimestamp!
+    timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
-    #DanmakuStore.store {mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \action}
-    #DanmakuPaper.throwEgg mx, my, ex, ey, sy
+    DanmakuStore.store $scope.current-video-id, {action: type, mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \attack}
+    DanmakuPaper.throwEgg type, mx, my, ex, ey, sy
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
