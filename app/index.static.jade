@@ -27,7 +27,7 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
     script(src='/js/partials.js')
     script(src='/js/app.js')
     base(href='/')
-  body(ng-controller='AppCtrl',ng-cloak,data-spy="scroll", ng-class="{ blackbg: activeNavId=='/cinema/YS/live'}")
+  body(ng-controller='AppCtrl',ng-cloak,data-spy="scroll", ng-class="{ blackbg: activeNavId=='/cinema/YS/live' || activeNavId=='/vlist' }")
     //#fb-root
       script.
           (function(d, s, id) {
