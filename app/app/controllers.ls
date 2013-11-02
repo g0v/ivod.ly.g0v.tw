@@ -61,9 +61,9 @@ angular.module 'app.controllers' <[ng app.cinema]>
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
-    if DanmakuPaper.throwEgg type, mx, my, ex, ey, sy =>
-      DanmakuStore.store $scope.current-video-id, {action: type, mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \attack}
-      DanmakuStats.update $scope.current-video-id, type
+    DanmakuStore.store $scope.current-video-id, {action: type, mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \attack}
+    DanmakuStats.update $scope.current-video-id, type
+    DanmakuPaper.throwEgg type, mx, my, ex, ey, sy
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e

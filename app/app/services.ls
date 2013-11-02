@@ -30,7 +30,6 @@ angular.module 'app.services' []
       ..animate left: mx - 50, top: my + 50 + sy if !has-net
       ..animate left: ex - 50, top: ey - 50 + sy if has-net
       ..fadeOut!
-    !has-net
   protect: (type) ->
     wrapper = $ \#video-wrapper
     {top:y, left: x} = wrapper.offset!
