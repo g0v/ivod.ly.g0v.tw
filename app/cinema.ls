@@ -6,8 +6,9 @@ angular.module 'app.cinema', <[ng ui.state]>
     {sitting, clip} = $state.params
     if $state.params.clip is \live
       $scope.current-video-offset = new Date '2013-11-01 08:27:30'
+      $scope.current-video-id = \YS-live-2013-11-01
       $scope.vsrc = "http://ivod.ly.g0v.tw/videos/#{sitting}.webm"
-      <- DanmakuStore.subscribe \YS-live-2013-11-01
+      <- DanmakuStore.subscribe $scope.current-video-id
       console.log \got it.val!
 
     else
