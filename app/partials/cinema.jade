@@ -7,98 +7,116 @@
 
   .clearfix
   .video.selector
-    .ui.simple.dropdown
-      .text live
-      i.dropdown.icon
-      .menu
-        .item live
-        .item playback
-    span.time select videos by date
+    span.selector
+      .ui.label 狀態選片
+      .ui.simple.dropdown
+        .text 現場直播
+        i.dropdown.icon
+        .menu
+          .item 現場直播
+          .item 回到過去
+    span.selector
+      .ui.label 日期選片
       .year.ui.simple.dropdown
-        .text 2013 Y
+        .text 2013 年
         i.dropdown.icon
         .menu
-          .item 2012
-          .item 2011
+          .item 2012 年
+          .item 2011 年
       .month.ui.simple.dropdown
-        .text 11 M
+        .text 11 月
         i.dropdown.icon
         .menu
-          .item 12 M
-          .item 11
-          .item 10
-          .item 09
-          .item 08
-          .item 07
-          .item 06
-          .item 05
-          .item 04
-          .item 03
-          .item 02
-          .item 01
+          .item 01 月
+          .item 02 月
+          .item 03 月
+          .item 04 月
+          .item 05 月
+          .item 06 月
+          .item 07 月
+          .item 08 月
+          .item 09 月
+          .item 10 月
+          .item 11 月
+          .item 12 月
       .day.ui.simple.dropdown
-        .text 31 D
+        .text 31 日
         i.dropdown.icon
         .menu
-          .item 01 D
-          .item 02
-    span.committee select videos by committee
-    .committee.ui.simple.dropdown
-      .text all
-      i.dropdown.icon
-      .menu 
-        .item 7
-        .item 8
-        .item 7
-        .item 8
-        .item 7
-        .item 8
-        .item 7
-        .item 8
-        .item 7
-        .item 8
-    .class.ui.simple.dropdown
-      .text 8 S
-      i.dropdown.icon
-      .menu
-        .item 7
-        .item 8
-    .phase.ui.simple.dropdown
-      .text 4 S
-      i.dropdown.icon
-      .menu
-        .item 1
-        .item 2
+          .item 01 日
+          .item 02 日
+          .item 03 日
+          .item 04 日
+          .item 05 日
+          .item 06 日
+          .item 07 日
+          .item 08 日
+          .item 09 日
+          .item 10 日
+          .item 11 日
+          .item 12 日
+          .item 13 日
+          .item 14 日
+          .item 15 日
+          .item 16 日
+          .item 17 日
+          .item 18 日
+          .item 19 日
+          .item 20 日
+          .item 21 日
+          .item 22 日
+          .item 23 日
+          .item 24 日
+          .item 25 日
+          .item 26 日
+          .item 27 日
+          .item 28 日
+          .item 29 日
+          .item 30 日
+          .item 31 日
+    span.selector
+      .ui.label 委員會選片
+      .committee.ui.simple.dropdown
+        .text 院會
+        i.dropdown.icon
+        .menu
+          .item 院會
+          .item 程序
+          .item 紀律
+          .item 修憲
+          .item 經濟
+          .item 財政
+          .item 內政
+          .item 外交國防
+          .item 社福衛環
+          .item 教育文化
+          .item 司法法制
+          .item 交通
+      .class.ui.simple.dropdown
+        .text 8 屆
+        i.dropdown.icon
+        .menu
+          .item 1 屆
+          .item 2 屆
+          .item 3 屆
+          .item 4 屆
+          .item 5 屆
+          .item 6 屆
+          .item 7 屆
+          .item 8 屆
+      .phase.ui.simple.dropdown
+        .text 1 會期
+        i.dropdown.icon
+        .menu
+          .item 1 會期
+          .item 2 會期
+          .item 3 會期
+          .item 4 會期
+          .item 5 會期
+          .item 6 會期
+          .item 7 會期
+          .item 8 會期
 
-        
-    .class
-    .committee
-      .ui.grid.stackable
-        .row
-          .six.wide.column
-            .category.ui.button.active 院會　
-            .three.column.ui.grid
-              .column
-                .category.ui.button 程序
-              .column
-                .category.ui.button 紀律
-              .column
-                .category.ui.button.disabled 修憲
-          .ten.wide.column
-            .ui.four.column.grid
-              .column
-                .category.ui.button 經濟
-                .category.ui.button.disabled 財政
-              .column
-                .category.ui.button.disabled 內政
-                .category.ui.button 外交國防
-              .column
-                .category.ui.button 社福衛環
-                .category.ui.button.disabled 教育文化
-              .column
-                .category.ui.button.disabled 司法法制
-                .category.ui.button.disabled 交通
-      .nth
   video#player1(width="600px",height="400px",preload="none")
     source(type="video/webm",src="http://ivod.ly.g0v.tw/videos/YS.webm")
   link(rel="stylesheet",type="text/css",href="mediaelement/mediaelemenplayer.css")
