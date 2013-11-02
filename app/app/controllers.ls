@@ -65,6 +65,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     egg = $ \<div></div>
     $ document.body .append egg
     egg.addClass \egg .offset left: ex - 16, top: ey - 22 + sy .animate left: mx - 16, top: my - 22 + sy
+      .animate left: mx - 16, top: my + 22 + sy .fadeOut!
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
