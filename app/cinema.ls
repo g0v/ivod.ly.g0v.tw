@@ -14,7 +14,7 @@ angular.module 'app.cinema', <[ng ui.state]>
       return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
     {sitting, clip} = $state.params
     if $state.params.clip is \live
-      $scope.current-video-offset = new Date '2013-11-01 08:27:30'
+      $scope.current-video-offset = new Date '2013-11-01 08:27:30' .getTime! / 1000
       $scope.current-video-id = \YS-live-2013-11-01
       $scope.vsrc = "http://ivod.ly.g0v.tw/videos/#{sitting}.webm"
 
