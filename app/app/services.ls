@@ -1,11 +1,13 @@
 angular.module 'app.services' []
 .service 'DanmakuStore': <[$q]> ++ ($q) ->
-  store: (obj) ->
+  root = new Firebase 'https://ivod.firebaseio.com/'
+  store: (vid, obj) ->
     # ref
     #newentry = video.child('danmaku').push!
     #newentry.setWithPriority {content: \text, timestamp: ts}, ts
     #newentry.setWithPriority obj, ts
-  subscribe: (cb) ->
+  subscribe: (vid, cb) ->
+    root.child("videos/#vid").on \child_added cb
     null
 .service 'LYModel': <[$q $http $timeout]> ++ ($q, $http, $timeout) ->
     base = 'http://api-beta.ly.g0v.tw/v0/collections/'
