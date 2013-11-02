@@ -115,3 +115,36 @@
     left: 0
     z-index: 1
     opacity: 0.5
+
+
+#avatar-tooltip.ui.label.pointing.below
+  position: absolute
+  z-index: 12
+  text-align: center
+  /* semantic-ui styling start */
+  display: none
+  background: #e8e8e8
+  padding: 7px 10px
+  border-radius: 5px
+  /* semantic-ui styling end */
+  &:before
+    content: " "
+    position: absolute
+    width: 0.6em
+    height: 0.6em
+    background: #e8e8e8
+    transition: rotate(45deg)
+    -webkit-transition: rotate(45deg)
+    z-index: 12
+  img
+    display: block
+    width: 48px
+    height: 48px
+    background: rgba(255,255,255,0.5)
+    border-radius: 2px
+  .name
+    margin-top: 8px
+    width: 48px
+    height: 20px
+    overflow: hidden
+    text-overflow: ellipsis

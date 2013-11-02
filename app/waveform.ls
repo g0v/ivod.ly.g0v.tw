@@ -31,10 +31,18 @@ build-avatar = (root, d, {w,h,x,y,margin}, scope) ->
     .attr \stroke, \#f00
     .attr \stroke-width, \2px
     .attr \transform -> "translate(#{x d.current} 0)"
+  handler = null
   svg.selectAll \g.avatar .data d.speakers .enter!append \g
       ..attr \class \avatar
       ..attr \transform -> "translate(#{x it.offset / 1000} 0)"
+      ..on \mouseout ->
+        tooltip = $ \#avatar-tooltip
+        if handler => clearTimeout handler
+        handler := setTimeout (-> $ \#avatar-tooltip .fadeOut!), 500
       ..on \mouseover ->
+        if handler =>
+          clearTimeout handler
+          handler := null
         tooltip = $ \#avatar-tooltip
         tooltip.show!
         loc = $ this .offset!
