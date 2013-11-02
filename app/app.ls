@@ -15,8 +15,10 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
       url: '/cinema'
       templateUrl: '/partials/cinema.html'
       controller: \CinemaCtrl
-    .state 'cinema.view' do
+    .state 'cinema.list' do
       url: '/:sitting'
+    .state 'cinema.view' do
+      url: '/:sitting/:clip'
 
     .state 'vlist' do
       url: '/vlist'
