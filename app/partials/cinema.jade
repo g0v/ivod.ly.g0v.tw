@@ -28,14 +28,7 @@
               .column
                 .category.ui.button.disabled 司法法制
                 .category.ui.button.disabled 交通
-  video#player1(width="600px",height="400px",preload="none")
-    source(type="video/webm",src="http://ivod.ly.g0v.tw/videos/YS.webm")
-    source(type="video/m3u8",src="http://ivod.ly.g0v.tw/hls/YS/index.m3u8")
-  script(type="text/javascript").
-    $(document).ready(function() {
-      player = new MediaElementPlayer("#player1");
-      player.pause();
-    });
+  video#player1(width="600px",height="400px",preload="none",mediaelement,src="http://ivod.ly.g0v.tw/videos/YS.webm")
 
 main.ui.two.column.grid(ng-controller="Danmaku")
   aside.column
