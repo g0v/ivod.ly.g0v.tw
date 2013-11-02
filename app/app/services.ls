@@ -1,5 +1,5 @@
 angular.module 'app.services' []
-.service 'DanmakuStats': <[$q]> ++ ($q) ->
+.service 'DanmakuStats': <[$q PipeService]> ++ ($q, PipeService) ->
   root = new Firebase 'https://ivod.firebaseio.com/'
   updateQueue: (vid, obj) ->
     video = root.child("videos/#vid")
@@ -15,6 +15,10 @@ angular.module 'app.services' []
       else
         stats.child(type).once 'value' ->
           stats.child(type).set it.val! + 1
+  queryAll: (vid, cb) ->
+    queue = root.child("videos/#vid/stats/queue")
+    queue.on \value, cb
+    null
 .service 'DanmakuPaper': ->
   player = $ \#cinema-player
   {left: x, top: y} = player.offset!
