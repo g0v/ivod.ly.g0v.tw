@@ -1,0 +1,54 @@
+!!! 5
+html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name='viewport', content='width=device-width')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title(ng-bind-template='{{$state.current.title}}')
+    link(rel='stylesheet', href='/css/app.css')
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js')
+    //if lte IE 7
+      script(src='http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
+    //if lte IE 8
+      script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.0.1/angular-ui-router.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/lang/zh-tw.min.js')
+    script(src='/js/vendor.js')
+    script(src='/js/partials.js')
+    script(src='/js/app.js')
+    base(href='/')
+  body(ng-controller='AppCtrl',ng-cloak,data-spy="scroll")
+    //#fb-root
+      script.
+          (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1";
+              fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container.hide-print
+            button.btn.btn-navbar(type="button", data-toggle="collapse", data-target=".nav-collapse")
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a(href="http://github.com/g0v/ly.g0v.tw",target="_blank").pull-right
+              .small.badge.badge-inverse.pull-right.build-id {{ _build }}
+            a(href="http://g0v.tw", target="_blank").pull-right
+              .brand.g0v: img(src="http://hack.g0v.tw/img/g0v-icon-invert.png")
+            a.brand(href='/') 零時政府立院報你知
+            .nav-collapse.collapse(ng-include="'/partials/nav.html'")
+    .container
+      div(ui-view)
+  - if (typeof(googleAnalytics) !== 'undefined')
+    script(type="text/javascript").
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '#{googleAnalytics}', 'g0v.tw');

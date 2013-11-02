@@ -1,0 +1,95 @@
+@import "app/styles/mixins"
+@import "app/styles/ui-step"
+
+@media print
+  .hide-print
+    display: none !important
+  #qrlink
+    display: block !important
+
+.history
+  path.link, .node rect
+    fill: none
+    stroke: black
+    stroke-width: 1.5px
+
+.bill
+  width: 100%
+  font-family: "Songti TC", "Biaodian Sans", "Helvetica Neue", Helvetica, Arial, "Han Heiti", sans-serif
+  #qrlink
+    display: none
+
+  a,a:link,a:hover,a:active
+    text-decoration: none
+    display: inline-block
+
+  h1.bill,h2
+    padding: 0
+    margin: 1em 0
+    height: auto
+    width: 100%
+  .ui.four.steps
+    margin-bottom: 2rem
+  p
+    font-size: 22px
+    line-height: 2rem
+    text-align: justify
+  .role
+    .item
+      float: left
+      text-align: center
+    .image.ui.rounded.corner
+      background-color: #fff
+    .committee, .sponsors, .cosponsors
+      .content
+        padding: 0 0.5rem
+
+  .content.default
+    margin: 3rem 0
+    line-height: 1.5rem
+
+  p.sample
+    text-align: center
+    margin: 1rem 0
+    .delete,.version
+      display: inline-block
+      padding: 0.5rem 1rem
+      margin: 1rem
+      border: 1px #fff solid
+    .delete
+      background-color: #f99
+    .version
+      background-color: #A1CF88
+
+  .ui.segment.article-text
+    padding-top: 0.5em
+    padding-bottom: 0.5em
+  .ui.ribbon
+    margin-top: -1.5em
+
+  .diff.text
+    color: #333
+    margin-right: 0.5rem
+  .replace.left
+    .diff.text em
+      background-color: #f99
+      +vendor-prefix(text-emphasis, dot)
+  .delete.left
+    .diff.text em
+      background-color: #f99
+      +vendor-prefix(text-emphasis, dot)    
+  .replace.right
+    .diff.text em
+      background-color: #A1CF88
+      +vendor-prefix(text-emphasis, dot)
+  .insert.right
+    .diff.text em
+      background-color: #A1CF88
+      +vendor-prefix(text-emphasis, dot)
+  @media only screen and (max-width: 768px)
+    .mobile-hide
+      display: none
+    .ui.stackable.grid > .column.right
+      margin-top: -1.5rem !important
+    .ui.stackable.grid > .column.left
+      margin-top: 0 !important

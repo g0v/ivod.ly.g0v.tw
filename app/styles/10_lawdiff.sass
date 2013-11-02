@@ -1,0 +1,108 @@
+@import "app/styles/mixins"
+
+.bill
+  margin-left: 10%
+  h1
+    margin: 1em
+    text-overflow: ellipsis
+    +word-break-sane
+    overflow: hidden
+    height: 3.1em
+  width: 80%
+  .role
+    float: left
+    clear: left
+    span.name
+      padding-left: 12px
+    ul
+      list-style: none
+    &.sponsors, &.committee
+      margin-left: 3em
+      width: 25%
+      li
+        width: 60px
+        float: left
+        &:first-child
+          width: 180px
+          clear: both
+          .avatar
+            width: 100px
+            height: 100px
+    &.committee
+      .avatar
+        margin: 8px
+      span.name
+        padding-left: 4px
+    &.cosponsors
+      li
+        width: 60px
+        float: left
+  .description
+    font-size: larger
+    margin: 1em
+    margin-right: 2em
+    width: 60%
+    float: right
+    position: relative
+
+.related
+  margin: 2em
+  margin-left: 3em
+  width: 80%
+  ul
+    list-style: none
+    li
+      float: left
+      width: 50%
+      img.avatar
+        float: left
+      span.summary
+        float: left
+        padding-top: 10px
+        width: 80%
+        margin-left: 10px
+
+table.legend
+  margin: 2em
+  margin-left: 3em
+  td
+    margin: 1px
+    padding: 1em
+    border: 1px solid #fff
+    &.version
+      background-color: #EEE
+      &:hover
+        border: 1px solid #CCC
+.lawdiff
+  list-style: none
+  li
+    padding: 1em
+
+  table
+    width: 80%
+  .comment
+    width: 80%
+    margin: 2em
+
+  table.diff tbody
+    th
+      padding: 0.2em
+      width: 30px
+      text-align: center
+    td
+      vertical-align: top
+      width: 45%
+      &.replace em
+        text-decoration: underline
+        font-style: normal
+        font-weight: bold
+        background-color: #99ee99
+    td.left.replace
+      em
+        text-decoration: line-through
+        font-style: normal
+        background-color: #ee9999
+  thead
+    text-align: center
+  tfoot
+    display: none

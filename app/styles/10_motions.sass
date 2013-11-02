@@ -1,0 +1,87 @@
+img.avatar
+    width: 50px
+    height: 50px
+    border-width: 0 0 4px 0
+    border-style: solid
+    margin: 5px
+    &.KMT
+        border-color: #55f
+    &.DPP
+        border-color: #090
+    &.NSU
+        border-color: #fbb
+    &.TSU
+        border-color: #b26
+    &.PFP
+        border-color: #f90
+    &.medium
+        width: 100px
+        height: 100px
+
+.motions
+    div.legends
+        height: 500px
+    input.search-query
+        width: 30%
+    .list
+        li.row
+            border: 1px solid rgba(0, 0, 0, 0.07)
+            margin-top: -1px
+            border-color: #AAA
+            padding: 9px
+        .sidebar
+            ul
+                margin-top: 10px
+                margin-bottom: 10px
+                li
+                    margin-top: -1px
+                    a
+                        border: 1px solid #e5e5e5
+                        padding: 8px 10px
+                li:first-child
+                    a
+                        -webkit-border-radius: 6px 6px 0 0
+                        border-radius: 6px 6px 0 0
+                li:last-child
+                    a
+                        -webkit-border-radius: 0 0 6px 6px
+                        border-radius: 0 0 6px 6px
+        ul
+            list-style: none
+            &.type li, &.status li
+                cursor: pointer
+                display: block
+                padding-right: 6px
+                padding-left: 6px
+                width: auto
+                &:hover
+                    text-decoration: underline
+                &:last-child
+                    border: none
+                &:active
+                    color: orange
+            &.motions
+                div.avatars
+                    float: left
+                .motion
+                    width: 80%
+                    float: left
+                    margin: 20px
+                .resolution
+                    padding-left: 80px
+                    margin: 5px
+                    clear: both
+.g
+    cursor: pointer
+    &:hover
+        background-color: #F00
+
+input.filter
+    width: 100%
+    padding: 5px
+
+#btnTop
+    position: fixed
+    left: 20px
+    bottom: 80px
+
