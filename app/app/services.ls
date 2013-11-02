@@ -15,6 +15,8 @@ angular.module 'app.services' []
   player = $ \#cinema-player
   {left: x, top: y} = player.offset!
   paper = Raphael x, y, player.width!, player.height! - 30
+  has-net = false
+  net-handle = null
   poptext: (text, color, size, ms) ->
     paper.text 30, Math.floor(Math.random!*300), text
       .attr {'font-size': size, 'fill': color}
@@ -24,19 +26,27 @@ angular.module 'app.services' []
     egg.addClass "rotate egg"
     egg.css \background-image, "url(/img/#{type}.png)"
     $ document.body .append egg
+    console.log has-net
     egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
-      ..animate left: mx - 50, top: my + 50 + sy
+      ..animate left: mx - 50, top: my + 50 + sy if !has-net
+      ..animate left: ex - 50, top: ey - 50 + sy if has-net
       ..fadeOut!
-  protect: (type) -> 
+  protect: (type) ->
     wrapper = $ \#video-wrapper
     {top:y, left: x} = wrapper.offset!
-    [w, h] = [wrapper.width!, wrapper.height!] 
+    [w, h] = [wrapper.width!, wrapper.height!]
     egg = $ \<div></div>
     switch type
     case \raise-net
+      has-net := true
+      if net-handle => clearTimeout net-handle
+      net-handle := setTimeout (->
+        has-net := false
+        net-handl = null
+      ), 3000
       egg.addClass \raise-net
       $ document.body .append egg
-      egg.offset left: x, top: y - 150 .animate top: y  .delay 500 .fadeOut!
+      egg.offset left: x, top: y - 150 .animate top: y  .delay 3000 .fadeOut!
     case \white-banner
       egg.addClass \white-banner .text "司法不公  政治迫害"
       $ document.body .append egg
