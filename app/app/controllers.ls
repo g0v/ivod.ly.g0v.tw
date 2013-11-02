@@ -23,14 +23,14 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller Danmaku: <[$scope DanmakuStore]> ++ ($scope, DanmakuStore) ->
 
   $scope.comments = []
-  $scope.playedComments = []
   player = $ \#cinema-player
   {left: x, top: y} = player.offset!
   paper = Raphael x, y, player.width!, player.height! - 30
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
     if danmaku.type == \content
-      poptext paper, danmaku.text, '#fff', 30, 5000
+      poptext paper, danmaku.text, '#888', 30, 5000
+      
   $scope.addComment = ->
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
