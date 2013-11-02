@@ -23,7 +23,9 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller Danmaku: <[$scope DanmakuStore $timeout]> ++ ($scope, DanmakuStore, $timout) ->
 
   $scope.comments = []
-  player = $ \#cinema-player
+  #player = $ \#cinema-player
+  player = $($ \#video-wrapper .children!0)
+  console.log($ \#video-wrapper .offset!)
   {left: x, top: y} = player.offset!
   paper = Raphael x, y, player.width!, player.height! - 30
 
@@ -54,6 +56,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.offset {top: y, left: x}
   eggninja.css  width: "#{w}px", height: "#{h - 30}px"
   eggninja.on \click (e) ->
+    player = $ \#video-wrapper
     {clientX: mx, clientY: my} = e
     type = <[egg shoe melon]>[parseInt(Math.random!*4)]
     sy = $(document.body)scrollTop!
@@ -75,6 +78,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     crosshair.offset top: my - 100 + sy, left: mx - 100
 
   $scope.raise-net = (e) ->
+    player = $ \#video-wrapper
     {top:y, left: x} = player.offset!
     [w, h] = [player.width!, player.height!]
     egg = $ \<div></div>
@@ -83,18 +87,21 @@ angular.module 'app.controllers' <[ng app.cinema]>
     egg.offset left: x, top: y + h  .animate top: y  .delay 500 .fadeOut!
 
   $scope.objection = (e, type) ->
-    player.removeClass \saturate
+    player = $ \#video-wrapper
     {top:y, left: x} = player.offset!
-    setTimeout (-> player.addClass \saturate), 0
+    #player.removeClass \saturate
+    #setTimeout (-> player.addClass \saturate), 100
     egg = $ \<div></div>
     egg.addClass \white-banner .text "司法不公  政治迫害"
     $ document.body .append egg
     egg.offset left: x, top: y - 150 .animate top: y - 50  .delay 500 .fadeOut!
 
   $scope.flower = (e, type) ->
+    player = $ \#video-wrapper
     if type=='boat' and Math.random!>0.7 => type = 'duck'
     {clientX: mx, clientY: my} = e
     {top:y, left: x} = player.offset!
+
     [w, h] = [player.width!, player.height!]
     sy = $(document.body)scrollTop!
     [ww, wh] = [$(document.body)width!, $(window)height!]
