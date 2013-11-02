@@ -1,4 +1,16 @@
 angular.module 'app.services' []
+.service 'DanmakuStats': <[$q]> ++ ($q) ->
+  root = new Firebase 'https://ivod.firebaseio.com/'
+  update: (vid, type) ->
+    video = root.child("videos/#vid")
+    stats = video.child('stats')
+    stats.once 'value' ->
+      obj = {egg: 0, shoe: 0, melon: 0, net: 0, banner: 0, flower: 0, boat: 0, duck: 0}
+      obj[type] = 1
+      if it.val! === null => stats.set obj
+      else
+        stats.child(type).once 'value' ->
+          stats.child(type).set it.val! + 1
 .service 'DanmakuPaper': ->
   player = $ \#cinema-player
   {left: x, top: y} = player.offset!

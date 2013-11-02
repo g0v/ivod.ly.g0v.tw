@@ -46,7 +46,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.blah = "hello world"
 
-.controller EggNinja: <[$scope DanmakuStore DanmakuPaper PipeService]> ++ ($scope, DanmakuStore, DanmakuPaper, PipeService) ->
+.controller EggNinja: <[$scope DanmakuStore DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, DanmakuPaper, PipeService, DanmakuStats) ->
   player = $ \#cinema-player
   crosshair = $ \#crosshair
   #egg = $ \#egg
@@ -69,6 +69,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: type, mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \attack}
     DanmakuPaper.throwEgg type, mx, my, ex, ey, sy
+    DanmakuStats.update $scope.current-video-id, type
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
@@ -84,7 +85,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!    
     DanmakuStore.store $scope.current-video-id, {action: \raise-net, timestamp: timestamp, created_at: created_at, type: \protect}  
-
+    DanmakuStats.update $scope.current-video-id, \net
 
   $scope.objection = (e, type) ->
     if !$scope.isplaying!
@@ -94,6 +95,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: \white-banner, timestamp: timestamp, created_at: created_at, type: \protect} 
+    DanmakuStats.update $scope.current-video-id, \banner
 
   $scope.flower = (e, type) ->
     if !$scope.isplaying!
@@ -104,7 +106,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: type, timestamp: timestamp, created_at: created_at, type: \protect}
-
+    DanmakuStats.update $scope.current-video-id, type
 
   $scope.render-stats = (data) ->
     root = $ \#action-stats
