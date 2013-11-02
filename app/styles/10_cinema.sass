@@ -4,7 +4,9 @@
 
 .cinema
   margin: 0 auto
-
+  h2.ui.header
+    margin: 0
+    text-align: center
   .contexual.nav.bar
     display: none
     background-color: #eee
@@ -15,9 +17,14 @@
   .video.selector
     z-index: 200
     text-align: center
+    background: #fff
+    border: 1px solid #ccc
+    border-bottom-left-radius: 20px
+    border-bottom-right-radius: 20px
+    margin-top: 4px
     span.selector
       display: inline-block
-      margin: 0.5rem 0 0 0
+      margin: 0 0 0 0
     .ui.simple.dropdown
       padding: 0.5rem 0
       margin-right: 1rem
@@ -25,7 +32,7 @@
 #video-wrapper
   width: 650px
   height: 400px
-  margin: 20px auto 5px
+  margin: 2px auto 5px
 #eggninja
   position: absolute
   background: rgba(255,255,255,0.01)

@@ -10,6 +10,7 @@ angular.module 'app.cinema', <[ng ui.state]>
       DanmakuStore.unsubscribe old
     # start-ticker = pop current queue every 1 sec to see if there's anything to fire
 
+  PipeService.on \player.init -> $scope.mejs = it
   $scope.play-from = ->
     PipeService.dispatchEvent \player.settime, it
 
@@ -17,11 +18,17 @@ angular.module 'app.cinema', <[ng ui.state]>
     if !it
       return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
     {sitting, clip} = $state.params
+    if !$scope.recent-sitting => d3.csv \/ly-ministry.csv ->
+      $scope.recent-sitting = it
+      console.log it.0
+      name = $scope.recent-sitting.filter(->it.sitting==sitting)
+      $scope.title = if name.length => name.0.summary else sitting
+
     if $state.params.clip is \live
       $scope.current-video-offset = new Date '2013-11-01 08:27:30' .getTime! / 1000
       $scope.current-video-id = \YS-live-2013-11-01
-      $scope.isplaying = -> !mejs.players.mep_0.media.paused
-      $scope.getTimestamp = -> mejs.players.mep_0.getCurrentTime!
+      $scope.isplaying = -> !$scope.mejs.paused
+      $scope.getTimestamp = -> $scope.mejs.getCurrentTime!
       $scope.vsrc = "http://ivod.ly.g0v.tw/videos/#{sitting}.webm"
 
     else
