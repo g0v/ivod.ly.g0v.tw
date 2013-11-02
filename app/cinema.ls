@@ -22,7 +22,7 @@ angular.module 'app.cinema', <[ng ui.state]>
       $scope.recent-sitting = it
       console.log it.0
       name = $scope.recent-sitting.filter(->it.sitting==sitting)
-      $scope.title = if name.length => name.0.summary else sitting
+      $scope.$apply -> $scope.title = if name.length => name.0.summary else sitting
 
     $scope.isplaying = -> !$scope.mejs.media.paused
     $scope.getTimestamp = -> $scope.mejs.getCurrentTime!

@@ -24,8 +24,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.$on 'danmaku_added', (ev, danmaku)->
     now = new Date! .getTime! - 2000
     if danmaku.timestamp >= now
-      switch danmaku.type 
-      case \content  
+      switch danmaku.type
+      case \content
         $scope.comments.push danmaku
         DanmakuPaper.poptext danmaku.text, '#888', 30, 5000
       case \attack
@@ -36,8 +36,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.addComment = ->
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
-    if $scope.isplaying! 
-      DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content} 
+    if $scope.isplaying!
+      DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content}
     else
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
 
@@ -52,8 +52,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.css  width: "#{w}px", height: "#{h - 30}px"
   eggninja.on \click (e) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
-      return  
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
+      return
     player = $ \#video-wrapper
     sy = $(document.body)scrollTop!
     {clientX: mx, clientY: my} = e
@@ -74,29 +74,29 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.raise-net = (e) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
       return
     DanmakuPaper.protect \raise-net
     timestamp = new Date! .getTime!
-    created_at = new Date! .getTime!    
-    DanmakuStore.store $scope.current-video-id, {action: \raise-net, timestamp: timestamp, created_at: created_at, type: \protect}  
+    created_at = new Date! .getTime!
+    DanmakuStore.store $scope.current-video-id, {action: \raise-net, timestamp: timestamp, created_at: created_at, type: \protect}
     DanmakuStats.update $scope.current-video-id, \net
 
   $scope.objection = (e, type) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
       return
     DanmakuPaper.protect type
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
-    DanmakuStore.store $scope.current-video-id, {action: \white-banner, timestamp: timestamp, created_at: created_at, type: \protect} 
+    DanmakuStore.store $scope.current-video-id, {action: \white-banner, timestamp: timestamp, created_at: created_at, type: \protect}
     DanmakuStats.update $scope.current-video-id, \banner
 
   $scope.flower = (e, type) ->
     if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
       return
-    if type=='boat' and Math.random!>0.7 => type = 'duck'  
+    if type=='boat' and Math.random!>0.7 => type = 'duck'
     DanmakuPaper.protect type
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
