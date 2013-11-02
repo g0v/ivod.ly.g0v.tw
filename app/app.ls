@@ -18,6 +18,10 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
       url: '/vlist'
       templateUrl: '/partials/vlist.html'
       controller: \vlist
+    .state 'mlylist' do
+      url: '/mlylist'
+      templateUrl: '/partials/mlylist.html'
+      controller: \mlylist
     # Catch all
   $urlRouterProvider
     .otherwise('/about')

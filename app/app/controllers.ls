@@ -28,3 +28,5 @@ angular.module 'app.controllers' <[ng]>
     $scope.comments.push {text: $scope.newComment, timestamp: timestamp, created_at: created_at}
 .controller vlist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.blah = "hello world"
+.controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
+  $scope.blah = "hello world"
