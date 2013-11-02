@@ -110,3 +110,19 @@ angular.module 'app.controllers' <[ng app.cinema]>
     egg.addClass type
     $ document.body .append egg
     egg.offset left: x - 100, top: y + h - 200 .animate left: x + parseInt(w / 2) - 100  .delay 500 .fadeOut!
+
+  $scope.render-stats = ->
+    root = $ \#action-stats
+    [w,h] = [root.width!, root.height!]
+    svg = d3.select \#action-stats .append \svg .attr \width \100% .attr \height  \100% .style \position \absolute
+
+    data = [1 - 2*Math.random! for x in[ 0 to 100]]
+    x = d3.scale.linear!range [0,w] .domain [0,100]
+    y = d3.scale.linear!range [0,h] .domain [1,-1]
+    svg.append \rect .attr \x 0 .attr \y 0 .attr \width w .attr \height h/2 .style \fill \#f99
+    svg.append \rect .attr \x 0 .attr \y h/2 .attr \width w .attr \height h .style \fill \#9f9
+    svg.append \path .attr \class \line
+      .attr \d ->
+        console.log("M0 #{h/2}" + [[i,d] for d,i in data]map(->"L#{x it.0} #{y it.1}")join "")
+        "M0 #{h/2}" + ([[i,d] for d,i in data]map(->"L#{x it.0} #{y it.1}")join "") + "L #{w} #{h/2}"
+  $scope.render-stats!
