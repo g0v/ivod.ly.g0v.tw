@@ -25,7 +25,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.playedComments = []
   goAngular = new GoAngular $scope, \comments, { include: [\comments], exclude: [\newComment, \playedComments]} .initialize!
   player = $ \#cinema-player
-  paper = Raphael 25, 230, player.width!, player.height! - 100
+  {left: x, top: y} = player.offset!
+  paper = Raphael x, y, player.width!, player.height! - 30
   $scope.$watch 'comments' (c) ->
     console.log c
     angular.forEach c, (value, index) ->
