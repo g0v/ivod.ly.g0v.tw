@@ -53,7 +53,6 @@
           .item 08 日
           .item 09 日
           .item 10 日
-          .item 11 日
           .item 12 日
           .item 13 日
           .item 14 日
@@ -117,15 +116,11 @@
           .item 7 會期
           .item 8 會期
 
-  video#player1(width="600px",height="400px",preload="none")
-    source(type="video/webm",src="http://ivod.ly.g0v.tw/videos/YS.webm")
-  link(rel="stylesheet",type="text/css",href="mediaelement/mediaelemenplayer.css")
-  script(type="text/javascript",src="mediaelement/mediaelement-and-player.min.js")
-  script(type="text/javascript").
-    $(document).ready(function() {
-      player = new MediaElementPlayer("#player1");
-      player.pause();
-    });
+  #video-wrapper
+    video#cinema-player(width="650px",height="400px",preload="auto",mediaelement,src="{{vsrc}}")
+    input(placeholder="xxx", type="text", ng-model="vsrc")
+    #eggninja(ng-controller="EggNinja")
+      #crosshair
 
 main.ui.two.column.grid(ng-controller="Danmaku")
   aside.column
@@ -133,9 +128,3 @@ main.ui.two.column.grid(ng-controller="Danmaku")
       .ui.input.action.field
         input(placeholder="輸入彈幕", type="text", ng-model="newComment")
         button(ng-disabled="!newComment", type="submit") 新增
-  section
-    ul
-      li(ng-repeat="comment in comments track by $index")
-        .time {{comment.timestamp}}
-        .text {{comment.text}}
-        .create {{comment.created_at}}

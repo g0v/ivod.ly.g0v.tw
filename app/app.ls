@@ -10,10 +10,16 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
       url: '/about'
       templateUrl: '/partials/about.html'
       controller: \About
+
     .state 'cinema' do
       url: '/cinema'
       templateUrl: '/partials/cinema.html'
-      controller: \About
+      controller: \CinemaCtrl
+    .state 'cinema.list' do
+      url: '/:sitting'
+    .state 'cinema.view' do
+      url: '/:sitting/:clip'
+
     .state 'vlist' do
       url: '/vlist'
       templateUrl: '/partials/vlist.html'
@@ -24,14 +30,14 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
       controller: \mlylist
     # Catch all
   $urlRouterProvider
-    .otherwise('/about')
+    .otherwise('/cinema')
 
   # Without serve side support html5 must be disabled.
   $locationProvider.html5Mode true
 
 .config <[platformProvider]> ++ (platformProvider) ->
   platformProvider.set 'https://goinstant.net/yhsiang/ivod.ly.g0v.tw'
-  
+
 .run <[$rootScope $state $stateParams $location]> ++ ($rootScope, $state, $stateParams, $location) ->
   $rootScope.$state = $state
   $rootScope.$stateParam = $stateParams
