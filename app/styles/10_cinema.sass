@@ -13,6 +13,7 @@
       margin-left: 1rem
       line-height: 1em
   .video.selector
+    z-index: 200
     span.selector
       display: inline-block
       margin: 0.5rem 0 0 0
@@ -27,11 +28,11 @@
 #eggninja
   position: absolute
   background: rgba(255,255,255,0.01)
-  z-index: 100
+  z-index: 8
   overflow: hidden
 #crosshair
   position: absolute
-  z-index: 102
+  z-index: 10
   top: -200px 
   left: -200px
   width: 200px
@@ -39,7 +40,7 @@
   background: url(/img/crosshair.png)
 .egg, .flower, .boat, .white-banner, .duck, .raise-net
   position: absolute
-  z-index: 101
+  z-index: 9
   top: 0
   left: 0
   background: no-repeat center center
