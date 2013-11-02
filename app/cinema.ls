@@ -28,7 +28,6 @@ angular.module 'app.cinema', <[ng ui.state]>
       videos <- LYModel.get "sittings/#{sitting}/videos" .success
       console.log \sittinghas videos
       # match clip
-      $scope.vsrc = "http://youtube.com/watch?v=#{videos.0.youtube_id}"
       #return if $scope.loaded is $state.params.sitting
 
       whole = [v for v in videos when v.firm is \whole]
@@ -36,6 +35,7 @@ angular.module 'app.cinema', <[ng ui.state]>
       unless clip
         return $state.transitionTo 'cinema.view' { sitting: sitting, clip: whole.0.youtube_id }
 
+      $scope.vsrc = "http://youtube.com/watch?v=#{whole.0.youtube_id}"
       # XX: verify clip
       $scope.loaded = clip
       $scope.current-video = whole.0
