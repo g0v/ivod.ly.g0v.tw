@@ -8,114 +8,48 @@
 
   .clearfix
   .video.selector
-    span.selector
-      .ui.label 狀態選片
-      .ui.simple.dropdown
-        .text 現場直播
-        i.dropdown.icon
-        .menu
-          .item 現場直播
-          .item 回到過去
-    span.selector
-      .ui.label 日期選片
-      .year.ui.simple.dropdown
-        .text 2013 年
-        i.dropdown.icon
-        .menu
-          .item 2012 年
-          .item 2011 年
-      .month.ui.simple.dropdown
-        .text 11 月
-        i.dropdown.icon
-        .menu
-          .item 01 月
-          .item 02 月
-          .item 03 月
-          .item 04 月
-          .item 05 月
-          .item 06 月
-          .item 07 月
-          .item 08 月
-          .item 09 月
-          .item 10 月
-          .item 11 月
-          .item 12 月
-      .day.ui.simple.dropdown
-        .text 31 日
-        i.dropdown.icon
-        .menu
-          .item 01 日
-          .item 02 日
-          .item 03 日
-          .item 04 日
-          .item 05 日
-          .item 06 日
-          .item 07 日
-          .item 08 日
-          .item 09 日
-          .item 10 日
-          .item 12 日
-          .item 13 日
-          .item 14 日
-          .item 15 日
-          .item 16 日
-          .item 17 日
-          .item 18 日
-          .item 19 日
-          .item 20 日
-          .item 21 日
-          .item 22 日
-          .item 23 日
-          .item 24 日
-          .item 25 日
-          .item 26 日
-          .item 27 日
-          .item 28 日
-          .item 29 日
-          .item 30 日
-          .item 31 日
-    span.selector
-      .ui.label 委員會選片
-      .committee.ui.simple.dropdown
-        .text 院會
-        i.dropdown.icon
-        .menu
-          .item 院會
-          .item 程序
-          .item 紀律
-          .item 修憲
-          .item 經濟
-          .item 財政
-          .item 內政
-          .item 外交國防
-          .item 社福衛環
-          .item 教育文化
-          .item 司法法制
-          .item 交通
-      .class.ui.simple.dropdown
-        .text 8 屆
-        i.dropdown.icon
-        .menu
-          .item 1 屆
-          .item 2 屆
-          .item 3 屆
-          .item 4 屆
-          .item 5 屆
-          .item 6 屆
-          .item 7 屆
-          .item 8 屆
-      .phase.ui.simple.dropdown
-        .text 1 會期
-        i.dropdown.icon
-        .menu
-          .item 1 會期
-          .item 2 會期
-          .item 3 會期
-          .item 4 會期
-          .item 5 會期
-          .item 6 會期
-          .item 7 會期
-          .item 8 會期
+    .ui.button.active 現場直播
+    .ui.button 回到過去
+    .committee.ui.simple.dropdown
+      .text 委員會
+      i.dropdown.icon
+      .menu
+        .item 院會
+        .item 程序委員會
+        .item 紀律委員會
+        .item 修憲委員會
+        .item 經濟委員會
+        .item 財政委員會
+        .item 內政委員會
+        .item 外交國防委員會
+        .item 社福衛環委員會
+        .item 教育文化委員會
+        .item 司法法制委員會
+        .item 交通委員會
+    .class.ui.simple.dropdown
+      .text 8 屆
+      i.dropdown.icon
+      .menu
+        .item 1 屆
+        .item 2 屆
+        .item 3 屆
+        .item 4 屆
+        .item 5 屆
+        .item 6 屆
+        .item 7 屆
+        .item 8 屆
+    .phase.ui.simple.dropdown
+      .text 1 會期
+      i.dropdown.icon
+      .menu
+        .item 1 會期
+        .item 2 會期
+        .item 3 會期
+        .item 4 會期
+        .item 5 會期
+        .item 6 會期
+        .item 7 會期
+        .item 8 會期
   h2.ui.header {{title}}
   #egg-realm(ng-controller="EggNinja")
     #video-wrapper
