@@ -26,7 +26,6 @@ angular.module 'app.services' []
     egg.addClass "rotate egg"
     egg.css \background-image, "url(/img/#{type}.png)"
     $ document.body .append egg
-    console.log has-net
     egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
       ..animate left: mx - 50, top: my + 50 + sy if !has-net
       ..animate left: ex - 50, top: ey - 50 + sy if has-net
