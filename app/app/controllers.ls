@@ -28,7 +28,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.addComment = ->
     timestamp = $scope.getTimestamp!
     created_at = new Date! .getTime!
-    if $scope.isplaying 
+    if $scope.isplaying! 
       DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content} 
     else
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
@@ -48,7 +48,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.offset {top: y, left: x}
   eggninja.css  width: "#{w}px", height: "#{h - 30}px"
   eggninja.on \click (e) ->
-    if !$scope.isplaying
+    if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
       return  
     player = $ \#video-wrapper
@@ -59,8 +59,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
     [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
     timestamp = $scope.getTimestamp!
     created_at = new Date! .getTime!
-    DanmakuStore.store {mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \action}
-    DanmakuPaper.throwEgg mx, my, ex, ey, sy
+    #DanmakuStore.store {mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \action}
+    #DanmakuPaper.throwEgg mx, my, ex, ey, sy
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
@@ -69,7 +69,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     crosshair.offset top: my - 100 + sy, left: mx - 100
 
   $scope.raise-net = (e) ->
-    if !$scope.isplaying
+    if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
       return
     player = $ \#video-wrapper
@@ -81,7 +81,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     egg.offset left: x, top: y + h  .animate top: y  .delay 500 .fadeOut!
 
   $scope.objection = (e, type) ->
-    if !$scope.isplaying
+    if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
       return
     player = $ \#video-wrapper
@@ -94,7 +94,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     egg.offset left: x, top: y - 150 .animate top: y - 50  .delay 500 .fadeOut!
 
   $scope.flower = (e, type) ->
-    if !$scope.isplaying
+    if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
       return
     player = $ \#video-wrapper
