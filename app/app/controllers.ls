@@ -1,6 +1,6 @@
 angular.module 'app.controllers' <[ng app.cinema]>
 .run <[$rootScope]> ++ ($rootScope) ->
-.controller AppCtrl: <[$scope $location $rootScope $sce]> ++ (s, $location, $rootScope, $sce) ->
+.controller AppCtrl: <[$scope $location $rootScope]> ++ (s, $location, $rootScope) ->
 
   s <<< {$location}
   s.$watch '$location.path()' (activeNavId or '/') ->
