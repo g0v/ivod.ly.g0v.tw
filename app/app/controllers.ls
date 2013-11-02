@@ -19,10 +19,12 @@ angular.module 'app.controllers' <[ng]>
   goAngular = new GoAngular $scope, \Danmaku, { include: [\Comments]} .initialize!
 
   #goAngular.then (result) ->
-    
+
   $scope.comments = []
 
   $scope.addComment = ->
     timestamp = new Date!
     created_at = new Date!
     $scope.comments.push {text: $scope.newComment, timestamp: timestamp, created_at: created_at}
+.controller vlist: <[$scope $http]> ++ ($scope, $http) ->
+  $scope.blah = "hello world"
