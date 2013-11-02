@@ -1,5 +1,6 @@
 angular.module 'app.cinema', <[ng ui.state]>
 .controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService ]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService) ->
+  #$ \body .css \background-color, \#000
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
     if val

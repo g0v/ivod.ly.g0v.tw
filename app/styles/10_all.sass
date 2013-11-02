@@ -14,6 +14,8 @@ a,a:link,a:hover,a:active
   text-decoration: none
   display: inline-block
 
+.blackbg
+  background-color: #000
 .ui.fixed.main.menu
   z-index: 200
   top: 0
@@ -31,3 +33,24 @@ a,a:link,a:hover,a:active
 .container
   width: 1024px
   margin: 0 auto
+
+#cinema-curtain
+  width: 100%
+  position: absolute
+  height: 664px
+  .curtain-left
+    background-image: url('/img/curtain-left.png') 
+    background-repeat: no-repeat
+    float: left
+    width: 302px
+    height: 664px
+    margin-top: 5px
+    margin-left: -16px
+  .curtain-right
+    background-image: url('/img/curtain-right.png') 
+    background-repeat: no-repeat
+    height: 664px
+    width: 302px
+    float: right
+    margin-top: 5px
+    margin-right: -18px

@@ -27,7 +27,7 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
     script(src='/js/partials.js')
     script(src='/js/app.js')
     base(href='/')
-  body(ng-controller='AppCtrl',ng-cloak,data-spy="scroll")
+  body(ng-controller='AppCtrl',ng-cloak,data-spy="scroll", ng-class="{ blackbg: activeNavId=='/cinema/YS/live'}")
     //#fb-root
       script.
           (function(d, s, id) {
@@ -46,7 +46,11 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
         a.title.item(href="/vlist", ng-class="{active: activeNavId == '/vlist'}") 熱片排行榜
         a.title.item(href="/mlylist", ng-class="{active: activeNavId == '/mlylist'}") 巨星排行榜
         //-div(ng-include="'/partials/nav.html'")
-
+    #cinema-curtain(ng-show="activeNavId == '/cinema/YS/live'")
+      .curtain-left
+        //-left curtain
+      .curtain-right
+        //-right curtain
     //-.navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container.hide-print
