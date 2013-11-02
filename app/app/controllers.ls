@@ -1,6 +1,6 @@
 poptext = (paper, text, color, size, ms) ->
-  paper.text 30, Math.floor(Math.random!*300), text 
-    .attr {'font-size': size, 'fill': color} 
+  paper.text 30, Math.floor(Math.random!*300), text
+    .attr {'font-size': size, 'fill': color}
     .animate {x: 2*paper.width}, ms
 
 angular.module 'app.controllers' <[ng app.cinema]>
@@ -65,8 +65,10 @@ angular.module 'app.controllers' <[ng app.cinema]>
     egg = $ \<div></div>
     egg.addClass \rotate
     $ document.body .append egg
-    egg.addClass \egg .offset left: ex - 16, top: ey - 22 + sy .animate left: mx - 16, top: my - 22 + sy
-      .animate left: mx - 16, top: my + 22 + sy .fadeOut!
+    egg.addClass \egg .offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
+      .animate left: mx - 50, top: my + 50 + sy .fadeOut!
+    #egg.addClass \egg .offset left: ex - 16, top: ey - 22 + sy .animate left: mx - 16, top: my - 22 + sy
+    #  .animate left: mx - 16, top: my + 22 + sy .fadeOut!
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
