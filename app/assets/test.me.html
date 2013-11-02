@@ -1,0 +1,32 @@
+<!doctype html>
+<head>
+
+   <!-- player skin -->
+   <link rel="stylesheet" type="text/css" href="mediaelement/mediaelementplayer.css">
+
+   <!-- site specific styling -->
+   <style type="text/css">
+   body { font: 12px "Myriad Pro", "Lucida Grande", sans-serif; text-align: center; padding-top: 5%; }
+   </style>
+
+   <!-- flowplayer depends on jQuery 1.7.1+ (for now) -->
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+   <script type="text/javascript" src="mediaelement/mediaelement-and-player.min.js"></script>
+
+</head>
+
+<body>
+
+   <!-- the player -->
+   <video id="player1" width="200" height="150" preload="none">
+     <source type="video/webm" src="http://ivod.ly.g0v.tw/videos/YS.webm"/>
+   </video>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  player = new MediaElementPlayer("#player1");
+  player.pause();
+});
+</script>
+</body>
