@@ -10,6 +10,10 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
       url: '/about'
       templateUrl: '/partials/about.html'
       controller: \About
+    .state 'cinema' do
+      url: '/cinema'
+      templateUrl: '/partials/cinema.html'
+      controller: \About
     # Catch all
   $urlRouterProvider
     .otherwise('/about')
