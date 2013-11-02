@@ -68,7 +68,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
-    sy = $(document.body)scrollTop!
+    sy = $(window)scrollTop!
     player.parent!parent!parent!trigger \mousemove
     crosshair.offset top: my - 100 + sy, left: mx - 100
 
