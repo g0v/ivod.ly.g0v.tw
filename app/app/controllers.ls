@@ -126,4 +126,21 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.positive = true;
   $scope.switch = -> $scope.positive = !$scope.positive
 .controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
-  $scope.blah = "hello world"
+  $scope.mly = []
+  $http.get \/mly-8.json .success ->
+    $scope.mly = it
+    setTimeout (->
+      $ \#mly-content .isotope do
+         itemSelector: \.mlyitem
+         layoutMode: \fitRows
+         getSortData:
+           name: (e) ~> $scope.mly[+(e.attr \data-id)].name
+           party: (e) ~> $scope.mly[+(e.attr \data-id)].caucus
+           constituency: (e) ~> $scope.mly[+(e.attr \data-id)].constituency?.1
+         sortBy: \name
+      $scope.inited = true
+    ), 0
+    $scope.$watch "sortBy", ~>
+      if $scope.inited =>
+        $ \#mly-content .isotope do
+          sortBy: $scope.sort-by

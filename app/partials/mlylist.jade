@@ -1,4 +1,4 @@
-.container
+.container(style="padding-top:20px")
   h3.ui.header
     i.settings.icon
     .content
@@ -10,5 +10,7 @@
     .ui.button(ng-click="sortBy = 'party'") 政黨
     .or
     .ui.button(ng-click="sortBy = 'constituency'") 選區
-  #content
-    //-.mlyitem(ng-repeat="
+  #mly-content
+    .mlyitem(ng-repeat="it in mly",class="{{it.caucus}}",data-id="{{$index}}")
+      img.avatar(src="{{it.avatar}}")
+      .name {{it.name}}
