@@ -63,10 +63,10 @@
         .ui.small.button.green(ng-click="raiseNet($event)") 張網
       .ui.buttons(style="margin-left: 5px")
         .ui.small.button.red(ng-click="objection($event,'gb')") 抬棺
-      form(ng-submit="addcomment();newComment=''")
+      form(ng-submit="addComment();newComment=''")
         .ui.input.mini
           input.fire(type="text",placeholder="輸入彈幕",ng-model="newComment")
-        .ui.small.button.blue.fire(ng-disabled="!newComment",type="submit") 發射!
+        button.ui.small.button.blue.fire(ng-disabled="!newComment",type="submit") 發射!
     #action-stats
     .archive(ui-if="loaded")
       #player

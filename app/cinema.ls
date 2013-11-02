@@ -24,7 +24,7 @@ angular.module 'app.cinema', <[ng ui.state]>
       name = $scope.recent-sitting.filter(->it.sitting==sitting)
       $scope.title = if name.length => name.0.summary else sitting
 
-    $scope.isplaying = -> !$scope.mejs.paused
+    $scope.isplaying = -> !$scope.mejs.media.paused
     $scope.getTimestamp = -> $scope.mejs.getCurrentTime!
     if $state.params.clip is \live
       $scope.current-video-offset = new Date '2013-11-01 08:27:30' .getTime! / 1000
