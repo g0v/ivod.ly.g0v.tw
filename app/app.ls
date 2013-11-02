@@ -10,12 +10,13 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
       url: '/about'
       templateUrl: '/partials/about.html'
       controller: \About
+
     .state 'cinema' do
       url: '/cinema'
       templateUrl: '/partials/cinema.html'
       controller: \CinemaCtrl
     .state 'cinema.view' do
-      url: '/{sitting}/{offset}'
+      url: '/:sitting'
 
     .state 'vlist' do
       url: '/vlist'
@@ -27,7 +28,7 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
       controller: \mlylist
     # Catch all
   $urlRouterProvider
-    .otherwise('/about')
+    .otherwise('/cinema')
 
   # Without serve side support html5 must be disabled.
   $locationProvider.html5Mode true
