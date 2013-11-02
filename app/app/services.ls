@@ -1,4 +1,12 @@
 angular.module 'app.services' []
+.service 'DanmakuStore': <[$q]> ++ ($q) ->
+  store: (obj) ->
+    # ref
+    #newentry = video.child('danmaku').push!
+    #newentry.setWithPriority {content: \text, timestamp: ts}, ts
+    #newentry.setWithPriority obj, ts
+  subscribe: (cb) ->
+    null
 .service 'LYModel': <[$q $http $timeout]> ++ ($q, $http, $timeout) ->
     base = 'http://api-beta.ly.g0v.tw/v0/collections/'
     _model = {}
