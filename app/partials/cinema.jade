@@ -51,7 +51,7 @@
         .item 7 會期
         .item 8 會期
   h2.ui.header {{title}}
-  #egg-realm(ng-controller="EggNinja")
+  #egg-realm(ng-controller="Danmaku")
     #video-wrapper
       video#cinema-player(width="650px",height="400px",preload="auto",mediaelement,src="{{vsrc}}")
       #eggninja
@@ -63,7 +63,7 @@
         .ui.small.button.green(ng-click="raiseNet($event)") 張網
       .ui.buttons(style="margin-left: 5px")
         .ui.small.button.red(ng-click="objection($event,'gb')") 抬棺
-      form(ng-controller="Danmaku",ng-submit="addcomment();newComment=''")
+      form(ng-submit="addcomment();newComment=''")
         .ui.input.mini
           input.fire(type="text",placeholder="輸入彈幕",ng-model="newComment")
         .ui.small.button.blue.fire(ng-disabled="!newComment",type="submit") 發射!

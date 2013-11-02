@@ -15,7 +15,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
-.controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper PipeService]> ++ ($scope, DanmakuStore, $timout, DanmakuPaper, PipeService) ->
+.controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, $timout, DanmakuPaper, PipeService, DanmakuStats) ->
 
   $scope.comments = []
   PipeService.on \player.init (v) ->
@@ -41,12 +41,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     else
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
 
-.controller vlist: <[$scope $http]> ++ ($scope, $http) ->
-  $scope.blah = "hello world"
-.controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
-  $scope.blah = "hello world"
-
-.controller EggNinja: <[$scope DanmakuStore DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, DanmakuPaper, PipeService, DanmakuStats) ->
+#.controller EggNinja: <[$scope DanmakuStore DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, DanmakuPaper, PipeService, DanmakuStats) ->
   player = $ \#cinema-player
   crosshair = $ \#crosshair
   #egg = $ \#egg
@@ -127,3 +122,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
   PipeService.on \player.settime ->
     console.log "play time set to #it"
     $scope.player.setCurrentTime it
+
+.controller vlist: <[$scope $http]> ++ ($scope, $http) ->
+  $scope.blah = "hello world"
+.controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
+  $scope.blah = "hello world"
