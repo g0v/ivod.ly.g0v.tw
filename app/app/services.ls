@@ -2,10 +2,10 @@ angular.module 'app.services' []
 .service 'DanmakuStore': <[$q]> ++ ($q) ->
   root = new Firebase 'https://ivod.firebaseio.com/'
   store: (vid, obj) ->
-    # ref
-    #newentry = video.child('danmaku').push!
-    #newentry.setWithPriority {content: \text, timestamp: ts}, ts
-    #newentry.setWithPriority obj, ts
+    video = root.child("videos/#vid")
+    newentry = video.child('danmaku').push!
+    console.log obj
+    newentry.setWithPriority obj, obj.timestamp
   subscribe: (vid, cb) ->
     # also: 'child_changed', 'child_removed' or 'child_moved'
     # use them to maintain list of upcoming danmaku

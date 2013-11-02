@@ -20,10 +20,11 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
-.controller Danmaku: <[$scope GoAngular platform]> ++ ($scope, GoAngular, platform) ->
+.controller Danmaku: <[$scope DanmakuStore]> ++ ($scope, DanmakuStore) ->
+
   $scope.comments = []
   $scope.playedComments = []
-  goAngular = new GoAngular $scope, \comments, { include: [\comments], exclude: [\newComment, \playedComments]} .initialize!
+  #goAngular = new GoAngular $scope, \comments, { include: [\comments], exclude: [\newComment, \playedComments]} .initialize!
   player = $ \#cinema-player
   {left: x, top: y} = player.offset!
   paper = Raphael x, y, player.width!, player.height! - 30
@@ -33,12 +34,13 @@ angular.module 'app.controllers' <[ng app.cinema]>
       if $scope.playedComments[index] == void
         poptext paper, value.text, '#fff', 30, 5000
         $scope.playedComments.push value
+
   $scope.addComment = ->
     poptext paper, $scope.newComment, '#fff', 30, 5000
     $scope.playedComments.push $scope.newComment
-    timestamp = new Date!
-    created_at = new Date!
-    $scope.comments.push {text: $scope.newComment, timestamp: timestamp, created_at: created_at}
+    timestamp = new Date! .getTime!
+    created_at = new Date! .getTime!
+    DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content} 
 
 .controller vlist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.blah = "hello world"
