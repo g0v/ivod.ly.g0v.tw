@@ -5,7 +5,6 @@ angular.module 'app.controllers' <[ng app.cinema]>
   s <<< {$location}
   s.$watch '$location.path()' (activeNavId or '/') ->
     s <<< {activeNavId}
-
   s.getClass = (id) ->
     if s.activeNavId.substring 0 id.length is id
       'active'
