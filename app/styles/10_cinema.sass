@@ -26,22 +26,39 @@
   margin: 20px auto
 #eggninja
   position: absolute
-  background: rgba(255,0,0,0.5)
+  background: rgba(255,255,255,0.01)
   z-index: 100
   overflow: hidden
 #crosshair
   position: absolute
   z-index: 102
-  top: 0
-  left: 0
+  top: -200px 
+  left: -200px
   width: 200px
   height: 200px
   background: url(/img/crosshair.png)
-.egg
+.egg, .flower, .boat
   position: absolute
   z-index: 101
   top: 0
   left: 0
-  width: 32px
-  height: 44px
-  background: url(/img/egg.png)
+  background: no-repeat center center
+.flower, .boat
+  width: 200px
+  height: 200px
+.flower
+  background-image: url(/img/flower.png)
+.boat
+  background-image: url(/img/boat.png)
+
+@-webkit-keyframes rotate
+  from
+    -webkit-transform: rotate(0deg)
+  to
+    -webkit-transform: rotate(360deg)
+
+.rotate
+  -webkit-animation-name: rotate
+  -webkit-animation-duration: 0.5s
+  -webkit-animation-iteration-count: infinite
+  -webkit-animation-timing-function: linear

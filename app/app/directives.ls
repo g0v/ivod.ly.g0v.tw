@@ -4,4 +4,4 @@ angular.module 'app.directives' <[app.services ]>
   link: (scope, element, attrs, controller) ->
     attrs.$observe 'src' ->
       console.log it
-      element.mediaelementplayer!
+      scope.mediaelement = element.mediaelementplayer {}
