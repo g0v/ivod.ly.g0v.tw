@@ -1,5 +1,5 @@
 poptext = (paper, text, color, size) ->
-  paper.text 30, Math.floor(Math.random!*800), text .attr {'font-size': size, 'fill': color} .animate {x: 1000}, 3000
+  paper.text 30, Math.floor(Math.random!*300), text .attr {'font-size': size, 'fill': color} .animate {x: 1000}, 3000
 
 angular.module 'app.controllers' <[ng app.cinema]>
 .run <[$rootScope]> ++ ($rootScope) ->
@@ -22,14 +22,14 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.comments = []
   goAngular = new GoAngular $scope, \comments, { include: [\comments], exclude: [\newComment]} .initialize!
   
-  paper = Raphael 10, 300, 640, 400
+  paper = Raphael 25, 230, 640, 300
   $scope.$watch 'comments' (c) ->
     console.log c
     angular.forEach c, (value, index) ->
       console.log value
-      poptext paper, value.text, \Black, 30
+      poptext paper, value.text, '#fff', 30
   $scope.addComment = ->
-    poptext paper, value.text, \Black, 30
+    poptext paper, $scope.newComment, \Black, 30
     timestamp = new Date!
     created_at = new Date!
     $scope.comments.push {text: $scope.newComment, timestamp: timestamp, created_at: created_at}
