@@ -36,9 +36,3 @@ main.ui.two.column.grid(ng-controller="Danmaku")
       .ui.input.action.field
         input(placeholder="輸入彈幕", type="text", ng-model="newComment")
         button(ng-disabled="!newComment", type="submit") 新增
-  section
-    ul
-      li(ng-repeat="comment in comments track by $index")
-        .time {{comment.timestamp}}
-        .text {{comment.text}}
-        .create {{comment.created_at}}
