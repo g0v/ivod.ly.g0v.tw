@@ -37,7 +37,7 @@
   width: 200px
   height: 200px
   background: url(/img/crosshair.png)
-.egg, .flower, .boat
+.egg, .flower, .boat, .white-banner
   position: absolute
   z-index: 101
   top: 0
@@ -53,6 +53,14 @@
   background-image: url(/img/flower.png)
 .boat
   background-image: url(/img/boat.png)
+.white-banner
+  width: 650px
+  height: 200px
+  line-height: 230px
+  font-size: 32px
+  text-align: center
+  background-image: url(/img/white-banner.png)
+
 
 @-webkit-keyframes rotate
   from
@@ -65,3 +73,19 @@
   -webkit-animation-duration: 0.5s
   -webkit-animation-iteration-count: infinite
   -webkit-animation-timing-function: linear
+
+
+
+@-webkit-keyframes saturate
+  from
+    -webkit-filter: saturate(0)
+  to
+    -webkit-filter: saturate(1)
+
+.saturate
+  -webkit-animation-name: saturate
+  -webkit-animation-duration: 2.0s
+  -webkit-animation-iteration-count: 1
+  -webkit-animation-timing-function: linear
+
+

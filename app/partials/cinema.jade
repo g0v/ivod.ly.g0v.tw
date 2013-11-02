@@ -127,6 +127,8 @@
         .ui.button(ng-click="flower($event,'flower')") 獻花
         .ui.button(ng-click="flower($event,'boat')") 護航
         .ui.button 張網
+      .ui.buttons(style="margin-left: 10px")
+        .ui.button(ng-click="objection($event,'gb')") 抬棺
 
   .panel
     .target.selector
@@ -138,12 +140,6 @@
         i.plus.icon
     .weapons.selector
     .text.input
-    main.ui.two.column.grid(ng-controller="Danmaku")
-      aside.column
-        form.ui.form(ng-submit="addComment();newComment=''")
-          .ui.input.action.field
-            input(placeholder="輸入彈幕", type="text", ng-model="newComment")
-            button(ng-disabled="!newComment", type="submit") 新增
   main.ui.two.column.grid(ng-controller="Danmaku")
     aside.column
       form.ui.form(ng-submit="addComment();newComment=''")
