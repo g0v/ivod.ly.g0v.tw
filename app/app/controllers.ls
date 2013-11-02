@@ -20,7 +20,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
-.controller Danmaku: <[$scope DanmakuStore]> ++ ($scope, DanmakuStore) ->
+.controller Danmaku: <[$scope DanmakuStore $timeout]> ++ ($scope, DanmakuStore, $timout) ->
 
   $scope.comments = []
   player = $ \#cinema-player
@@ -28,9 +28,12 @@ angular.module 'app.controllers' <[ng app.cinema]>
   paper = Raphael x, y, player.width!, player.height! - 30
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
-    if danmaku.type == \content
+    now = new Date! .getTime! - 1000
+    console.log now
+    if danmaku.type == \content && danmaku.timestamp >= now
+      $scope.comments.push danmaku
       poptext paper, danmaku.text, '#888', 30, 5000
-      
+
   $scope.addComment = ->
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
