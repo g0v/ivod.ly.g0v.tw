@@ -1,0 +1,51 @@
+@import "app/styles/mixins"
+@import "app/styles/ui-step"
+
+.cinema
+
+  .selected:after
+    content: ""
+    position: absolute
+    top: -3px
+    left: -3px
+    height: 100%
+    width: 100%
+    border: 2px orange solid
+    z-index: 10
+    background-color: rgba(orange,0)
+    +border-radius(0.5rem)
+
+  .committee
+    .ui.grid
+      margin: 0
+    .ui.stackable.grid .row>.column
+      margin: 0!important
+      padding: 0!important
+    .row,
+    .wide.column,
+    .column
+      padding: 0
+      margin: 0
+    .category.ui.button
+      width: 100%
+      padding: 1rem 0
+    .ui.toggle.checkbox .box, .ui.toggle.checkbox label,
+      margin-left: -1rem
+      &.disabled
+        opacity: 0.5
+      &.disabled:after
+        background-color: #ccc
+    .ui.checkbox .box, .ui.checkbox label
+      &.disabled
+        cursor: default
+    
+  .date
+    .today
+      padding-right: 2rem
+    .ui.menu .item>.label
+      background: none
+      color: #666
+    .holiday
+    .filtered
+    .ui.pagination.menu .active.item
+      background-color: rgba(green,0.2)
