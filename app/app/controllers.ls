@@ -24,20 +24,14 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.comments = []
   $scope.playedComments = []
-  #goAngular = new GoAngular $scope, \comments, { include: [\comments], exclude: [\newComment, \playedComments]} .initialize!
   player = $ \#cinema-player
   {left: x, top: y} = player.offset!
   paper = Raphael x, y, player.width!, player.height! - 30
-  $scope.$watch 'comments' (c) ->
-    console.log c
-    angular.forEach c, (value, index) ->
-      if $scope.playedComments[index] == void
-        poptext paper, value.text, '#fff', 30, 5000
-        $scope.playedComments.push value
 
+  $scope.$on 'danmaku_added', (ev, danmaku)->
+    if danmaku.type == \content
+      poptext paper, danmaku.text, '#fff', 30, 5000
   $scope.addComment = ->
-    poptext paper, $scope.newComment, '#fff', 30, 5000
-    $scope.playedComments.push $scope.newComment
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content} 

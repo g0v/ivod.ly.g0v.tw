@@ -4,12 +4,11 @@ angular.module 'app.services' []
   store: (vid, obj) ->
     video = root.child("videos/#vid")
     newentry = video.child('danmaku').push!
-    console.log obj
     newentry.setWithPriority obj, obj.timestamp
   subscribe: (vid, cb) ->
     # also: 'child_changed', 'child_removed' or 'child_moved'
     # use them to maintain list of upcoming danmaku
-    root.child("videos/#vid/danmaku").on \child_added cb
+    root.child("videos/#vid/danmaku").on \child_added, cb
     null
   unsubscribe: (vid) ->
     root.child("videos/#vid/danmaku").off \child_added

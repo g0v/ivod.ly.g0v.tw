@@ -4,6 +4,7 @@ angular.module 'app.cinema', <[ng ui.state]>
     console.log \newvid val, old
     if val
       DanmakuStore.subscribe val, ->
+        $scope.$broadcast 'danmaku_added', it.val!
         console.log \got it.val!
     if old
       DanmakuStore.unsubscribe old
