@@ -1,4 +1,12 @@
 angular.module 'app.services' []
+.service 'Paper': ->
+  player = $ \#cinema-player
+  {left: x, top: y} = player.offset!
+  paper = Raphael x, y, player.width!, player.height! - 30
+  poptext: (text, color, size, ms) ->
+    paper.text 30, Math.floor(Math.random!*300), text
+      .attr {'font-size': size, 'fill': color}
+      .animate {x: 2*paper.width}, ms
 .service 'DanmakuStore': <[$q]> ++ ($q) ->
   root = new Firebase 'https://ivod.firebaseio.com/'
   store: (vid, obj) ->

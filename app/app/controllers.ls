@@ -1,8 +1,3 @@
-poptext = (paper, text, color, size, ms) ->
-  paper.text 30, Math.floor(Math.random!*300), text
-    .attr {'font-size': size, 'fill': color}
-    .animate {x: 2*paper.width}, ms
-
 angular.module 'app.controllers' <[ng app.cinema]>
 .run <[$rootScope]> ++ ($rootScope) ->
 .controller AppCtrl: <[$scope $location $rootScope]> ++ (s, $location, $rootScope) ->
@@ -20,26 +15,23 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
-.controller Danmaku: <[$scope DanmakuStore $timeout]> ++ ($scope, DanmakuStore, $timout) ->
+.controller Danmaku: <[$scope DanmakuStore $timeout Paper]> ++ ($scope, DanmakuStore, $timout, Paper) ->
 
   $scope.comments = []
-  #player = $ \#cinema-player
-  player = $($ \#video-wrapper .children!0)
-  console.log($ \#video-wrapper .offset!)
-  {left: x, top: y} = player.offset!
-  paper = Raphael x, y, player.width!, player.height! - 30
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
     now = new Date! .getTime! - 1000
-    console.log now
     if danmaku.type == \content && danmaku.timestamp >= now
       $scope.comments.push danmaku
-      poptext paper, danmaku.text, '#888', 30, 5000
+      Paper.poptext danmaku.text, '#888', 30, 5000
 
   $scope.addComment = ->
-    timestamp = new Date! .getTime!
+    timestamp = $scope.getTimestamp!
     created_at = new Date! .getTime!
-    DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content} 
+    if $scope.isplaying 
+      DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content} 
+    else
+      Paper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
 
 .controller vlist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.blah = "hello world"
