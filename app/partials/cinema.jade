@@ -28,7 +28,9 @@
               .column
                 .category.ui.button.disabled 司法法制
                 .category.ui.button.disabled 交通
-  video#player1(width="600px",height="400px",preload="none",mediaelement,src="http://ivod.ly.g0v.tw/videos/YS.webm")
+  video#player1(width="600px",height="400px",preload="none",mediaelement,xsrc="{{vsrc}}")
+    source(type="video/youtube",src="https://www.youtube.com/watch?v=c64f_KHkG2s")
+  input(placeholder="xxx", type="text", ng-model="vsrc")
 
 main.ui.two.column.grid(ng-controller="Danmaku")
   aside.column
