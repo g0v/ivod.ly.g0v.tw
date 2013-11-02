@@ -16,6 +16,8 @@ angular.module 'app.cinema', <[ng ui.state]>
     PipeService.dispatchEvent \player.settime, it
 
   $scope.$watch '$state.params.sitting' ->
+    return unless $state.params is /^cinema/
+    console.log \schange
     if !it
       return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
     {sitting, clip} = $state.params
