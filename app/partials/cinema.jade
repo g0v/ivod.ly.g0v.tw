@@ -125,8 +125,9 @@
         #crosshair
     .archive(ui-if="loaded")
       #player
-      .wav-group(ng-repeat="waveform in waveforms")
-        ng-waveform(ng-model="waveform")
+      div(style="height: 100px")
+        .wav-group(ng-repeat="waveform in waveforms")
+          ng-waveform(ng-model="waveform")
       #avatar-tooltip.ui.label.pointing.below
         img
         .name
