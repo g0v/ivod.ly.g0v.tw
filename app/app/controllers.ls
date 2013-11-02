@@ -123,6 +123,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     $scope.player.setCurrentTime it
 
 .controller vlist: <[$scope $http]> ++ ($scope, $http) ->
-  $scope.blah = "hello world"
+  $scope.positive = true;
+  $scope.switch = -> $scope.positive = !$scope.positive
 .controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.blah = "hello world"
