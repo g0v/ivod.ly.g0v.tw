@@ -1,4 +1,4 @@
-angular.module 'app.controllers' <[ng]>
+angular.module 'app.controllers' <[ng app.cinema]>
 .run <[$rootScope]> ++ ($rootScope) ->
 .controller AppCtrl: <[$scope $location $rootScope $sce]> ++ (s, $location, $rootScope, $sce) ->
 

@@ -13,7 +13,10 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
     .state 'cinema' do
       url: '/cinema'
       templateUrl: '/partials/cinema.html'
-      controller: \About
+      controller: \CinemaCtrl
+    .state 'cinema.view' do
+      url: '/{sitting}/{offset}'
+
     .state 'vlist' do
       url: '/vlist'
       templateUrl: '/partials/vlist.html'
@@ -31,7 +34,7 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.filters app.servi
 
 .config <[platformProvider]> ++ (platformProvider) ->
   platformProvider.set 'https://goinstant.net/yhsiang/ivod.ly.g0v.tw'
-  
+
 .run <[$rootScope $state $stateParams $location]> ++ ($rootScope, $state, $stateParams, $location) ->
   $rootScope.$state = $state
   $rootScope.$stateParam = $stateParams
