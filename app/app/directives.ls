@@ -8,4 +8,5 @@ angular.module 'app.directives' <[app.services ]>
         source = $("<source type='video/#type' src='#{it}'/>")
         element.attr \src, null
         element.append source
-        scope.mediaelement = element.mediaelementplayer {}
+        scope.player = new MediaElementPlayer element
+        #scope.mediaelement = element.mediaelementplayer {}

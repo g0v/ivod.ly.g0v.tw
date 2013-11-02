@@ -15,9 +15,11 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
-.controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper]> ++ ($scope, DanmakuStore, $timout, DanmakuPaper) ->
+.controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper PipeService]> ++ ($scope, DanmakuStore, $timout, DanmakuPaper, PipeService) ->
 
   $scope.comments = []
+  PipeService.on \player.init (v) ->
+    console.log " I got #{v}!" # sample code
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
     now = new Date! .getTime! - 2000
@@ -42,7 +44,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.blah = "hello world"
 
-.controller EggNinja: <[$scope DanmakuStore DanmakuPaper]> ++ ($scope, DanmakuStore, DanmakuPaper) ->
+.controller EggNinja: <[$scope DanmakuStore DanmakuPaper PipeService]> ++ ($scope, DanmakuStore, DanmakuPaper, PipeService) ->
   player = $ \#cinema-player
   crosshair = $ \#crosshair
   #egg = $ \#egg
@@ -115,18 +117,21 @@ angular.module 'app.controllers' <[ng app.cinema]>
     $ document.body .append egg
     egg.offset left: x - 100, top: y + h - 200 .animate left: x + parseInt(w / 2) - 100  .delay 500 .fadeOut!
 
-  $scope.render-stats = ->
+  $scope.render-stats = (data) ->
     root = $ \#action-stats
     [w,h] = [root.width!, root.height!]
     svg = d3.select \#action-stats .append \svg .attr \width \100% .attr \height  \100% .style \position \absolute
 
-    data = [1 - 2*Math.random! for x in[ 0 to 100]]
-    x = d3.scale.linear!range [0,w] .domain [0,100]
+    data = [[i, 1 - 2*Math.random!] for x,i in[ 0 to 100]]
+    x = d3.scale.linear!range [0,w] .domain [0,d3.max(data.map(-> it.0))]
     y = d3.scale.linear!range [0,h] .domain [1,-1]
     svg.append \rect .attr \x 0 .attr \y 0 .attr \width w .attr \height h/2 .style \fill \#f99
     svg.append \rect .attr \x 0 .attr \y h/2 .attr \width w .attr \height h .style \fill \#9f9
     svg.append \path .attr \class \line
       .attr \d ->
-        console.log("M0 #{h/2}" + [[i,d] for d,i in data]map(->"L#{x it.0} #{y it.1}")join "")
-        "M0 #{h/2}" + ([[i,d] for d,i in data]map(->"L#{x it.0} #{y it.1}")join "") + "L #{w} #{h/2}"
+        #"M0 #{h/2}" + ([[i,d] for d,i in data]map(->"L#{x it.0} #{y it.1}")join "") + "L #{w} #{h/2}"
+        "M0 #{h/2}" + (data.map(->"L#{x it.0} #{y it.1}")join "") + "L #{w} #{h/2}"
   $scope.render-stats!
+  $scope.$watch 'player' -> if it => PipeService.dispatchEvent \player.init, it
+  PipeService.on \player.settime ->
+    console.log "play time set to #it"

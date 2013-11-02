@@ -1,5 +1,5 @@
 angular.module 'app.cinema', <[ng ui.state]>
-.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore]> ++ ($scope, $state, $http, LYModel, DanmakuStore) ->
+.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService) ->
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
     if val
@@ -9,6 +9,10 @@ angular.module 'app.cinema', <[ng ui.state]>
     if old
       DanmakuStore.unsubscribe old
     # start-ticker = pop current queue every 1 sec to see if there's anything to fire
+
+  $scope.play-from = ->
+    console.log "setting play time to #it"
+    PipeService.dispatchEvent \player.settime, it
 
   $scope.$watch '$state.params.sitting' ->
     if !it

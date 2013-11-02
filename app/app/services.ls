@@ -67,3 +67,8 @@ angular.module 'app.services' []
           localGet key
         else
           wrapHttpGet key, url, params
+
+.factory \PipeService, -> do
+  listeners: {}
+  dispatchEvent: (n, v) -> (@listeners[n] or [])map -> it v
+  on: (n, cb) -> @listeners.[][n].push cb
