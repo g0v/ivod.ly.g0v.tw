@@ -31,6 +31,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
         DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
+      case \protect
+        DanmakuPaper.protect danmaku.action
   $scope.addComment = ->
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
@@ -78,44 +80,31 @@ angular.module 'app.controllers' <[ng app.cinema]>
     if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
       return
-    player = $ \#video-wrapper
-    {top:y, left: x} = player.offset!
-    [w, h] = [player.width!, player.height!]
-    egg = $ \<div></div>
-    egg.addClass \raise-net
-    $ document.body .append egg
-    egg.offset left: x, top: y + h  .animate top: y  .delay 500 .fadeOut!
+    DanmakuPaper.protect \raise-net
+    timestamp = new Date! .getTime!
+    created_at = new Date! .getTime!    
+    DanmakuStore.store $scope.current-video-id, {action: \raise-net, timestamp: timestamp, created_at: created_at, type: \protect}  
+
 
   $scope.objection = (e, type) ->
     if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000  
       return
-    player = $ \#video-wrapper
-    {top:y, left: x} = player.offset!
-    #player.removeClass \saturate
-    #setTimeout (-> player.addClass \saturate), 100
-    egg = $ \<div></div>
-    egg.addClass \white-banner .text "司法不公  政治迫害"
-    $ document.body .append egg
-    egg.offset left: x, top: y - 150 .animate top: y - 50  .delay 500 .fadeOut!
+    DanmakuPaper.protect type
+    timestamp = new Date! .getTime!
+    created_at = new Date! .getTime!
+    DanmakuStore.store $scope.current-video-id, {action: \white-banner, timestamp: timestamp, created_at: created_at, type: \protect} 
 
   $scope.flower = (e, type) ->
     if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
       return
-    player = $ \#video-wrapper
-    if type=='boat' and Math.random!>0.7 => type = 'duck'
-    {clientX: mx, clientY: my} = e
-    {top:y, left: x} = player.offset!
+    if type=='boat' and Math.random!>0.7 => type = 'duck'  
+    DanmakuPaper.protect type
+    timestamp = new Date! .getTime!
+    created_at = new Date! .getTime!
+    DanmakuStore.store $scope.current-video-id, {action: type, timestamp: timestamp, created_at: created_at, type: \protect}
 
-    [w, h] = [player.width!, player.height!]
-    sy = $(document.body)scrollTop!
-    [ww, wh] = [$(document.body)width!, $(window)height!]
-    [ex, ey] = [if Math.random!>0.5 => ww else 0, my + parseInt((wh - my ) / 2)]
-    egg = $ \<div></div>
-    egg.addClass type
-    $ document.body .append egg
-    egg.offset left: x - 100, top: y + h - 200 .animate left: x + parseInt(w / 2) - 100  .delay 500 .fadeOut!
 
   $scope.render-stats = (data) ->
     root = $ \#action-stats

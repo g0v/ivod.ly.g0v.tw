@@ -7,16 +7,33 @@ angular.module 'app.services' []
     paper.text 30, Math.floor(Math.random!*300), text
       .attr {'font-size': size, 'fill': color}
       .animate {x: 2*paper.width}, ms
-  throwEgg: (type, mx, my, ex, ey) ->
-    sy = $(document.body)scrollTop!
+  throwEgg: (type, mx, my, ex, ey, sy) ->
     egg = $ \<div></div>
     egg.addClass "rotate egg"
-    console.log type
     egg.css \background-image, "url(/img/#{type}.png)"
     $ document.body .append egg
     egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
       ..animate left: mx - 50, top: my + 50 + sy
       ..fadeOut!
+  protect: (type) -> 
+    wrapper = $ \#video-wrapper
+    {top:y, left: x} = wrapper.offset!
+    [w, h] = [wrapper.width!, wrapper.height!] 
+    egg = $ \<div></div>
+    switch type
+    case \raise-net
+      egg.addClass \raise-net
+      $ document.body .append egg
+      egg.offset left: x, top: y - 150 .animate top: y  .delay 500 .fadeOut!
+    case \white-banner
+      egg.addClass \white-banner .text "司法不公  政治迫害"
+      $ document.body .append egg
+      egg.offset left: x, top: y - 150 .animate top: y - 50  .delay 500 .fadeOut!
+    default
+      egg.addClass type
+      $ document.body .append egg
+      egg.offset left: x - 100, top: y + h - 200 .animate left: x + parseInt(w / 2) - 100  .delay 500 .fadeOut!
+
 .service 'DanmakuStore': <[$q]> ++ ($q) ->
   root = new Firebase 'https://ivod.firebaseio.com/'
   store: (vid, obj) ->
