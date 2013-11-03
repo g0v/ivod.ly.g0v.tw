@@ -70,14 +70,14 @@
           input.fire(type="text",placeholder="輸入彈幕",ng-model="newComment")
         button.ui.small.button.blue.fire(ng-disabled="!newComment",type="submit") 發射!
   #action-stats
-  .archive(ui-if="loaded")
+  .archive(ng-show="loaded")
     #wav-root
       .wav-group(ng-repeat="waveform in waveforms")
         ng-waveform(ng-model="waveform")
     #avatar-tooltip.ui.label.pointing.below
       img
       .name
-  .panel.detail
+  .panel.detail(ng-show="loaded")
     .ui.label.ribbon.red 詳細資料
     .ib
       .title: a(target="_blank",ng-href="http://ly.g0v.tw/sittings/{{sitting}}") {{detail.name}}
