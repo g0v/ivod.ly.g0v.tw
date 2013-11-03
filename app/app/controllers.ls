@@ -1,6 +1,6 @@
 angular.module 'app.controllers' <[ng app.cinema]>
 .run <[$rootScope]> ++ ($rootScope) ->
-.controller AppCtrl: <[$scope $location $rootScope]> ++ (s, $location, $rootScope) ->
+.controller AppCtrl: <[$scope $location $rootScope $state]> ++ (s, $location, $rootScope, $state) ->
   s <<< {$location}
   s.$watch '$location.path()' (activeNavId or '/') ->
     s <<< {activeNavId}
@@ -9,7 +9,10 @@ angular.module 'app.controllers' <[ng app.cinema]>
       'active'
     else
       ''
-
+  s <<< {$state}
+  s.$watch '$state.current.name', (name) ->
+    if name == 'cinema.view' => $ \svg .show!
+    else $ \svg .hide!
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
