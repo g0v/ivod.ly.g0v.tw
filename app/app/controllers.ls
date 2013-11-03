@@ -53,7 +53,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
       switch danmaku.type
       case \content
         #if $scope.cliptime => $scope.comments.push danmaku
-        #else => 
+        #else =>
         DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
@@ -169,7 +169,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.loading = 0
   $scope.load-list = (query={}, cb)->
     $scope.loading = 1
-    {entries,paging} <- LYModel.get "ivod" {params: {sk}} .success
+    {entries,paging} <- LYModel.get "ivod" {params: {sk, s: {time: -1}}} .success
     $scope.videos ++= entries
     sk += paging.l
     $scope.loading = 0
