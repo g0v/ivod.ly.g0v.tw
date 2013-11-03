@@ -153,9 +153,6 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $http.get \/ivod-sample.json .success ->
     $scope.videos = it.entries
     setTimeout (-> $scope.do3d!),100
-  $scope.play = (v) ->
-    console.log v.sitting_id
-    window.location.href="/cinema/#{v.sitting_id}"
   $scope.do3d = ->
     list = $ \.video.wrapper
     for item in list

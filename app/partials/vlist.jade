@@ -22,7 +22,7 @@
   .video.list
     .video.wrapper(ng-repeat="v in videos",ng-click="play(v)")
       h3 {{v.sitting_id}}
-      .video.thumbnail: img(src="{{v.thumb}}")
+      .video.thumbnail: a(ng-href="/cinema/{{v.sitting_id}}/{{v.youtube_id}}"): img(src="{{v.thumb}}")
       .ui.bottom.right.attached.label.small
         i.icon.unhide
         | 29478 views
