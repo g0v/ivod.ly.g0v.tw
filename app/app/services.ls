@@ -15,7 +15,7 @@ angular.module 'app.services' []
         stats.child(type).once 'value' ->
           stats.child(type).set it.val! + 1
   queryAll: (vid, cb) ->
-    queue = root.child("stats/#vid/stats/queue")
+    queue = root.child("stats/#vid/queue")
     queue.on \value, cb
     null
 .service 'DanmakuPaper': ->
@@ -26,7 +26,7 @@ angular.module 'app.services' []
   paper = Raphael x, y, player.width!, player.height! - 30
   poptext: (text, color, size, ms) ->
     paper.text 30, Math.floor(Math.random!*300), text
-      .attr {'font-size': size, 'fill': color}
+      .attr {'font-size': size, 'fill': color, 'text-shadow': '0 0 10px rgba(255,255,255,0.5)'}
       .animate {x: 2*paper.width}, ms
   throwEgg: (type, mx, my, ex, ey, sy) ->
     egg = $ \<div></div>

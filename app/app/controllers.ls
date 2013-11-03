@@ -49,8 +49,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
     if danmaku.timestamp >= now
       switch danmaku.type
       case \content
-        if $scope.cliptime => $timeout (DanmakuPaper.poptext danmaku.text, '#888', 30, 5000), danmaku.timestamp - $scope.cliptime
-        else => DanmakuPaper.poptext danmaku.text, '#888', 30, 5000
+        if $scope.cliptime => $timeout (DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000), danmaku.timestamp - $scope.cliptime
+        else => DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
         DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
@@ -63,7 +63,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     if $scope.isplaying!
       DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content}
     else
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
 
 #.controller EggNinja: <[$scope DanmakuStore DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, DanmakuPaper, PipeService, DanmakuStats) ->
   player = $ \#cinema-player
@@ -76,7 +76,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.css  width: "#{w}px", height: "#{h - 30}px"
   eggninja.on \click (e) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
       return
     player = $ \#video-wrapper
     sy = $(document.body)scrollTop!
@@ -100,7 +100,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.raise-net = (e) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
       return
     DanmakuPaper.protect \raise-net
     timestamp = new Date! .getTime!
@@ -112,7 +112,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.objection = (e, type) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
       return
     DanmakuPaper.protect type
     timestamp = new Date! .getTime!
@@ -124,7 +124,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.flower = (e, type) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#888', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
       return
     if type=='boat' and Math.random!>0.7 => type = 'duck'
     DanmakuPaper.protect type
