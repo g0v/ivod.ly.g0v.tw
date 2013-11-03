@@ -69,6 +69,7 @@
         .ui.input.mini
           input.fire(type="text",placeholder="輸入彈幕",ng-model="newComment")
         button.ui.small.button.blue.fire(ng-disabled="!newComment",type="submit") 發射!
+  #action-stats
   .archive(ui-if="loaded")
     #wav-root
       .wav-group(ng-repeat="waveform in waveforms")
