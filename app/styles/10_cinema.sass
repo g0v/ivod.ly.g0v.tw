@@ -1,6 +1,7 @@
 @import "app/styles/mixins"
 @import "app/styles/ui-step"
 @import "compass/css3/border-radius"
+@import "compass/css3/user-interface"
 
 .cinema
   margin: 0 auto
@@ -37,6 +38,8 @@
   margin: 2px auto 5px
   background: rgba(0,0,0,0.5)
   box-shadow: 0 0 30px 5px rgba(255,255,255,0.5)
+  @include user-select(none)
+
 #eggninja
   position: absolute
   background: rgba(255,255,255,0.01)
