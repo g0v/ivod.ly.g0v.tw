@@ -1,23 +1,24 @@
+.ui.tiered.menu
+  .menu
+      a.item 最新主打
+      a.item 焦點強檔
+      a.active.item(ng-click="switch()") 佳評如潮
+      a.item(ng-click="switch()") 雷片大賞
+      .right.menu
+        .item
+          .ui.icon.input
+            input(placeholder="search",type="text")
+            i.search.link.icon
+  .ui.sub.menu(ng-show="positive")
+      a.active.item 雞蛋王
+      a.active.item 威鞋王
+      a.active.item 西瓜王
+  .ui.sub.menu(ng-show="!positive")
+      a.active.item 鮮花榜
+      a.active.item 護航榜
+      a.active.item 補鳥榜
+
 .vlist
-  .ui.tiered.menu
-    .menu
-        a.item 最新主打
-        a.item 焦點強檔
-        a.active.item(ng-click="switch()") 佳評如潮
-        a.item(ng-click="switch()") 雷片大賞
-        .right.menu
-          .item
-            .ui.icon.input
-              input(placeholder="search",type="text")
-              i.search.link.icon
-    .ui.sub.menu(ng-show="positive")
-        a.active.item 雞蛋王
-        a.active.item 威鞋王
-        a.active.item 西瓜王
-    .ui.sub.menu(ng-show="!positive")
-        a.active.item 鮮花榜
-        a.active.item 護航榜
-        a.active.item 補鳥榜
   .video.list
     .video.wrapper(ng-repeat="v in videos",ng-click="play(v)")
       h3 {{v.sitting_id}}

@@ -168,7 +168,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
       for item in list
         item = $ item
         {left:x, top:y} = item.offset!
-        item.css \-webkit-transform "translateZ(#{(Math.abs(x - w/2)+Math.abs(y - t - h/2))/5}px) rotateY(#{-(x - w/2)/10}deg)"
+        x = x + item.outerWidth!/2
+        item.css \-webkit-transform "translateZ(#{(Math.abs(x - w/2) + Math.abs(y - t - h/2))/5}px) rotateY(#{-(x - w/2)/30}deg)"
         #item.css \-webkit-transform "rotateX(#{((y - t) - h/2)/10}deg) translateZ(#{(Math.abs(x - w/2)+Math.abs(y - t - h/2))/5}px)"
         #item.css \-webkit-transform "rotateY(#{(x - w/2) / 10}deg) rotateX(#{((y - t) - h/2)/10}deg)"
 
