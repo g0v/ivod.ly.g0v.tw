@@ -11,8 +11,15 @@ angular.module 'app.controllers' <[ng app.cinema]>
       ''
   s <<< {$state}
   s.$watch '$state.current.name', (name) ->
-    if name == 'cinema.view' => $ \svg .show!
-    else $ \svg .hide!
+    if name == 'cinema.view'
+      $ \svg .show!
+      $ \#cinema-curtain .show!
+      $ \body .addClass \blackbg
+    else
+      $ \svg .hide!
+      $ \#cinema-curtain .hide!
+      $ \body .removeClass \blackbg
+    if name == 'vlist' => $ \body .addClass \blackbg
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
