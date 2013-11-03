@@ -40,6 +40,8 @@ angular.module 'app.cinema', <[ng ui.state]>
     if !it
       return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
     {sitting, clip} = $state.params
+    $http.get "http://api-beta.ly.g0v.tw/v0/collections/sittings/#{sitting}"
+    .success -> $scope.detail = it
     if !$scope.recent-sitting => d3.csv \/ly-ministry.csv ->
       $scope.recent-sitting = it
       name = $scope.recent-sitting.filter(->it.sitting==sitting)

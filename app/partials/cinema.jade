@@ -78,6 +78,14 @@
       #avatar-tooltip.ui.label.pointing.below
         img
         .name
+  .panel.detail
+    .ui.label.ribbon.red 詳細資料
+    .ib
+      .title {{detail.name}}
+      .desc {{detail.summary}}
+      .session(ng-repeat="s in detail.dates")
+        .chair 主席: {{s.chair}}
+        .date 日期: {{s.date}}
   //-.panel
     .target.selector
       .ui.image.label
@@ -88,9 +96,3 @@
         i.plus.icon
     .weapons.selector
     .text.input
-  //-main.ui.two.column.grid(ng-controller="Danmaku")
-    aside.column
-      form.ui.form(ng-submit="addComment();newComment=''")
-        .ui.input.action.field
-          input(placeholder="輸入彈幕", type="text", ng-model="newComment")
-          button(ng-disabled="!newComment", type="submit") 新增
