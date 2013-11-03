@@ -160,6 +160,12 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $http.get \/ivod-sample.json .success ->
     $scope.videos = it.entries
     setTimeout (-> $scope.do3d!),100
+  $scope.load-list = (sk, query={}, cb)->
+    $http.get "http://http://api-beta.ly.g0v.tw/v0/collections/ivod/?sk=#{sk}q=#{JSON.stringify query}",
+    .success -> console.log it
+  $scope.play = (v) ->
+    console.log v.sitting_id
+    window.location.href="/cinema/#{v.sitting_id}"
   $scope.do3d = ->
     list = $ \.video.wrapper
     for item in list
