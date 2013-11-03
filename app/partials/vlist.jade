@@ -62,9 +62,10 @@
 
 .vlist.clearfix(when-scrolled='loadList()')
   .video.list
-    .video.wrapper(ng-repeat="v in videos")
+    .video.wrapper(ng-repeat="v in videos track by $index")
       h3 {{v.sitting_id}}
       .video.thumbnail: a(ng-href="/cinema/{{v.sitting_id}}/{{v.youtube_id}}"): img(src="{{v.thumb}}")
       .ui.bottom.right.attached.label.small
         i.icon.unhide
         | 29478 views
+div(ng-click='loadList()') blah

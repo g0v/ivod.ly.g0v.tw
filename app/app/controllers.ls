@@ -159,8 +159,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.switch = -> $scope.positive = !$scope.positive
   $scope.videos = []
   sk = 0
-  $scope.load-list = (sk, query={}, cb)->
-    {entries,paging} <- LYModel.get "ivod" {sk, q: JSON.stringify query} .success
+  $scope.load-list = (query={}, cb)->
+    {entries,paging} <- LYModel.get "ivod" {params: {sk}} .success
     $scope.videos ++= entries
     sk += paging.l
   $scope.load-list!
