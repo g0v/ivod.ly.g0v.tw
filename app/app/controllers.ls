@@ -54,7 +54,9 @@ angular.module 'app.controllers' <[ng app.cinema]>
       case \content
         #if $scope.cliptime => $scope.comments.push danmaku
         #else =>
-        DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000
+        ms = 2000 + danmaku.text.length * 200
+        ms<?=5000
+        DanmakuPaper.poptext danmaku.text, '#fff', 30, ms #5000 + danmaku.text.length * 500
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
         DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
