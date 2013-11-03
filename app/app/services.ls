@@ -57,6 +57,10 @@ angular.module 'app.services' []
       egg.addClass \white-banner .text "司法不公  政治迫害"
       $ document.body .append egg
       egg.offset left: x, top: y - 150 .animate top: y - 50  .delay 500 .fadeOut!
+      egg = $ \<div></div>
+      egg.addClass \coffin
+      $ document.body .append egg
+      egg.offset left: x - 100, top: y + h - 200 .animate left: x + parseInt(w / 2) - 100  .delay 500 .fadeOut!
     default
       egg.addClass type
       $ document.body .append egg
