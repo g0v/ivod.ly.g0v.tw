@@ -92,6 +92,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
     offset = new Date! .getTime!
     DanmakuStats.updateQueue $scope.current-video-id, {offset: offset, type: type}
 
+  eggninja.on \mouseleave (e) -> crosshair.fadeOut!
+  eggninja.on \mouseover (e) -> crosshair.fadeIn!
   eggninja.on \mousemove (e) ->
     {clientX: mx, clientY: my} = e
     sy = $(window)scrollTop!
