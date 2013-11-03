@@ -14,3 +14,4 @@
     .mlyitem(ng-repeat="it in mly",class="{{it.caucus}}",data-id="{{$index}}")
       img.avatar(src="{{it.avatar}}?size=large")
       .name {{it.name}}
+      .constituency(ng-show="sortBy == 'constituency'") {{it.constituency | showConstituency}}
