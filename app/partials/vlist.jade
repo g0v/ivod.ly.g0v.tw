@@ -18,7 +18,7 @@
       a.active.item 護航榜
       a.active.item 補鳥榜
 
-.vlist
+.vlist.clearfix(when-scrolled='loadList()')
   .video.list
     .video.wrapper(ng-repeat="v in videos",ng-click="play(v)")
       h3 {{v.sitting_id}}
