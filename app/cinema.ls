@@ -46,7 +46,7 @@ angular.module 'app.cinema', <[ng ui.state]>
     if !$scope.recent-sitting => d3.csv \/ly-ministry.csv ->
       $scope.recent-sitting = it
       name = $scope.recent-sitting.filter(->it.sitting==sitting)
-      $scope.$apply -> $scope.title = if name.length => name.0.summary else sitting
+      $scope.$apply -> $scope.title = format-title if name.length => name.0.summary else sitting
 
     $scope.isplaying = -> !$scope.mejs.media.paused
     $scope.getTimestamp = -> $scope.mejs.getCurrentTime!
