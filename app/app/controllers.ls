@@ -28,7 +28,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   PipeService.on \player.init (v) ->
     $scope.player = v
     DanmakuStats.queryAll $scope.current-video-id, ->
-      start = 1383425793619 / 10000
+      start = $scope.cliptime / 10000
       temp = []
       if it
         angular.forEach it.val!, (val, key) ->

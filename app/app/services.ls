@@ -2,12 +2,11 @@ angular.module 'app.services' []
 .service 'DanmakuStats': <[$q PipeService]> ++ ($q, PipeService) ->
   root = new Firebase 'https://ivod.firebaseio.com/'
   updateQueue: (vid, obj) ->
-    video = root.child("videos/#vid")
-    newentry = video.child('stats').child('queue').push!
+    stats = root.child("stats/#vid")
+    newentry = stats.child('queue').push!
     newentry.setWithPriority obj, obj.offset   
   updateTotal: (vid, type) ->
-    video = root.child("videos/#vid")
-    stats = video.child('stats').child('total')
+    stats = root.child("stats/#vid").child('total')
     stats.once 'value' ->
       obj = {egg: 0, shoe: 0, melon: 0, net: 0, banner: 0, flower: 0, boat: 0, duck: 0}
       obj[type] = 1
@@ -16,7 +15,7 @@ angular.module 'app.services' []
         stats.child(type).once 'value' ->
           stats.child(type).set it.val! + 1
   queryAll: (vid, cb) ->
-    queue = root.child("videos/#vid/stats/queue")
+    queue = root.child("stats/#vid/stats/queue")
     queue.on \value, cb
     null
 .service 'DanmakuPaper': ->
