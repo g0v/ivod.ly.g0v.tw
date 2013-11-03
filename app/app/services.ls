@@ -20,11 +20,15 @@ angular.module 'app.services' []
     queue.on \value, cb
     null
 .service 'DanmakuPaper': ->
-  player = $ \#cinema-player
-  {left: x, top: y} = player.offset!
-  paper = Raphael x, y, player.width!, player.height! - 30
   has-net = false
   net-handle = null
+  create: ->
+    if !this.paper
+      player = $ \#cinema-player
+      {left: x, top: y} = player.offset!
+      this.paper = Raphael x, y, player.width!, player.height! - 30
+  destroy: ->
+    if this.paper => this.paper.remove!
   poptext: (text, color, size, ms) ->
     paper.text 30, Math.floor(Math.random!*300), text
       .attr {'font-size': size, 'fill': color}
