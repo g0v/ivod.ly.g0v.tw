@@ -44,7 +44,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
             temp[index] += 1
         angular.forEach temp, (value, index) ->
           if !isNaN value => $scope.statsData.push [index, value]
-        $scope.render-stats $scope.statsData
+        #$scope.render-stats $scope.statsData
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
     if $scope.cliptime => now = $scope.cliptime*1000
@@ -146,7 +146,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     [w,h] = [root.width!, root.height!]
     svg = d3.select \#action-stats .append \svg .attr \width \100% .attr \height  \100% .style \position \absolute
 
-    #data = [[i, 1 - 2*Math.random!] for x,i in[ 0 to 100]]
+    data = [[i, 1 - 2*Math.random!] for x,i in[ 0 to 100]]
     x = d3.scale.linear!range [0,w] .domain [0,d3.max(data.map(-> it.0))]
     y = d3.scale.linear!range [0,h] .domain [1,-1]
     svg.append \rect .attr \x 0 .attr \y 0 .attr \width w .attr \height h/2 .style \fill \#f99
@@ -155,7 +155,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
       .attr \d ->
         #"M0 #{h/2}" + ([[i,d] for d,i in data]map(->"L#{x it.0} #{y it.1}")join "") + "L #{w} #{h/2}"
         "M0 #{h/2}" + (data.map(->"L#{x it.0} #{y it.1}")join "") + "L #{w} #{h/2}"
-  #$scope.render-stats!
+  $scope.render-stats!
   $scope.$watch 'player' -> if it => PipeService.dispatchEvent \player.init, it
   PipeService.on \player.settime ->
     console.log "play time set to #it"
