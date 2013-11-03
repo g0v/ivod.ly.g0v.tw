@@ -44,7 +44,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
           if !isNaN value => $scope.statsData.push [index, value]
         $scope.render-stats $scope.statsData
   $scope.$on 'danmaku_added', (ev, danmaku)->
-    now = $scope.cliptime*1000 ? new Date! .getTime! - 2000
+    if $scope.cliptime => now = $scope.cliptime*1000
+    else => now = new Date! .getTime! - 2000
     if danmaku.timestamp >= now
       switch danmaku.type
       case \content
@@ -56,8 +57,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
       case \protect
         DanmakuPaper.protect danmaku.action
   $scope.addComment = ->
-    timestamp = $scope.getTimestamp!* 1000
-    #timestamp = new Date! .getTime!
+    if $scope.cliptime => timestamp = $scope.getTimestamp!* 1000
+    else => timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     if $scope.isplaying!
       DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content}
