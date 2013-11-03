@@ -52,9 +52,9 @@ angular.module 'app.controllers' <[ng app.cinema]>
     if danmaku.timestamp >= now
       switch danmaku.type
       case \content
-        if $scope.cliptime => $scope.comments.push danmaku
-        #$timeout (DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000), danmaku.timestamp - $scope.cliptime
-        else => DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000
+        #if $scope.cliptime => $scope.comments.push danmaku
+        #else => 
+        DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
         DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
@@ -80,7 +80,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.css  width: "#{w}px", height: "#{h - 30}px"
   eggninja.on \click (e) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以丟東西喔, '#fff', 30, 5000
       return
     player = $ \#video-wrapper
     sy = $(document.body)scrollTop!
@@ -106,7 +106,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.raise-net = (e) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以張網喔, '#fff', 30, 5000
       return
     DanmakuPaper.protect \raise-net
     timestamp = new Date! .getTime!
@@ -118,7 +118,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.objection = (e, type) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以抬棺喔, '#fff', 30, 5000
       return
     DanmakuPaper.protect type
     timestamp = new Date! .getTime!
@@ -130,7 +130,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 
   $scope.flower = (e, type) ->
     if !$scope.isplaying!
-      DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
+      DanmakuPaper.poptext \要開始播才會可以獻花或護航喔, '#fff', 30, 5000
       return
     if type=='boat' and Math.random!>0.7 => type = 'duck'
     DanmakuPaper.protect type
