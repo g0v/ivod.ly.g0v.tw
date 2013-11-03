@@ -65,13 +65,13 @@ angular.module 'app.cinema', <[ng ui.state]>
       first-timestamp = if whole.0 and whole.0.first_frame_timestamp => moment that else null
       unless clip
         return $state.transitionTo 'cinema.view' { sitting: sitting, clip: whole.0.youtube_id }
-
       $scope.vsrc = "http://youtube.com/watch?v=#{whole.0.youtube_id}"
       # XX: verify clip
       $scope.loaded = clip
       $scope.current-video = whole.0
       $scope.current-video-id = whole.0.youtube_id
       start = first-timestamp ? moment whole.0.time
+      $scope.cliptime = moment(whole.0.time)unix!
       $scope.getTimestamp = -> $scope.mejs.getCurrentTime! + moment(whole.0.time)unix!
       clips = for v in videos when v.firm isnt \whole
         { v.time, mly: v.speaker - /\s*委員/, v.length, v.thumb }

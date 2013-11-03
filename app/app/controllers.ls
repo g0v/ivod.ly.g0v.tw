@@ -23,8 +23,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
 
-.controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, $timout, DanmakuPaper, PipeService, DanmakuStats) ->
-  $scope.comments = []
+.controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, $timeout, DanmakuPaper, PipeService, DanmakuStats) ->
   $scope.statsData = []
   PipeService.on \player.init (v) ->
     $scope.player = v
@@ -45,19 +44,23 @@ angular.module 'app.controllers' <[ng app.cinema]>
           if !isNaN value => $scope.statsData.push [index, value]
         $scope.render-stats $scope.statsData
   $scope.$on 'danmaku_added', (ev, danmaku)->
-    now = new Date! .getTime! - 2000
+    console.log danmaku
+    now = $scope.cliptime*1000 ? new Date! .getTime! - 2000
     if danmaku.timestamp >= now
       switch danmaku.type
       case \content
-        $scope.comments.push danmaku
-        DanmakuPaper.poptext danmaku.text, '#888', 30, 5000
+        if $scope.cliptime => $timeout (DanmakuPaper.poptext danmaku.text, '#888', 30, 5000), danmaku.timestamp - $scope.cliptime
+        else => DanmakuPaper.poptext danmaku.text, '#888', 30, 5000
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
         DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
       case \protect
         DanmakuPaper.protect danmaku.action
   $scope.addComment = ->
-    timestamp = new Date! .getTime!
+    timestamp = $scope.getTimestamp!* 1000
+    console.log timestamp
+    console.log $scope.current-video-id
+    #timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     if $scope.isplaying!
       DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content}
