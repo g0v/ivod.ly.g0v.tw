@@ -28,27 +28,28 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.statsData = []
   PipeService.on \player.init (v) ->
     $scope.player = v
-    DanmakuStats.queryAll $scope.current-video-id, ->
-      if $scope.cliptime => start = $scope.cliptime / 10000
-      else => start = $scope.current-video-offset /10
-      temp = []
-      if it
-        angular.forEach it.val!, (val, key) ->
-          offset = val.offset / 10000 - start
-          index = ~~offset
-          temp[index] = 0
-          switch val.type
-          case \egg || \shoe || \melon || \banner
-            temp[index] -= 1
-          case \flower || \boat || \duck || \net
-            temp[index] += 1
-        angular.forEach temp, (value, index) ->
-          if !isNaN value => $scope.statsData.push [index, value]
-        #$scope.render-stats $scope.statsData
+   #DanmakuStats.queryAll $scope.current-video-id, ->
+   #  if $scope.cliptime => start = $scope.cliptime / 10000
+   #  else => start = $scope.current-video-offset /10
+   #  temp = []
+   #  if it
+   #    angular.forEach it.val!, (val, key) ->
+   #      offset = val.offset / 10000 - start
+   #      index = ~~offset
+   #      temp[index] = 0
+   #      switch val.type
+   #      case \egg || \shoe || \melon || \banner
+   #        temp[index] -= 1
+   #      case \flower || \boat || \duck || \net
+   #        temp[index] += 1
+   #    angular.forEach temp, (value, index) ->
+   #      if !isNaN value => $scope.statsData.push [index, value]
+   #    #$scope.render-stats $scope.statsData
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
-    if $scope.cliptime => now = $scope.cliptime*1000
-    else => now = new Date! .getTime! - 2000
+    #if $scope.cliptime => now = $scope.cliptime*1000
+    #else => 
+    now = new Date! .getTime! - 2000
     if danmaku.timestamp >= now
       switch danmaku.type
       case \content
@@ -59,12 +60,13 @@ angular.module 'app.controllers' <[ng app.cinema]>
         DanmakuPaper.poptext danmaku.text, '#fff', 30, ms #5000 + danmaku.text.length * 500
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
-        DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
+        if !$scope.cliptime => DanmakuPaper.throwEgg action, mx, my, ex, ey, sy
       case \protect
-        DanmakuPaper.protect danmaku.action
+        if !$scope.cliptime => DanmakuPaper.protect danmaku.action
   $scope.addComment = ->
-    if $scope.cliptime => timestamp = $scope.getTimestamp!* 1000
-    else => timestamp = new Date! .getTime!
+    #if $scope.cliptime => timestamp = $scope.getTimestamp!* 1000
+    #else => 
+    timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     if $scope.isplaying!
       DanmakuStore.store $scope.current-video-id, {text: $scope.newComment, timestamp: timestamp, created_at: created_at, type: \content}
