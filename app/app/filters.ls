@@ -38,25 +38,26 @@ committees = do
     JUD: \司法及法制
     SWE: \社會福利及衛生環境
     PRO: \程序
-format-title = ->
-  console.log it
-  if it=="YS" => return "現場實況直播"
-  console.log it
-  it = it.split \-
-  name = "#{committees[it.2] or ''}#{(committees[it.3] and '聯席') or ''}"
-  "第#{it.0}屆第#{it.1}會期#{name}第#{it.4 or it.3}次會議"
 
+format-title = ->
+  if it=="YS" => return "現場實況直播"
+  [ad, session, ...c, sitting] = it.split \-
+  name = c.map (committees.) .join \、
+  name += '聯席' if c.length > 1
+  "第#{ad}屆第#{session}會期#{name}第#{sitting}次會議"
 
 angular.module 'app.filters' []
 .filter \interpolate <[version]> ++ (version) ->
     (text) -> String(text)replace /\%VERSION\%/mg version
 
-.filter \showConstituency -> ->
-  if it.0 is \proportional
-    '全國不分區'
-  else if it.0 is \aborigine
-    '原住民'
-  else
-    iso3166tw[it.0]
-    # + if it.1 => "第#that選區" else ''
+.filter \showConstituency ->
+  ->
+    if it.0 is \proportional
+      '全國不分區'
+    else if it.0 is \aborigine
+      '原住民'
+    else
+      iso3166tw[it.0]
 
+.filter \sittingName -> ->
+  format-title it
