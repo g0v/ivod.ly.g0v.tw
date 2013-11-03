@@ -70,6 +70,7 @@ angular.module 'app.cinema', <[ng ui.state]>
       # XX: verify clip
       $scope.loaded = clip
       $scope.current-video = whole.0
+      $scope.current-video-id = whole.0.youtube_id
       start = first-timestamp ? moment whole.0.time
       $scope.getTimestamp = -> $scope.mejs.getCurrentTime! + moment(whole.0.time)unix!
       clips = for v in videos when v.firm isnt \whole
