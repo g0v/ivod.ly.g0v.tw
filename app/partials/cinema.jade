@@ -72,7 +72,7 @@
     #action-stats
     .archive(ui-if="loaded")
       #player
-      div(style="height: 100px")
+      #wav-root
         .wav-group(ng-repeat="waveform in waveforms")
           ng-waveform(ng-model="waveform")
       #avatar-tooltip.ui.label.pointing.below
