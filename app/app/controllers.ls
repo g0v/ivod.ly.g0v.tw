@@ -160,29 +160,40 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.switch = -> $scope.positive = !$scope.positive
   $scope.videos = []
   sk = 0
+  $scope.loading = 0
   $scope.load-list = (query={}, cb)->
+    $scope.loading = 1
     {entries,paging} <- LYModel.get "ivod" {params: {sk}} .success
     $scope.videos ++= entries
     sk += paging.l
+    $scope.loading = 0
   $scope.load-list!
-  $scope.do3d = ->
+
+  /*$scope.do3d = ->
     list = $ \.video.wrapper
     for item in list
       item = $ item
       [w,h] = [$ document.body .width!, $ document.body .height!]
       {left:x, top:y} = item.offset!
-    $ document .on \scroll (e) ->
-      t = $ document.body .scrollTop!
-      [w,h] = [$ document.body .width!, $ document.body .height!]
-      $ \.video.list .css \-webkit-perspective-origin "50% 1000px"
-        .css \-webkit-perspective \1000px
-      for item in list
-        item = $ item
-        {left:x, top:y} = item.offset!
-        x = x + item.outerWidth!/2
-        item.css \-webkit-transform "translateZ(#{(Math.abs(x - w/2) + Math.abs(y - t - h/2))/5}px) rotateY(#{-(x - w/2)/30}deg)"
-        #item.css \-webkit-transform "rotateX(#{((y - t) - h/2)/10}deg) translateZ(#{(Math.abs(x - w/2)+Math.abs(y - t - h/2))/5}px)"
-        #item.css \-webkit-transform "rotateY(#{(x - w/2) / 10}deg) rotateX(#{((y - t) - h/2)/10}deg)"
+  */
+
+  $ document .on \scroll (e) ->
+    t = $ document.body .scrollTop!
+    [w,h] = [$ document.body .width!, $ document.body .height!]
+    console.log t, $(\#vlist)height!, (t > $(\#vlist)height! * 0.7)
+    if t > $(\#vlist)height! * 0.7 and !$scope.loading => $scope.$apply -> $scope.load-list!
+    $ \#vlist .css \-webkit-perspective \100px
+    #$ \.video.list .css \-webkit-perspective-origin "50% #{$(\#vlist)height!}px"
+    #  .css \-webkit-perspective \1000px
+    /*
+    for item in list
+      item = $ item
+      {left:x, top:y} = item.offset!
+      x = x + item.outerWidth!/2
+      item.css \-webkit-transform "translateZ(#{(Math.abs(x - w/2) + Math.abs(y - t - h/2))/5}px) rotateY(#{-(x - w/2)/30}deg)"
+      #item.css \-webkit-transform "rotateX(#{((y - t) - h/2)/10}deg) translateZ(#{(Math.abs(x - w/2)+Math.abs(y - t - h/2))/5}px)"
+      #item.css \-webkit-transform "rotateY(#{(x - w/2) / 10}deg) rotateX(#{((y - t) - h/2)/10}deg)"
+    */
 
 .controller mlylist: <[$scope $http]> ++ ($scope, $http) ->
   $scope.mly = []

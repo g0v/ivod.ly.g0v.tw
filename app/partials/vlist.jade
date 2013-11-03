@@ -60,7 +60,7 @@
           .item 7 會期
           .item 8 會期
 
-.vlist.clearfix(when-scrolled='loadList()')
+#vlist.clearfix(when-scrolled='loadList()')
   .video.list
     .video.wrapper(ng-repeat="v in videos track by $index")
       h3 {{v.sitting_id}}
