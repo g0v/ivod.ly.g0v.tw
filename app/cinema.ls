@@ -50,7 +50,7 @@ angular.module 'app.cinema', <[ng ui.state]>
 
     $scope.isplaying = -> !$scope.mejs.media.paused
     if $state.params.clip is \live
-      $scope.current-video-offset = new Date '2013-11-01 08:27:30' .getTime! / 1000
+      $scope.current-video-offset = new Date '2013-11-03 08:27:30' .getTime! / 1000
       $scope.current-video-id = \YS-live-2013-11-01
       $scope.vsrc = "http://ivod.ly.g0v.tw/videos/#{sitting}.webm"
       $scope.getTimestamp = -> $scope.mejs.getCurrentTime!

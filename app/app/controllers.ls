@@ -24,11 +24,13 @@ angular.module 'app.controllers' <[ng app.cinema]>
     $rootScope.activeTab = \about
 
 .controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, $timeout, DanmakuPaper, PipeService, DanmakuStats) ->
+  $scope.comments = []
   $scope.statsData = []
   PipeService.on \player.init (v) ->
     $scope.player = v
     DanmakuStats.queryAll $scope.current-video-id, ->
-      start = $scope.cliptime / 10000
+      if $scope.cliptime => start = $scope.cliptime / 10000
+      else => start = $scope.current-video-offset /10
       temp = []
       if it
         angular.forEach it.val!, (val, key) ->
@@ -43,13 +45,15 @@ angular.module 'app.controllers' <[ng app.cinema]>
         angular.forEach temp, (value, index) ->
           if !isNaN value => $scope.statsData.push [index, value]
         $scope.render-stats $scope.statsData
+
   $scope.$on 'danmaku_added', (ev, danmaku)->
     if $scope.cliptime => now = $scope.cliptime*1000
     else => now = new Date! .getTime! - 2000
     if danmaku.timestamp >= now
       switch danmaku.type
       case \content
-        if $scope.cliptime => $timeout (DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000), danmaku.timestamp - $scope.cliptime
+        if $scope.cliptime => $scope.comments.push danmaku
+        #$timeout (DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000), danmaku.timestamp - $scope.cliptime
         else => DanmakuPaper.poptext danmaku.text, '#fff', 30, 5000
       case \attack
         {action, mx, my, ex, ey, sy} = danmaku
