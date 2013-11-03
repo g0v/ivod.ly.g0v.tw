@@ -181,8 +181,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
     t = $ document.body .scrollTop!
     [w,h] = [$ document.body .width!, $ document.body .height!]
     if t > $(\#vlist)height! * 0.7 and !$scope.loading => $scope.$apply -> $scope.load-list!
-    $ \#vlist .css \-webkit-perspective \100px
-    #$ \.video.list .css \-webkit-perspective-origin "50% #{$(\#vlist)height!}px"
+    #$ \#vlist .css \-webkit-perspective \100px
+    $ \#vlist .css \-webkit-perspective-origin "50% #{t}px"
     #  .css \-webkit-perspective \1000px
     /*
     for item in list

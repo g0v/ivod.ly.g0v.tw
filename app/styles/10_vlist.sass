@@ -3,16 +3,26 @@
   position: fixed
   z-index: 5
 #vlist
+  -webkit-perspective: 500px
+  -webkit-perspective-origin: 50% 50%
   padding-top: 150px
   .video.list
+    .video.wrapper:nth-of-type(4n+1)
+      -webkit-transform: rotateX(40deg) rotateY(10deg)
+    .video.wrapper:nth-of-type(4n+2)
+      -webkit-transform: rotateX(40deg) rotateY(5deg)
+    .video.wrapper:nth-of-type(4n+3)
+      -webkit-transform: rotateX(40deg) rotateY(-5deg)
+    .video.wrapper:nth-of-type(4n)
+      -webkit-transform: rotateX(40deg) rotateY(-10deg)
     .video.wrapper
-      box-shadow: 0 0 5px 0 rgba(255,255,128,0.5)
+      box-shadow: 0 0 5px 0 rgba(255,255,128,0.5), 0 5px 25px 5px rgba(0,0,0,0.8)
       background: #999
       cursor: pointer
       position: relative
       z-index: 4
       float: left
-      margin: 2.5rem 1rem 2.5rem 0
+      margin: 1.5rem 1rem 1.5rem 0
       width: 240px
       height: 180px
       background-color: #fff
