@@ -10,3 +10,11 @@ angular.module 'app.directives' <[app.services ]>
         element.append source
         scope.player = new MediaElementPlayer element
         #scope.mediaelement = element.mediaelementplayer {}
+
+
+.directive 'whenScrolled' ->
+  (scope, elm, attr) ->
+    raw = elm[0];
+    <- elm.bind 'scroll'
+    if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight)
+      scope.$apply attr.whenScrolled

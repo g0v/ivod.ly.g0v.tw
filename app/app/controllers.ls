@@ -154,12 +154,16 @@ angular.module 'app.controllers' <[ng app.cinema]>
     console.log "play time set to #it"
     $scope.player.setCurrentTime it
 
-.controller vlist: <[$scope $http]> ++ ($scope, $http) ->
+.controller vlist: <[$scope $http LYModel]> ++ ($scope, $http, LYModel) ->
   $scope.positive = true;
   $scope.switch = -> $scope.positive = !$scope.positive
-  $http.get \/ivod-sample.json .success ->
-    $scope.videos = it.entries
-    setTimeout (-> $scope.do3d!),100
+  $scope.videos = []
+  sk = 0
+  $scope.load-list = (sk, query={}, cb)->
+    {entries,paging} <- LYModel.get "ivod" {sk, q: JSON.stringify query} .success
+    $scope.videos ++= entries
+    sk += paging.l
+  $scope.load-list!
   $scope.do3d = ->
     list = $ \.video.wrapper
     for item in list

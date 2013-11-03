@@ -60,9 +60,9 @@
           .item 7 會期
           .item 8 會期
 
-.vlist
+.vlist.clearfix(when-scrolled='loadList()')
   .video.list
-    .video.wrapper(ng-repeat="v in videos",ng-click="play(v)")
+    .video.wrapper(ng-repeat="v in videos")
       h3 {{v.sitting_id}}
       .video.thumbnail: a(ng-href="/cinema/{{v.sitting_id}}/{{v.youtube_id}}"): img(src="{{v.thumb}}")
       .ui.bottom.right.attached.label.small
