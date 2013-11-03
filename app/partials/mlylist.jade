@@ -12,5 +12,5 @@
     .ui.button(ng-click="sortBy = 'constituency'", ng-class="{green: sortBy == 'constituency'}") 選區
   #mly-content
     .mlyitem(ng-repeat="it in mly",class="{{it.caucus}}",data-id="{{$index}}")
-      img.avatar(src="{{it.avatar}}")
+      img.avatar(src="{{it.avatar}}?size=large")
       .name {{it.name}}
