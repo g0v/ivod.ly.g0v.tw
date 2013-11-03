@@ -9,14 +9,56 @@
           .ui.icon.input
             input(placeholder="search",type="text")
             i.search.link.icon
+        a.item 選擇議程
   .ui.sub.menu(ng-show="positive")
-      a.active.item 雞蛋王
-      a.active.item 威鞋王
-      a.active.item 西瓜王
+      a.item 雞蛋王
+      a.item 威鞋王
+      a.item 西瓜王
   .ui.sub.menu(ng-show="!positive")
-      a.active.item 鮮花榜
-      a.active.item 護航榜
-      a.active.item 補鳥榜
+      a.item 鮮花榜
+      a.item 護航榜
+      a.item 補鳥榜
+  .ui.sub.menu(ng-show="positive")
+      .item.ui.simple.dropdown
+        .text 院會
+        i.dropdown.icon
+        .menu
+          .item 院會
+          .item 程序委員會
+          .item 紀律委員會
+          .item 修憲委員會
+          .item 經濟委員會
+          .item 財政委員會
+          .item 內政委員會
+          .item 外交國防委員會
+          .item 社福衛環委員會
+          .item 教育文化委員會
+          .item 司法法制委員會
+          .item 交通委員會
+      .item.ui.simple.dropdown
+        .text 8 屆
+        i.dropdown.icon
+        .menu
+          .item 1 屆
+          .item 2 屆
+          .item 3 屆
+          .item 4 屆
+          .item 5 屆
+          .item 6 屆
+          .item 7 屆
+          .item 8 屆
+      .item.ui.simple.dropdown
+        .text 1 會期
+        i.dropdown.icon
+        .menu
+          .item 1 會期
+          .item 2 會期
+          .item 3 會期
+          .item 4 會期
+          .item 5 會期
+          .item 6 會期
+          .item 7 會期
+          .item 8 會期
 
 .vlist
   .video.list
