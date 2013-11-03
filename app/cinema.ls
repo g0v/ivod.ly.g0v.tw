@@ -8,7 +8,6 @@ committees = do
     JUD: \司法及法制
     SWE: \社會福利及衛生環境
     PRO: \程序
-
 format-title = ->
   console.log it
   if it=="YS" => return "現場實況直播"
