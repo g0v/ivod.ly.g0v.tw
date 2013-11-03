@@ -164,9 +164,6 @@ angular.module 'app.controllers' <[ng app.cinema]>
     $scope.videos ++= entries
     sk += paging.l
   $scope.load-list!
-  $scope.play = (v) ->
-    console.log v.sitting_id
-    window.location.href="/cinema/#{v.sitting_id}"
   $scope.do3d = ->
     list = $ \.video.wrapper
     for item in list
