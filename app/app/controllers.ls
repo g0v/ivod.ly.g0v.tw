@@ -47,6 +47,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
    #    #$scope.render-stats $scope.statsData
 
   $scope.$on 'danmaku_added', (ev, danmaku)->
+    if !$scope.isplaying => return
     #if $scope.cliptime => now = $scope.cliptime*1000
     #else => 
     now = new Date! .getTime! - 2000
@@ -65,7 +66,6 @@ angular.module 'app.controllers' <[ng app.cinema]>
         if !$scope.cliptime => DanmakuPaper.protect danmaku.action
   $scope.addComment = ->
     #if $scope.cliptime => timestamp = $scope.getTimestamp!* 1000
-    #else => 
     timestamp = new Date! .getTime!
     created_at = new Date! .getTime!
     if $scope.isplaying!
