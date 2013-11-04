@@ -10,7 +10,7 @@ angular.module 'app.directives' <[app.services ]>
         element.append source
         if type is 'webm'
           m3u8 = it.replace // /videos/(.*?).webm // '/hls/$1/index.m3u8'
-          source = $("<source type='video/m3u8' src='#{m3u8}'/>")
+          source = $("<source type='application/x-mpegurl' src='#{m3u8}'/>")
           element.attr \src, null
           element.append source
         scope.player = new MediaElementPlayer element
