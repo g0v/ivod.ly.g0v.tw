@@ -1,6 +1,8 @@
 angular.module 'app.services' []
-.service 'DanmakuStats': <[$q PipeService]> ++ ($q, PipeService) ->
-  root = new Firebase 'https://ivod.firebaseio.com/'
+.service 'FirebaseRoot': ->
+  new Firebase 'https://ivod.firebaseio.com/'
+.service 'DanmakuStats': <[$q PipeService FirebaseRoot]> ++ ($q, PipeService, FirebaseRoot) ->
+  root = FirebaseRoot
   updateQueue: (vid, obj) ->
     stats = root.child("stats/#vid")
     newentry = stats.child('queue').push!
@@ -66,8 +68,8 @@ angular.module 'app.services' []
       $ document.body .append egg
       egg.offset left: x - 100, top: y + h - 200 .animate left: x + parseInt(w / 2) - 100  .delay 500 .fadeOut!
 
-.service 'DanmakuStore': <[$q]> ++ ($q) ->
-  root = new Firebase 'https://ivod.firebaseio.com/'
+.service 'DanmakuStore': <[$q FirebaseRoot]> ++ ($q, FirebaseRoot) ->
+  root = FirebaseRoot
   store: (vid, obj) ->
     video = root.child("videos/#vid")
     newentry = video.child('danmaku').push!

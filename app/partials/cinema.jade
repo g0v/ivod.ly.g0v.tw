@@ -57,8 +57,11 @@
       .text {{title}}
       i.dropdown.icon
       .menu
-        .item 院會 
-  #egg-realm(ng-controller="Danmaku")
+        .item(ng-repeat="(channel, status) in channels",ng-show="status.live")
+          a(ng-href="/cinema/{{channel}}/live") {{ channelNames[channel] }}
+  #notlive(ng-hide="channels[sitting].live")
+    h1 即將上映
+  #egg-realm(ng-controller="Danmaku",ng-show="channels[sitting].live")
     #video-wrapper
       video#cinema-player(width="650px",height="400px",preload="auto",mediaelement,src="{{vsrc}}")
       #eggninja

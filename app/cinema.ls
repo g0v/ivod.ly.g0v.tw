@@ -18,9 +18,9 @@ format-title = ->
   name = "#{committees[it.2] or ''}#{(committees[it.3] and '聯席') or ''}"
   "第#{it.0}屆第#{it.1}會期#{name}第#{it.4 or it.3}次會議"
 
-angular.module 'app.cinema', <[ng ui.state]>
-.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService ]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService) ->
-  #$ \body .css \background-color, \#000
+angular.module 'app.cinema', <[ng ui.state notifications]>
+.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService FirebaseRoot $notification]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService, FirebaseRoot, $notification) ->
+  $scope.channelNames = committees
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
     if val
@@ -35,28 +35,46 @@ angular.module 'app.cinema', <[ng ui.state]>
   $scope.play-from = ->
     PipeService.dispatchEvent \player.settime, it
 
-  $scope.$watch '$state.params.sitting' ->
-    return unless $state.current.name is /^cinema/
+  FirebaseRoot.child "status/channels"
+    ..on \value ->
+      val = it.val!
+      $scope.$apply -> $scope.channels = val
+    ..on \child_changed ->
+      name = it.name!
+      val = it.val!
+      console.log \change it.name!, it.val!
+      $notification.notify '/img/logo.png', "會議快報 - #{$scope.channelNames[name]}", if val.live => "會議開始" else "會議結束"
+      $scope.$apply -> $scope.channels[name] = val
+
+  var watch-sitting
+  <- $scope.$watch '$state.current.name'
+  if it isnt /^cinema/
+    return watch-sitting?! # cancel the watch below
+  watch-sitting := $scope.$watch '$state.params.sitting' ->
     console.log \schange
     if !it
       return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
     {sitting, clip} = $state.params
-    $http.get "http://api-beta.ly.g0v.tw/v0/collections/sittings/#{sitting}"
-    .success -> $scope.detail = it
     $scope.sitting = sitting
+    $scope.title = format-title sitting
     if !$scope.recent-sitting => d3.csv \/ly-ministry.csv ->
       $scope.recent-sitting = it
       name = $scope.recent-sitting.filter(->it.sitting==sitting)
-      $scope.$apply -> $scope.title = format-title if name.length => name.0.summary else sitting
+      if name.length
+        $scope.$apply -> $scope.title = format-title name.0.summary
 
     $scope.isplaying = -> !$scope.mejs.media.paused
     if $state.params.clip is \live
-      $scope.current-video-offset = new Date '2013-11-03 08:27:30' .getTime! / 1000
-      $scope.current-video-id = \YS-live-2013-11-01
+      #$scope.current-video-offset = new Date '2013-11-03 08:27:30' .getTime! / 1000
+      date = moment!format("YYYY-MM-DD")
+      $scope.current-video-id = "#{sitting}-live-#{date}"
       $scope.vsrc = "http://ivod.ly.g0v.tw/videos/#{sitting}.webm"
       $scope.getTimestamp = -> $scope.mejs.getCurrentTime!
 
     else
+      $http.get "http://api-beta.ly.g0v.tw/v0/collections/sittings/#{sitting}"
+      .success -> $scope.detail = it
+      # XXX refactor this. duplicated code from ly.g0v.tw controller
       videos <- LYModel.get "sittings/#{sitting}/videos" .success
       console.log \sittinghas videos
       # match clip
