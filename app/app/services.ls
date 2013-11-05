@@ -4,7 +4,7 @@ angular.module 'app.services' []
   updateQueue: (vid, obj) ->
     stats = root.child("stats/#vid")
     newentry = stats.child('queue').push!
-    newentry.setWithPriority obj, obj.offset   
+    newentry.setWithPriority obj, obj.offset
   updateTotal: (vid, type) ->
     stats = root.child("stats/#vid").child('total')
     stats.once 'value' ->
@@ -75,7 +75,8 @@ angular.module 'app.services' []
   subscribe: (vid, cb) ->
     # also: 'child_changed', 'child_removed' or 'child_moved'
     # use them to maintain list of upcoming danmaku
-    root.child("videos/#vid/danmaku").on \child_added, cb
+    root.child("videos/#vid/danmaku").startAt new Date! .getTime! - 30s * 1000ms
+    .on \child_added, cb
     null
   unsubscribe: (vid) ->
     root.child("videos/#vid/danmaku").off \child_added
