@@ -19,7 +19,7 @@ format-title = ->
   "第#{it.0}屆第#{it.1}會期#{name}第#{it.4 or it.3}次會議"
 
 angular.module 'app.cinema', <[ng ui.state]>
-.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService ]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService) ->
+.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService FirebaseRoot]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService, FirebaseRoot) ->
   #$ \body .css \background-color, \#000
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
@@ -34,6 +34,13 @@ angular.module 'app.cinema', <[ng ui.state]>
   PipeService.on \player.init -> $scope.mejs = it
   $scope.play-from = ->
     PipeService.dispatchEvent \player.settime, it
+  FirebaseRoot.child "status/channels"
+    ..on \value ->
+      $scope.channels = it.val!
+    ..on \child_changed ->
+      name = it.name!
+      $scope.channels[name] = it.val!
+      console.log \change it.name!, it.val!
 
   $scope.$watch '$state.params.sitting' ->
     return unless $state.current.name is /^cinema/
