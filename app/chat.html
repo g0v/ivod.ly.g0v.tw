@@ -59,7 +59,7 @@ window.startChatRoom = function (vid) {
   root.child("videos/"+vid+"/danmaku").startAt((new Date().getTime())-30*1000).on("child_added", function (e) {
     if (e.val().text) {
       $("#chat").append("<li>" + e.val().text + " <span class=\"label\">@" +moment(e.getPriority()).format("H:m") + "</span></li>");
-      $('html, body').animate({scrollTop: 0}, 'slow');
+      $('html, body').animate({scrollTop: $(document).height()}, 'slow');
     }
   });
 }
