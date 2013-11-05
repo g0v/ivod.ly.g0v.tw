@@ -1,25 +1,25 @@
 .ui.tiered.menu
   .menu
-      a.item(ng-click="mode='no-sub'") 最新主打
-      a.item(ng-click="mode='no-sub'") 焦點強檔
-      a.item(ng-click="mode='positive'") 佳評如潮
-      a.item(ng-click="mode='negative'") 雷片大賞
+      a.item(ng-click="selector=false;positive=true;negative=false") 最新主打
+      a.item(ng-click="selector=false;positive=true;negative=false") 焦點強檔
+      a.item(ng-click="positive=!positive;selector=false;negative=false") 佳評如潮
+      a.item(ng-click="negative=!negative;selector=false;positive=true") 雷片大賞
       .right.menu
         .item
           .ui.icon.input
             input(placeholder="search",type="text")
             i.search.link.icon
-        a.item(ng-click="mode='selector'") 選擇議程
-  .ui.sub.menu(ng-show="mode=='positive'")
+        a.item(ng-click="selector=!selector;positive=true;negative=false") 選擇議程
+  .ui.sub.menu(ng-hide="positive")
       a.item 鮮花榜
       a.item 護航榜
       a.item 補鳥榜
-  .ui.sub.menu(ng-show="mode=='negative'")
+  .ui.sub.menu(ng-show="negative")
       a.item 雞蛋王
       a.item 西瓜王
       a.item 威鞋王
       a.item 棺材王
-  .ui.sub.menu(ng-show="mode=='selector'")
+  .ui.sub.menu(ng-show="selector")
       .item.ui.simple.dropdown
         .text 院會
         i.dropdown.icon
