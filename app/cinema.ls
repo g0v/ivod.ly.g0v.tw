@@ -18,8 +18,8 @@ format-title = ->
   name = "#{committees[it.2] or ''}#{(committees[it.3] and '聯席') or ''}"
   "第#{it.0}屆第#{it.1}會期#{name}第#{it.4 or it.3}次會議"
 
-angular.module 'app.cinema', <[ng ui.state]>
-.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService FirebaseRoot]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService, FirebaseRoot) ->
+angular.module 'app.cinema', <[ng ui.state notifications]>
+.controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService FirebaseRoot $notification]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService, FirebaseRoot, $notification) ->
   $scope.channelNames = committees
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
@@ -43,6 +43,7 @@ angular.module 'app.cinema', <[ng ui.state]>
       name = it.name!
       val = it.val!
       console.log \change it.name!, it.val!
+      $notification.notify '/img/logo.png', "會議快報 - #{$scope.channelNames[name]}", if val.live => "會議開始" else "會議結束"
       $scope.$apply -> $scope.channels[name] = val
 
   var watch-sitting
