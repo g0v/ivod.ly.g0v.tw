@@ -75,7 +75,7 @@ angular.module 'app.services' []
   subscribe: (vid, cb) ->
     # also: 'child_changed', 'child_removed' or 'child_moved'
     # use them to maintain list of upcoming danmaku
-    root.child("videos/#vid/danmaku").startAt new Date! .getTime! - 30s * 1000ms
+    root.child("videos/#vid/danmaku").startAt new Date!getTime! - 30s * 1000ms
     .on \child_added, cb
     null
   unsubscribe: (vid) ->
