@@ -20,7 +20,7 @@ format-title = ->
 
 angular.module 'app.cinema', <[ng ui.state]>
 .controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService FirebaseRoot]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService, FirebaseRoot) ->
-  #$ \body .css \background-color, \#000
+  $scope.channelNames = committees
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
     if val
@@ -34,25 +34,33 @@ angular.module 'app.cinema', <[ng ui.state]>
   PipeService.on \player.init -> $scope.mejs = it
   $scope.play-from = ->
     PipeService.dispatchEvent \player.settime, it
+
   FirebaseRoot.child "status/channels"
     ..on \value ->
-      $scope.channels = it.val!
+      val = it.val!
+      $scope.$apply -> $scope.channels = val
     ..on \child_changed ->
       name = it.name!
-      $scope.channels[name] = it.val!
+      val = it.val!
       console.log \change it.name!, it.val!
+      $scope.$apply -> $scope.channels[name] = val
 
-  $scope.$watch '$state.params.sitting' ->
-    return unless $state.current.name is /^cinema/
+  var watch-sitting
+  <- $scope.$watch '$state.current.name'
+  if it isnt /^cinema/
+    return watch-sitting?! # cancel the watch below
+  watch-sitting := $scope.$watch '$state.params.sitting' ->
     console.log \schange
     if !it
       return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
     {sitting, clip} = $state.params
     $scope.sitting = sitting
+    $scope.title = format-title sitting
     if !$scope.recent-sitting => d3.csv \/ly-ministry.csv ->
       $scope.recent-sitting = it
       name = $scope.recent-sitting.filter(->it.sitting==sitting)
-      $scope.$apply -> $scope.title = format-title if name.length => name.0.summary else sitting
+      if name.length
+        $scope.$apply -> $scope.title = format-title name.0.summary
 
     $scope.isplaying = -> !$scope.mejs.media.paused
     if $state.params.clip is \live
