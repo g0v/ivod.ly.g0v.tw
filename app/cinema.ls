@@ -8,6 +8,9 @@ committees = do
     JUD: \司法及法制
     SWE: \社會福利及衛生環境
     PRO: \程序
+    YS: \院會
+    CON: \修憲
+    DIS: \紀律
 format-title = ->
   if committees[it] => return "現場實況直播: #that"
   console.log it
