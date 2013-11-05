@@ -36,191 +36,191 @@
   .ui.input.mini input
     padding: 0.4em 1.2em
 
-#video-wrapper
-  width: 650px
-  height: 400px
-  margin: 2px auto 5px
-  background: rgba(0,0,0,0.5)
-  box-shadow: 0 0 30px 5px rgba(255,255,255,0.5)
-  @include user-select(none)
+  #video-wrapper
+    width: 650px
+    height: 400px
+    margin: 2px auto 5px
+    background: rgba(0,0,0,0.5)
+    box-shadow: 0 0 30px 5px rgba(255,255,255,0.5)
+    @include user-select(none)
 
-#eggninja
-  position: absolute
-  background: rgba(255,255,255,0.01)
-  z-index: 9
-  overflow: hidden
-#crosshair
-  position: absolute
-  z-index: 10
-  top: -200px 
-  left: -200px
-  width: 200px
-  height: 200px
-  background: url(/img/crosshair.png)
-.egg, .flower, .boat, .white-banner, .duck, .raise-net, .coffin
-  position: absolute
-  z-index: 8
-  top: 0
-  left: 0
-  background: no-repeat center center
-.egg
-  width: 100px
-  height: 100px
-.flower, .boat, .duck, .coffin
-  width: 200px
-  height: 200px
-.flower
-  background-image: url(/img/flower.png)
-.boat
-  background-image: url(/img/boat.png)
-.duck
-  background-image: url(/img/duck.png)
-.coffin
-  background-image: url(/img/coffin.png)
-.white-banner
-  width: 650px
-  height: 200px
-  line-height: 230px
-  font-size: 32px
-  text-align: center
-  background-image: url(/img/white-banner.png)
-.raise-net
-  width: 650px
-  height: 405px
-  background-image: url(/img/net.png)
-
-#action-buttons
-  position: relative
-  z-index: 5
-  text-align: center
-  .button
-    padding: 7px 15px
-  form
-    display: inline
-  input.fire
-    height: 28px
-    margin: 0 25px
-  .button.fire
-    margin-left: 30px
-
-
-@-webkit-keyframes rotate
-  from
-    -webkit-transform: rotate(0deg)
-  to
-    -webkit-transform: rotate(360deg)
-
-.rotate
-  -webkit-animation-name: rotate
-  -webkit-animation-duration: 0.5s
-  -webkit-animation-iteration-count: infinite
-  -webkit-animation-timing-function: linear
-
-
-
-@-webkit-keyframes saturate
-  from
-    -webkit-filter: saturate(0)
-  to
-    -webkit-filter: saturate(1)
-
-.saturate
-  -webkit-animation-name: saturate
-  -webkit-animation-duration: 2.0s
-  -webkit-animation-iteration-count: 1
-  -webkit-animation-timing-function: linear
-
-
-
-#wav-root
-  padding-top: 10px
-  min-height: 100px
-  background: rgba(255,255,255,0.8)
-  border-radius: 5px
-.wav-group
-  position: relative
-  height: 100px
-  margin-top: 20px
-  svg
+  #eggninja
     position: absolute
-    top: 0
-    left: 0
-    z-index: 10
-    font-size: 10px
-  canvas
-    position: absolute
-    top: 0
-    left: 0
-    z-index: 1
-    opacity: 0.5
-
-
-#avatar-tooltip.ui.label.pointing.below
-  position: absolute
-  z-index: 12
-  text-align: center
-  /* semantic-ui styling start */
-  display: none
-  background: #e8e8e8
-  padding: 7px 10px
-  border-radius: 5px
-  /* semantic-ui styling end */
-  &:before
-    content: " "
-    position: absolute
-    width: 0.6em
-    height: 0.6em
-    background: #e8e8e8
-    transition: rotate(45deg)
-    -webkit-transition: rotate(45deg)
-    z-index: 12
-  img
-    display: block
-    width: 48px
-    height: 48px
-    background: rgba(255,255,255,0.5)
-    border-radius: 2px
-  .name
-    margin-top: 8px
-    width: 48px
-    height: 20px
+    background: rgba(255,255,255,0.01)
+    z-index: 9
     overflow: hidden
-    text-overflow: ellipsis
-
-#action-stats
-  width: 100%
-  height: 20px
-  margin: 5px 0
-  background: #ccc
-  border: 1px solid #999
-  box-shadow: inset 0 0 3px rgba(0,0,0,0.3)
-  position: relative
-  &:after
-    text-align: center
-    width: 100%
-    display: block
-    font-size: 13px
-    color: #777
-    line-height: 20px
-    content: "鄉民互動狀況"
-  .line
-    fill: none
-    stroke: #000
-    stroke-width: 3px
-    opacity: 0.9
-
-.detail.panel
-  .label.ribbon
-    margin-left: 13px
-  background: #fff
-  margin:  10px 0
-  padding-top: 20px
-  border: 3px solid #999
-  .ib
-    margin:  10px 40px 40px
-  .title
+  #crosshair
+    position: absolute
+    z-index: 10
+    top: -200px 
+    left: -200px
+    width: 200px
+    height: 200px
+    background: url(/img/crosshair.png)
+  .egg, .flower, .boat, .white-banner, .duck, .raise-net, .coffin
+    position: absolute
+    z-index: 8
+    top: 0
+    left: 0
+    background: no-repeat center center
+  .egg
+    width: 100px
+    height: 100px
+  .flower, .boat, .duck, .coffin
+    width: 200px
+    height: 200px
+  .flower
+    background-image: url(/img/flower.png)
+  .boat
+    background-image: url(/img/boat.png)
+  .duck
+    background-image: url(/img/duck.png)
+  .coffin
+    background-image: url(/img/coffin.png)
+  .white-banner
+    width: 650px
+    height: 200px
+    line-height: 230px
     font-size: 32px
-    font-weight: 900
-  .desc
-    margin-bottom: 10px
+    text-align: center
+    background-image: url(/img/white-banner.png)
+  .raise-net
+    width: 650px
+    height: 405px
+    background-image: url(/img/net.png)
+
+  #action-buttons
+    position: relative
+    z-index: 5
+    text-align: center
+    .button
+      padding: 7px 15px
+    form
+      display: inline
+    input.fire
+      height: 28px
+      margin: 0 25px
+    .button.fire
+      margin-left: 30px
+
+
+  @-webkit-keyframes rotate
+    from
+      -webkit-transform: rotate(0deg)
+    to
+      -webkit-transform: rotate(360deg)
+
+  .rotate
+    -webkit-animation-name: rotate
+    -webkit-animation-duration: 0.5s
+    -webkit-animation-iteration-count: infinite
+    -webkit-animation-timing-function: linear
+
+
+
+  @-webkit-keyframes saturate
+    from
+      -webkit-filter: saturate(0)
+    to
+      -webkit-filter: saturate(1)
+
+  .saturate
+    -webkit-animation-name: saturate
+    -webkit-animation-duration: 2.0s
+    -webkit-animation-iteration-count: 1
+    -webkit-animation-timing-function: linear
+
+
+
+  #wav-root
+    padding-top: 10px
+    min-height: 100px
+    background: rgba(255,255,255,0.8)
+    border-radius: 5px
+  .wav-group
+    position: relative
+    height: 100px
+    margin-top: 20px
+    svg
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 10
+      font-size: 10px
+    canvas
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 1
+      opacity: 0.5
+
+
+  #avatar-tooltip.ui.label.pointing.below
+    position: absolute
+    z-index: 12
+    text-align: center
+    /* semantic-ui styling start */
+    display: none
+    background: #e8e8e8
+    padding: 7px 10px
+    border-radius: 5px
+    /* semantic-ui styling end */
+    &:before
+      content: " "
+      position: absolute
+      width: 0.6em
+      height: 0.6em
+      background: #e8e8e8
+      transition: rotate(45deg)
+      -webkit-transition: rotate(45deg)
+      z-index: 12
+    img
+      display: block
+      width: 48px
+      height: 48px
+      background: rgba(255,255,255,0.5)
+      border-radius: 2px
+    .name
+      margin-top: 8px
+      width: 48px
+      height: 20px
+      overflow: hidden
+      text-overflow: ellipsis
+
+  #action-stats
+    width: 650px
+    height: 20px
+    margin: 5px auto
+    background: #ccc
+    border: 1px solid #999
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.3)
+    position: relative
+    &:after
+      text-align: center
+      width: 100%
+      display: block
+      font-size: 13px
+      color: #777
+      line-height: 20px
+      content: "鄉民互動狀況"
+    .line
+      fill: none
+      stroke: #000
+      stroke-width: 3px
+      opacity: 0.9
+
+  .detail.panel
+    .label.ribbon
+      margin-left: 13px
+    background: #fff
+    margin:  10px 0
+    padding-top: 20px
+    border: 3px solid #999
+    .ib
+      margin:  10px 40px 40px
+    .title
+      font-size: 32px
+      font-weight: 900
+    .desc
+      margin-bottom: 10px
 
