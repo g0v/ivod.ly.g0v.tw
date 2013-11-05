@@ -41,8 +41,6 @@ angular.module 'app.cinema', <[ng ui.state]>
     if !it
       return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
     {sitting, clip} = $state.params
-    $http.get "http://api-beta.ly.g0v.tw/v0/collections/sittings/#{sitting}"
-    .success -> $scope.detail = it
     $scope.sitting = sitting
     if !$scope.recent-sitting => d3.csv \/ly-ministry.csv ->
       $scope.recent-sitting = it
@@ -58,6 +56,9 @@ angular.module 'app.cinema', <[ng ui.state]>
       $scope.getTimestamp = -> $scope.mejs.getCurrentTime!
 
     else
+      $http.get "http://api-beta.ly.g0v.tw/v0/collections/sittings/#{sitting}"
+      .success -> $scope.detail = it
+      # XXX refactor this. duplicated code from ly.g0v.tw controller
       videos <- LYModel.get "sittings/#{sitting}/videos" .success
       console.log \sittinghas videos
       # match clip
