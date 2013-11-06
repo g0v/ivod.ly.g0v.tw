@@ -43,30 +43,15 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
           img(src="http://hack.g0v.tw/img/g0v-icon-invert.png")
           | 立院影城
         a.title.item(href="/cinema/YS/live", ng-class="{active: activeNavId == '/cinema/YS/live'}") 互動電影院
+        a.title.item(href="/onair", ng-class="{active: activeNavId == '/onair'}") 現正放映
         a.title.item(href="/vlist", ng-class="{active: activeNavId == '/vlist'}") 熱片排行榜
         a.title.item(href="/mlylist", ng-class="{active: activeNavId == '/mlylist'}") 巨星排行榜
         //-div(ng-include="'/partials/nav.html'")
     #cinema-curtain
       .curtain-left
-        //-left curtain
       .curtain-right
-        //-right curtain
-    //-.navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container.hide-print
-            button.btn.btn-navbar(type="button", data-toggle="collapse", data-target=".nav-collapse")
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a(href="http://github.com/g0v/ly.g0v.tw",target="_blank").pull-right
-              .small.badge.badge-inverse.pull-right.build-id {{ _build }}
-            a(href="http://g0v.tw", target="_blank").pull-right
-              .brand.g0v: img(src="http://hack.g0v.tw/img/g0v-icon-invert.png")
-            a.brand(href='/') 立院影城
-            .nav-collapse.collapse(ng-include="'/partials/nav.html'")
     .container
       div(ui-view)
-      iframe#chatFrame(src='/chat.html',style='border-radius:20px')
     div(notifications="bottom right")
   - if (typeof(googleAnalytics) !== 'undefined')
     script(type="text/javascript").

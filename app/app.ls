@@ -24,6 +24,10 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.directives.wavefo
       url: '/vlist'
       templateUrl: '/partials/vlist.html'
       controller: \vlist
+    .state 'onair' do
+      url: '/onair'
+      templateUrl: '/partials/onair.html'
+      controller: \onair
     .state 'mlylist' do
       url: '/mlylist'
       templateUrl: '/partials/mlylist.html'

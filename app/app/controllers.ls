@@ -22,6 +22,8 @@ angular.module 'app.controllers' <[ng app.cinema]>
     if name == 'vlist' => $ \body .addClass \blackbg
 .controller About: <[$rootScope $http]> ++ ($rootScope, $http) ->
     $rootScope.activeTab = \about
+.controller onair: <[$scope $http]> ++ ($scope, $http) ->
+    $scope.activeTab = \onair
 
 .controller Danmaku: <[$scope DanmakuStore $timeout DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, $timeout, DanmakuPaper, PipeService, DanmakuStats) ->
   $scope.comments = []
