@@ -1,12 +1,22 @@
 #onair-view
-  margin-top: 50px
-
+  margin: 60px auto 120px
+  text-align: center
+  iframe
+    border: none
+  .radio-on
+    width: 32px
+    height: 32px
 
 .cctv
   margin: 15px 10px
   display: inline-block
   text-align: center
   width: 200px
+  color: #444
+  &:hover > .img
+    position: relative
+    top: -5px
+    box-shadow: 0 5px 7px rgba(0,0,0,0.2)
   
 .cctv > .img
   width: 160px
@@ -17,10 +27,6 @@
   border: 1px solid #ccc
   box-shadow: 0 1px 3px rgba(0,0,0,0.1)
   margin: 0 auto 5px
-  &:hover
-    position: relative
-    top: -5px
-    box-shadow: 0 5px 7px rgba(0,0,0,0.2)
     
 .swe
   background-position: 0 0
