@@ -49,7 +49,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   $scope.$on 'danmaku_added', (ev, danmaku)->
     if !$scope.isplaying => return
     #if $scope.cliptime => now = $scope.cliptime*1000
-    #else => 
+    #else =>
     now = new Date! .getTime! - 2000
     if danmaku.timestamp >= now
       switch danmaku.type
@@ -77,11 +77,14 @@ angular.module 'app.controllers' <[ng app.cinema]>
   player = $ \#cinema-player
   crosshair = $ \#crosshair
   #egg = $ \#egg
-  [w,h] = [player.width!, player.height!]
-  {top:y, left: x} = player.offset!
   eggninja = $ \#eggninja
-  eggninja.offset {top: y, left: x}
-  eggninja.css  width: "#{w}px", height: "#{h - 30}px"
+  [w,h] = [player.width!, player.height!]
+  set-player = ->
+    {top:y, left: x} = player.offset!
+    eggninja.offset {top: y, left: x}
+    eggninja.css  width: "#{w}px", height: "#{h - 30}px"
+    setTimeout set-player, 10s * 1000ms
+  set-player!
   eggninja.on \click (e) ->
     if !$scope.isplaying!
       DanmakuPaper.poptext \要開始播才會可以丟東西喔, '#fff', 30, 5000
