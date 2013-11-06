@@ -34,7 +34,7 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.directives.wavefo
       controller: \mlylist
     # Catch all
   $urlRouterProvider
-    .otherwise('/cinema')
+    .otherwise('/onair')
 
   # Without serve side support html5 must be disabled.
   $locationProvider.html5Mode true
