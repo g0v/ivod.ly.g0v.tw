@@ -1,6 +1,6 @@
 angular.module 'app.services' []
 .service 'FirebaseRoot': ->
-  new Firebase 'https://ivod.firebaseio.com/'
+  new Firebase 'https://iv0d.firebaseio.com/'
 .service 'DanmakuStats': <[$q PipeService FirebaseRoot]> ++ ($q, PipeService, FirebaseRoot) ->
   root = FirebaseRoot
   updateQueue: (vid, obj) ->
@@ -34,7 +34,7 @@ angular.module 'app.services' []
     egg = $ \<div></div>
     egg.addClass "rotate egg"
     egg.css \background-image, "url(/img/#{type}.png)"
-    $ document.body .append egg
+    egg.appendTo $ \body
     egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
       ..animate left: mx - 50, top: my + 50 + sy if !has-net
       ..animate left: ex - 50, top: ey - 50 + sy if has-net
