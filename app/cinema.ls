@@ -57,7 +57,7 @@ angular.module 'app.cinema', <[ng ui.state notifications]>
   watch-sitting := $scope.$watch '$state.params.sitting' ->
     console.log \schange
     if !it
-      return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
+      return $state.transitionTo 'cinema.view' { sitting: \SWE, clip: \live }
     {sitting, clip} = $state.params
     $scope.sitting = sitting
     $scope.title = format-title sitting
