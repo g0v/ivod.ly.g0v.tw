@@ -60,9 +60,8 @@ window.startChatRoom = function (vid) {
   var root = new Firebase("https://iv0d.firebaseio.com");
   root.child("videos/"+vid+"/danmaku").startAt((new Date().getTime())-30000*1000).on("child_added", function (e) {
     if (e.val().text) {
-        $('#loading').fadeOut();
+      $('#loading').fadeOut();
       $("#chat").prepend("<li>" + e.val().text + " <span class=\"label\">@" +moment(e.getPriority()).format("H:m") + "</span></li>");
-      $('html, body').animate({scrollTop: 0});
     }
   });
 }
