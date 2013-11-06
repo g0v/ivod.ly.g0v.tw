@@ -84,23 +84,23 @@
     #avatar-tooltip.ui.label.pointing.below
       img
       .name
+  .panel.detail(ng-show="loaded")
+    .ui.label.ribbon.red 詳細資料
+    .ib
+      .title: a(target="_blank",ng-href="http://ly.g0v.tw/sittings/{{sitting}}") {{detail.name}}
+      .desc {{detail.summary}}
+      .session(ng-repeat="s in detail.dates")
+        .chair 主席: {{s.chair}}
+        .date 日期: {{s.date}}
   //-.info
     .ui.menu.black.inverted
       a.active.item(ng-click="mode='about'") 關於本片
       a.item(ng-click="mode='reviews'") 互動影評
       a.item(ng-click="mode='heros'") 鍵盤英雄
       a.item(ng-click="mode='related'") 相關推薦
-    .panel.detail(ng-show="mode=='about")
-      .ui.label.ribbon.red 詳細資料
-      .ib
-        .title: a(target="_blank",ng-href="http://ly.g0v.tw/sittings/{{sitting}}") {{detail.name}}
-        .desc {{detail.summary}}
-        .session(ng-repeat="s in detail.dates")
-          .chair 主席: {{s.chair}}
-          .date 日期: {{s.date}}
-    .reviews(ng-show="mode=='reviews") reviews
-    .heros(ng-show="mode=='heros") heros
-    .related(ng-show="mode=='related")
+    .reviews(ng-show="mode=='reviews'") reviews
+    .heros(ng-show="mode=='heros'") heros
+    .related(ng-show="mode=='related'")
   //-.panel
     .target.selector
       .ui.image.label
@@ -111,3 +111,4 @@
         i.plus.icon
     .weapons.selector
     .text.input
+iframe#chatFrame(src='/chat.html',style='border-radius:5px')
