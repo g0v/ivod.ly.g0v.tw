@@ -4,6 +4,7 @@ angular.module 'app.directives' <[app.services ]>
   link: (scope, element, attrs, controller) ->
     attrs.$observe 'src' ->
       if it =>
+        element.html ''
         type = if it is /youtube/ => 'youtube' else 'webm'
         source = $("<source type='video/#type' src='#{it}'/>")
         element.attr \src, null
