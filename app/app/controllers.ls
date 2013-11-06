@@ -73,7 +73,6 @@ angular.module 'app.controllers' <[ng app.cinema]>
     else
       DanmakuPaper.poptext \要開始播才會可以加彈幕喔, '#fff', 30, 5000
 
-#.controller EggNinja: <[$scope DanmakuStore DanmakuPaper PipeService DanmakuStats]> ++ ($scope, DanmakuStore, DanmakuPaper, PipeService, DanmakuStats) ->
   ply-node = $ \#cinema-player
   crosshair = $ \#crosshair
   #egg = $ \#egg
@@ -88,7 +87,6 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja.on \click (e) ->
     if !$scope.isplaying!
       ply-node.parent!parent!parent!find \.mejs-overlay-play .trigger \click
-      #DanmakuPaper.poptext \要開始播才會可以丟東西喔, '#fff', 30, 5000
       return
     sy = $(document.body)scrollTop!
     {clientX: mx, clientY: my} = e
