@@ -23,6 +23,10 @@ angular.module 'app.cinema', <[ng ui.state notifications]>
   $scope.channelNames = committees
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
+    do
+      <- $
+      $ \iframe .load ->
+        $(\iframe)[0].contentWindow.postMessage val, \*
     if val
       DanmakuStore.subscribe val, ->
         $scope.$broadcast 'danmaku_added', it.val!
@@ -53,7 +57,7 @@ angular.module 'app.cinema', <[ng ui.state notifications]>
   watch-sitting := $scope.$watch '$state.params.sitting' ->
     console.log \schange
     if !it
-      return $state.transitionTo 'cinema.view' { sitting: \YS, clip: \live }
+      return $state.transitionTo 'cinema.view' { sitting: \SWE, clip: \live }
     {sitting, clip} = $state.params
     $scope.sitting = sitting
     $scope.title = format-title sitting
