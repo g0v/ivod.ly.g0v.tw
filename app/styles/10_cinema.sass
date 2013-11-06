@@ -49,8 +49,11 @@
     background: rgba(255,255,255,0.01)
     z-index: 9
     overflow: hidden
+    cursor: pointer
   #crosshair
+    cursor: none
     position: absolute
+    display: none
     z-index: 10
     top: -200px
     left: -200px
@@ -213,7 +216,7 @@
     .label.ribbon
       margin-left: 13px
     background: #fff
-    margin:  10px 0
+    margin: 0
     padding-top: 20px
     border: 3px solid #999
     .ib
@@ -223,14 +226,22 @@
       font-weight: 900
     .desc
       margin-bottom: 10px
-#notlive
-  width: 650px
-  margin: 0 auto
-  height: 400px
-  line-height: 400px
-  text-align: center
-  background: rgba(255,255,255,0.1)
-  border-radius: 20px
-  h1
-    font-size: 100px
-
+  #notlive
+    width: 650px
+    margin: 0 auto
+    height: 400px
+    line-height: 400px
+    text-align: center
+    background: rgba(255,255,255,0.1)
+    border-radius: 20px
+    h1
+      font-size: 100px
+      
+  .info
+    width: 650px
+    margin: 0 auto
+    position: relative
+    z-index: 10
+    .ui.menu
+      background-color: rgba(0,0,0,0.5)
+      margin: 0
