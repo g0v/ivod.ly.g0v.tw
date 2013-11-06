@@ -29,8 +29,7 @@ exports.config =
         before:
           'vendor/scripts/console-helper.js'
           'vendor/scripts/angular/angular.js'
-        after:
-          'app/app/controllers.ls'
+        after: <[ app/app/controllers.ls ]>
 
     stylesheets:
       joinTo:
