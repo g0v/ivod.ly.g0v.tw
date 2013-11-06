@@ -84,7 +84,7 @@
     #avatar-tooltip.ui.label.pointing.below
       img
       .name
-  .panel.detail(ng-show="mode=='about'")
+  .panel.detail(ng-show="loaded")
     .ui.label.ribbon.red 詳細資料
     .ib
       .title: a(target="_blank",ng-href="http://ly.g0v.tw/sittings/{{sitting}}") {{detail.name}}
