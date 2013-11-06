@@ -66,6 +66,7 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
             .nav-collapse.collapse(ng-include="'/partials/nav.html'")
     .container
       div(ui-view)
+      iframe#chatFrame(src='/chat.html',style='border-radius:20px')
     div(notifications="bottom right")
   - if (typeof(googleAnalytics) !== 'undefined')
     script(type="text/javascript").

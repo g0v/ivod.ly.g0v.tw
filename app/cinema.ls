@@ -23,6 +23,10 @@ angular.module 'app.cinema', <[ng ui.state notifications]>
   $scope.channelNames = committees
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
+    do
+      <- $
+      $ \iframe .load ->
+        $(\iframe)[0].contentWindow.postMessage val, \*
     if val
       DanmakuStore.subscribe val, ->
         $scope.$broadcast 'danmaku_added', it.val!
