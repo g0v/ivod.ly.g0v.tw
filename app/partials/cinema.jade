@@ -84,7 +84,7 @@
     #avatar-tooltip.ui.label.pointing.below
       img
       .name
-  .panel.detail(ng-show="mode=='about")
+  .panel.detail(ng-show="mode=='about'")
     .ui.label.ribbon.red 詳細資料
     .ib
       .title: a(target="_blank",ng-href="http://ly.g0v.tw/sittings/{{sitting}}") {{detail.name}}
@@ -98,9 +98,9 @@
       a.item(ng-click="mode='reviews'") 互動影評
       a.item(ng-click="mode='heros'") 鍵盤英雄
       a.item(ng-click="mode='related'") 相關推薦
-    .reviews(ng-show="mode=='reviews") reviews
-    .heros(ng-show="mode=='heros") heros
-    .related(ng-show="mode=='related")
+    .reviews(ng-show="mode=='reviews'") reviews
+    .heros(ng-show="mode=='heros'") heros
+    .related(ng-show="mode=='related'")
   //-.panel
     .target.selector
       .ui.image.label
