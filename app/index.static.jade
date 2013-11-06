@@ -42,10 +42,11 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
         a.title.item
           img(src="http://hack.g0v.tw/img/g0v-icon-invert.png")
           | 立院影城
-        a.title.item(href="/cinema/YS/live", ng-class="{active: activeNavId == '/cinema/YS/live'}") 互動電影院
+        a.title.item(href="/cinema", ng-class="{active: activeNavId == '/cinema'}") 互動電影院
         a.title.item(href="/onair", ng-class="{active: activeNavId == '/onair'}") 現正放映
         a.title.item(href="/vlist", ng-class="{active: activeNavId == '/vlist'}") 熱片排行榜
         a.title.item(href="/mlylist", ng-class="{active: activeNavId == '/mlylist'}") 巨星排行榜
+        a.title.item.right(href="http://g0v.tw") 零時政府
         //-div(ng-include="'/partials/nav.html'")
     #cinema-curtain
       .curtain-left
