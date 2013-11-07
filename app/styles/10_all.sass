@@ -1,3 +1,5 @@
+@import "compass/css3/transition"
+
 body
   font-family: 'Helvetica Neue', Arial, STHeiti
   padding: 0
@@ -57,6 +59,16 @@ a,a:link,a:hover,a:active
     background-image: url('/img/curtain-right.png') 
     float: right
 
+$chat_font:20
+
 #chatFrame
+  position: relative
+  z-index: 7
   width: 100%
   margin: 0 auto
+  height: 70px
+  @include transition(height, 1s)
+  &:hover
+    margin-top: -300px
+    height: 370px
+    @include transition(height, 1s)
