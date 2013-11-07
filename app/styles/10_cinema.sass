@@ -3,6 +3,18 @@
 @import "compass/css3/border-radius"
 @import "compass/css3/user-interface"
 
+
+@-webkit-keyframes rotate
+  from
+    -webkit-transform: rotate(0deg)
+  to
+    -webkit-transform: rotate(360deg)
+@keyframes rotate
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
 .cinema
   margin: 0 auto
   h2.ui.header
@@ -108,18 +120,15 @@
       margin-left: 30px
 
 
-  @-webkit-keyframes rotate
-    from
-      -webkit-transform: rotate(0deg)
-    to
-      -webkit-transform: rotate(360deg)
-
   .rotate
     -webkit-animation-name: rotate
     -webkit-animation-duration: 0.5s
     -webkit-animation-iteration-count: infinite
     -webkit-animation-timing-function: linear
-
+    animation-name: rotate
+    animation-duration: 0.5s
+    animation-iteration-count: infinite
+    animation-timing-function: linear
 
 
   @-webkit-keyframes saturate
