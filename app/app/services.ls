@@ -26,6 +26,9 @@ angular.module 'app.services' []
   player = $ \#video-wrapper
   {left: x, top: y} = player.offset!
   paper = Raphael x, y, player.width!, player.height! - 30
+  update-location = -> $ paper.canvas .css player.offset!
+  $ window .on \resize update-location
+  update-location!
   poptext: (text, color, size, ms) ->
     paper.text player.width!, Math.floor(Math.random!*300), text
       .attr {'font-size': size, 'fill': color, 'text-shadow': '0 0 10px rgba(255,255,255,0.5)'}
