@@ -35,8 +35,8 @@ angular.module 'app.services' []
       .animate {x: -paper.width}, ms
   throwEgg: (type, mx, my, ex, ey, sy) ->
     egg = $ \<div></div>
-    egg.addClass "rotate egg"
-    egg.css \background-image, "url(/img/#{type}.png)"
+    egg.addClass "rotate #{type}"
+    #egg.css \background-image, "url(/img/#{type}.png)"
     egg.appendTo $ \body
     egg.offset left: ex - 50, top: ey - 50 + sy
       #..animate {left: mx - 50, top: my - 50 + sy}
