@@ -15,6 +15,28 @@
   to
     transform: rotate(360deg)
 
+@-webkit-keyframes zoom
+  from
+    -webkit-transform: scale(3.0)
+  to
+    -webkit-transform: scale(0.6)
+@keyframes zoom
+  from
+    -webkit-transform: scale(3.0)
+  to
+    -webkit-transform: scale(0.6)
+
+@-webkit-keyframes zoom-inverse
+  from
+    -webkit-transform: scale(0.6)
+  to
+    -webkit-transform: scale(3.0)
+@keyframes zoom-inverse
+  from
+    -webkit-transform: scale(0.6)
+  to
+    -webkit-transform: scale(3.0)
+
 .cinema
   margin: 0 auto
   h2.ui.header
@@ -72,15 +94,16 @@
     width: 200px
     height: 200px
     background: url(/img/crosshair.png)
-  .egg, .flower, .boat, .white-banner, .duck, .raise-net, .coffin, .melon, .shoe
+  .throw, .flower, .boat, .white-banner, .duck, .raise-net, .coffin, .melon, .shoe
     position: absolute
     z-index: 8
     top: 0
     left: 0
     background: no-repeat center center
   .egg, .melon, .shoe
-    width: 100px
-    height: 100px
+    background: no-repeat center center
+    width: 151px
+    height: 148px
   .flower, .boat, .duck, .coffin
     width: 200px
     height: 200px
@@ -102,6 +125,9 @@
     background-image: url(/img/egg.png)
   .egg.break
     background-image: url(/img/egg-break.png)
+  .break
+    -webkit-transform: scale(0.6)
+    transform: scale(0.6)
     
   .white-banner
     width: 650px
@@ -140,7 +166,24 @@
     animation-duration: 0.5s
     animation-iteration-count: infinite
     animation-timing-function: linear
-
+  .zoom
+    -webkit-animation-name: zoom
+    -webkit-animation-duration: 0.3s
+    -webkit-animation-iteration-count: 1
+    -webkit-animation-timing-function: linear
+    animation-name: rotate
+    animation-duration: 0.3s
+    animation-iteration-count: 1
+    animation-timing-function: linear
+  .zoom-inverse
+    -webkit-animation-name: zoom-inverse
+    -webkit-animation-duration: 0.3s
+    -webkit-animation-iteration-count: 1
+    -webkit-animation-timing-function: linear
+    animation-name: zoom-inverse
+    animation-duration: 0.3s
+    animation-iteration-count: 1
+    animation-timing-function: linear
 
   @-webkit-keyframes saturate
     from
