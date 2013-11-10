@@ -38,7 +38,9 @@ angular.module 'app.services' []
     egg.addClass "rotate egg"
     egg.css \background-image, "url(/img/#{type}.png)"
     egg.appendTo $ \body
-    egg.offset left: ex - 50, top: ey - 50 + sy .animate left: mx - 50, top: my - 50 + sy
+    egg.offset left: ex - 50, top: ey - 50 + sy
+      #..animate {left: mx - 50, top: my - 50 + sy}
+      ..animate {left: mx - 50, top: my - 50 + sy}, -> if !has-net => egg.addClass \break .removeClass \rotate
       ..animate left: mx - 50, top: my + 50 + sy if !has-net
       ..animate left: ex - 50, top: ey - 50 + sy if has-net
       ..fadeOut!
