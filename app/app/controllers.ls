@@ -81,7 +81,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
   eggninja = $ \#eggninja
   [w,h] = [ply-node.width!, ply-node.height!]
   set-player = ->
-    {top:y, left: x} = ply-node.offset!
+    {top:y, left: x} = $(\#video-wrapper)offset!
     eggninja.offset {top: y, left: x}
     eggninja.css  width: "#{w}px", height: "#{h - 30}px"
     setTimeout set-player, 10s * 1000ms
