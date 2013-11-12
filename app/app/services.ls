@@ -36,11 +36,14 @@ angular.module 'app.services' []
   throwEgg: (type, mx, my, ex, ey, sy) ->
     egg = $ "<div class='throw zoom'><div class='rotate'></div></div>"
     egg-inner = egg.find \div .addClass type
+    has-net-action = Math.random!>0.5
     egg.appendTo $ \body
     egg.offset left: ex - 75, top: ey - 74 + sy
-      ..animate {left: mx - 75, top: my - 74 + sy}, -> if !has-net => egg-inner.addClass \break .removeClass "zoom rotate"
+      ..animate {left: mx - 75, top: my - 74 + sy}, ->
+        if !has-net => egg-inner.addClass \break .removeClass "rotate"
+        else egg.removeClass \zoom .addClass (if has-net-action => \zoom-inverse else \zoom-inverse-large)
       ..animate({top: my + 74 + sy}) if !has-net
-      ..animate({left: ex - 75, top: ey - 74 + sy}, -> egg.addClass \zoom-inverse .removeClass \zoom) if has-net
+      ..animate({left: ex - 75, top: ey - 74 + sy}) if (has-net and has-net-action)
       ..fadeOut!
   protect: (type) ->
     wrapper = $ \#video-wrapper

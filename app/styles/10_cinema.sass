@@ -37,6 +37,17 @@
   to
     -webkit-transform: scale(3.0)
 
+@-webkit-keyframes zoom-inverse-large
+  from
+    -webkit-transform: scale(0.6)
+  to
+    -webkit-transform: scale(8.0)
+@keyframes zoom-inverse-large
+  from
+    -webkit-transform: scale(0.6)
+  to
+    -webkit-transform: scale(8.0)
+
 .cinema
   margin: 0 auto
   h2.ui.header
@@ -175,15 +186,21 @@
     animation-duration: 0.3s
     animation-iteration-count: 1
     animation-timing-function: linear
-  .zoom-inverse
+  .zoom-inverse, .zoom-inverse-large
     -webkit-animation-name: zoom-inverse
-    -webkit-animation-duration: 0.3s
+    -webkit-animation-duration: 0.9s
     -webkit-animation-iteration-count: 1
     -webkit-animation-timing-function: linear
     animation-name: zoom-inverse
-    animation-duration: 0.3s
+    animation-duration: 0.9s
     animation-iteration-count: 1
     animation-timing-function: linear
+  .zoom-inverse
+    -webkit-animation-name: zoom-inverse
+    animation-name: zoom-inverse
+  .zoom-inverse-large
+    -webkit-animation-name: zoom-inverse-large
+    animation-name: zoom-inverse-large
 
   @-webkit-keyframes saturate
     from

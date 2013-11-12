@@ -99,7 +99,7 @@ angular.module 'app.controllers' <[ng app.cinema]>
     created_at = new Date! .getTime!
     DanmakuStore.store $scope.current-video-id, {action: type, mx: mx, my:my, ex: ex, ey: ey, sy: sy, timestamp: timestamp, created_at: created_at, type: \attack}
     DanmakuStats.updateTotal $scope.current-video-id, type
-    DanmakuPaper.throwEgg type, mx, my, ex, ey, sy
+    #DanmakuPaper.throwEgg type, mx, my, ex, ey, sy
     offset = new Date! .getTime!
     DanmakuStats.updateQueue $scope.current-video-id, {offset: offset, type: type}
   ply-node.on \play -> crosshair.show!
