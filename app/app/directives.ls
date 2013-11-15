@@ -14,8 +14,8 @@ angular.module 'app.directives' <[app.services ]>
           source = $("<source type='application/x-mpegurl' src='#{m3u8}'/>")
           element.attr \src, null
           element.append source
-        scope.player = new MediaElementPlayer element
-        #scope.mediaelement = element.mediaelementplayer {}
+        scope.player = new MediaElementPlayer element, do
+          features: <[progress current duration fullscreen]>
 
 
 .directive 'whenScrolled' ->

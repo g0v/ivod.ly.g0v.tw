@@ -21,6 +21,9 @@ format-title = ->
 angular.module 'app.cinema', <[ng ui.state notifications]>
 .controller CinemaCtrl: <[$scope $state $http LYModel DanmakuStore PipeService FirebaseRoot $notification]> ++ ($scope, $state, $http, LYModel, DanmakuStore, PipeService, FirebaseRoot, $notification) ->
   $scope.channelNames = committees
+  $scope.$watch 'volume' (val, old) ->
+    return if val is undefined
+    mejs?players?mep_0?setVolume val / 100
   $scope.$watch 'currentVideoId' (val, old) ->
     console.log \newvid val, old
     do
