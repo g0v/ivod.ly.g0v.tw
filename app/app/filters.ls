@@ -56,6 +56,8 @@ angular.module 'app.filters' []
       '全國不分區'
     else if it.0 is \aborigine
       '原住民'
+    else if it.0 is \foreign
+      '僑居國外國民'
     else
       iso3166tw[it.0]
 
