@@ -2,7 +2,7 @@
 
 angular.module('scroll', []).value('$anchorScroll', angular.noop)
 
-angular.module \ly.g0v.tw <[app.controllers app.directives app.directives.waveform app.filters app.services scroll partials ui.state goinstant]>
+angular.module \ly.g0v.tw <[app.controllers app.directives app.directives.waveform app.filters app.services scroll partials ui.state]>
 
 .config <[$stateProvider $urlRouterProvider $locationProvider]> ++ ($stateProvider, $urlRouterProvider, $locationProvider) ->
   $stateProvider
@@ -38,9 +38,6 @@ angular.module \ly.g0v.tw <[app.controllers app.directives app.directives.wavefo
 
   # Without serve side support html5 must be disabled.
   $locationProvider.html5Mode true
-
-.config <[platformProvider]> ++ (platformProvider) ->
-  platformProvider.set 'https://goinstant.net/yhsiang/ivod.ly.g0v.tw'
 
 .run <[$rootScope $state $stateParams $location]> ++ ($rootScope, $state, $stateParams, $location) ->
   $rootScope.$state = $state
