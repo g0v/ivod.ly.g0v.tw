@@ -1,4 +1,4 @@
-!!! 5
+doctype html
 html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
   head
     meta(charset='utf-8')
@@ -37,14 +37,13 @@ html.no-han-init(lang='zh-Hant', ng-app='ly.g0v.tw')
           }(document, 'script', 'facebook-jssdk'));
     .ui.fixed.transparent.inverted.main.menu
       .container
-        a.title.item
-          img(src="http://hack.g0v.tw/img/g0v-icon-invert.png")
-          | 立院影城
+        a.title.item(href="/") 立院影城
         a.title.item(href="/cinema", ng-class="{active: activeNavId == '/cinema'}") 互動電影院
         a.title.item(href="/onair", ng-class="{active: activeNavId == '/onair'}") 現正放映
         a.title.item(href="/vlist", ng-class="{active: activeNavId == '/vlist'}") 熱片排行榜
         a.title.item(href="/mlylist", ng-class="{active: activeNavId == '/mlylist'}") 巨星排行榜
-        a.title.item.right(href="http://g0v.tw") 零時政府
+        a.brand.item.right(href="http://g0v.tw")
+          img(src="/img/g0v-horizontal-transparent-darkbackground-s.png", target="_blank")
         //-div(ng-include="'/partials/nav.html'")
     #cinema-curtain
       .curtain-left
