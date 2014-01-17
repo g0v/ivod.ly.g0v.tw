@@ -1,0 +1,51 @@
+{
+  "author": "clkao",
+  "status": "alpha",
+  "name": "ivod.ly",
+  "name_zh": "立院影城",
+  "description": "ivod.ly",
+  "description_zh": "互動式線上即時轉播立院院會會議過程",
+  "homepage": "http://ivod.ly.g0v.tw/",
+  "document": "https://g0v.hackpad.com/g1v-work-items-ewwARXN8iyi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/g0v/ivod.ly.g0v.tw"
+  },
+  "licenses": [
+    {
+      "type": "MIT License"
+    }
+  ],
+  "keywords": [
+    "angularjs",
+    "livescript",
+    "sass",
+    "bootstrap",
+    "ly",
+    "ivod",
+    "cinema"
+  ],
+  "audience": [
+    "public"
+  ],
+  "products": [
+    "website"
+  ],
+  "projects": [
+    "meta"
+  ],
+  "contributors": [
+    "clkao",
+    "yhsiang",
+    "zbryikt",
+    "ETBlue",
+    "audreyt",
+    "AliceWei",
+    "s89008",
+    "walkingice",
+    "billy3321"
+  ],
+  "needs": [
+    "designer"
+  ]
+}
